@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Lists Guide</title>
+  <!-- Vercel Analytics -->
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Lists Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-links-images.html" class="nav-button">← Previous: Links & Images</a>
+      <a href="html-tables.html" class="nav-button">Next: Tables →</a>
+    </div>
+    
+    <p>Lists are essential HTML elements that help you organize content in a structured, easily scannable format. This guide covers the different types of lists and how to use them effectively.</p>
+    
+    <h2>1. Unordered Lists</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;ul&gt;</code> element represents an unordered list of items, typically rendered as a bulleted list. Each list item is defined with the <code>&lt;li&gt;</code> element.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+  &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ul&gt;</div>
+        <div class="element-preview">
+          <ul>
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h3>Styling Unordered Lists</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ul style="list-style-type: disc;"&gt;
+  &lt;li&gt;Disc bullets (default)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul style="list-style-type: circle;"&gt;
+  &lt;li&gt;Circle bullets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul style="list-style-type: square;"&gt;
+  &lt;li&gt;Square bullets&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul style="list-style-type: none;"&gt;
+  &lt;li&gt;No bullets&lt;/li&gt;
+&lt;/ul&gt;</div>
+        <div class="element-preview">
+          <ul style="list-style-type: disc;">
+            <li>Disc bullets (default)</li>
+          </ul>
+          
+          <ul style="list-style-type: circle;">
+            <li>Circle bullets</li>
+          </ul>
+          
+          <ul style="list-style-type: square;">
+            <li>Square bullets</li>
+          </ul>
+          
+          <ul style="list-style-type: none;">
+            <li>No bullets</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Note:</strong> While you can change bullet styles with CSS's <code>list-style-type</code> property, it's generally recommended to keep styling in your CSS rather than inline.
+      </div>
+    </div>
+    
+    <h2>2. Ordered Lists</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;ol&gt;</code> element represents an ordered list of items, typically rendered as a numbered list. Each list item is defined with the <code>&lt;li&gt;</code> element.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ol&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+  &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ol&gt;</div>
+        <div class="element-preview">
+          <ol>
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+          </ol>
+        </div>
+      </div>
+      
+      <h3>Ordered List Attributes</h3>
+      
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>type</code></td>
+          <td>1, A, a, I, i</td>
+          <td>Specifies the numbering type (numbers, uppercase letters, lowercase letters, uppercase Roman numerals, lowercase Roman numerals)</td>
+        </tr>
+        <tr>
+          <td><code>start</code></td>
+          <td>number</td>
+          <td>Specifies the starting number/value</td>
+        </tr>
+        <tr>
+          <td><code>reversed</code></td>
+          <td>reversed</td>
+          <td>Specifies that the list order should be descending</td>
+        </tr>
+      </table>
+      
+      <h3>Different Numbering Types</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ol type="1"&gt;
+  &lt;li&gt;Numbers (default)&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol type="A"&gt;
+  &lt;li&gt;Uppercase letters&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol type="a"&gt;
+  &lt;li&gt;Lowercase letters&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol type="I"&gt;
+  &lt;li&gt;Uppercase Roman numerals&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol type="i"&gt;
+  &lt;li&gt;Lowercase Roman numerals&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;</div>
+        <div class="element-preview">
+          <ol type="1">
+            <li>Numbers (default)</li>
+            <li>Second item</li>
+          </ol>
+          
+          <ol type="A">
+            <li>Uppercase letters</li>
+            <li>Second item</li>
+          </ol>
+          
+          <ol type="a">
+            <li>Lowercase letters</li>
+            <li>Second item</li>
+          </ol>
+          
+          <ol type="I">
+            <li>Uppercase Roman numerals</li>
+            <li>Second item</li>
+          </ol>
+          
+          <ol type="i">
+            <li>Lowercase Roman numerals</li>
+            <li>Second item</li>
+          </ol>
+        </div>
+      </div>
+      
+      <h3>Starting Value and Reversed Order</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Start from 5 --&gt;
+&lt;ol start="5"&gt;
+  &lt;li&gt;This item is number 5&lt;/li&gt;
+  &lt;li&gt;This item is number 6&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Reversed order --&gt;
+&lt;ol reversed&gt;
+  &lt;li&gt;This will be 3&lt;/li&gt;
+  &lt;li&gt;This will be 2&lt;/li&gt;
+  &lt;li&gt;This will be 1&lt;/li&gt;
+&lt;/ol&gt;</div>
+        <div class="element-preview">
+          <!-- Start from 5 -->
+          <ol start="5">
+            <li>This item is number 5</li>
+            <li>This item is number 6</li>
+          </ol>
+          
+          <!-- Reversed order -->
+          <ol reversed>
+            <li>This will be 3</li>
+            <li>This will be 2</li>
+            <li>This will be 1</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <h2>3. Description Lists</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;dl&gt;</code> element represents a description list, which consists of term-description pairs. Each term is defined with a <code>&lt;dt&gt;</code> element, and each description is defined with a <code>&lt;dd&gt;</code> element.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language, the standard markup language for creating web pages.&lt;/dd&gt;
+  
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.&lt;/dd&gt;
+  
+  &lt;dt&gt;JavaScript&lt;/dt&gt;
+  &lt;dd&gt;A programming language that enables interactive web pages.&lt;/dd&gt;
+&lt;/dl&gt;</div>
+        <div class="element-preview">
+          <dl>
+            <dt>HTML</dt>
+            <dd>HyperText Markup Language, the standard markup language for creating web pages.</dd>
+            
+            <dt>CSS</dt>
+            <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in HTML.</dd>
+            
+            <dt>JavaScript</dt>
+            <dd>A programming language that enables interactive web pages.</dd>
+          </dl>
+        </div>
+      </div>
+      
+      <h3>Multiple Terms or Descriptions</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Multiple terms, one description --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;Firefox&lt;/dt&gt;
+  &lt;dt&gt;Mozilla Firefox&lt;/dt&gt;
+  &lt;dd&gt;A free, open-source web browser developed by the Mozilla Foundation.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;!-- One term, multiple descriptions --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Stands for HyperText Markup Language.&lt;/dd&gt;
+  &lt;dd&gt;The standard language for creating web pages and applications.&lt;/dd&gt;
+&lt;/dl&gt;</div>
+        <div class="element-preview">
+          <!-- Multiple terms, one description -->
+          <dl>
+            <dt>Firefox</dt>
+            <dt>Mozilla Firefox</dt>
+            <dd>A free, open-source web browser developed by the Mozilla Foundation.</dd>
+          </dl>
+          
+          <!-- One term, multiple descriptions -->
+          <dl>
+            <dt>HTML</dt>
+            <dd>Stands for HyperText Markup Language.</dd>
+            <dd>The standard language for creating web pages and applications.</dd>
+          </dl>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Use Case:</strong> Description lists are perfect for glossaries, dictionaries, FAQs, and any content that has a name-value relationship.
+      </div>
+    </div>
+    
+    <h2>4. Nested Lists</h2>
+    
+    <div class="demo-section">
+      <p>Lists can be nested inside one another to create hierarchical structures:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ul&gt;
+  &lt;li&gt;Fruits
+    &lt;ul&gt;
+      &lt;li&gt;Apples
+        &lt;ul&gt;
+          &lt;li&gt;Granny Smith&lt;/li&gt;
+          &lt;li&gt;Honeycrisp&lt;/li&gt;
+          &lt;li&gt;Gala&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Bananas&lt;/li&gt;
+      &lt;li&gt;Oranges&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Vegetables
+    &lt;ul&gt;
+      &lt;li&gt;Carrots&lt;/li&gt;
+      &lt;li&gt;Broccoli&lt;/li&gt;
+      &lt;li&gt;Spinach&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</div>
+        <div class="element-preview">
+          <ul>
+            <li>Fruits
+              <ul>
+                <li>Apples
+                  <ul>
+                    <li>Granny Smith</li>
+                    <li>Honeycrisp</li>
+                    <li>Gala</li>
+                  </ul>
+                </li>
+                <li>Bananas</li>
+                <li>Oranges</li>
+              </ul>
+            </li>
+            <li>Vegetables
+              <ul>
+                <li>Carrots</li>
+                <li>Broccoli</li>
+                <li>Spinach</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <p>You can also mix different types of lists:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ol&gt;
+  &lt;li&gt;Step 1
+    &lt;ul&gt;
+      &lt;li&gt;Important note for step 1&lt;/li&gt;
+      &lt;li&gt;Another note for step 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Step 2
+    &lt;ul&gt;
+      &lt;li&gt;Important note for step 2&lt;/li&gt;
+      &lt;li&gt;Another note for step 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</div>
+        <div class="element-preview">
+          <ol>
+            <li>Step 1
+              <ul>
+                <li>Important note for step 1</li>
+                <li>Another note for step 1</li>
+              </ul>
+            </li>
+            <li>Step 2
+              <ul>
+                <li>Important note for step 2</li>
+                <li>Another note for step 2</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <h2>5. List Item Values</h2>
+    
+    <div class="demo-section">
+      <p>The <code>value</code> attribute can be used on individual list items in an ordered list to override the automatic numbering:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;ol&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+  &lt;li value="10"&gt;This will be item 10&lt;/li&gt;
+  &lt;li&gt;This will be item 11&lt;/li&gt;
+  &lt;li value="20"&gt;This will be item 20&lt;/li&gt;
+  &lt;li&gt;This will be item 21&lt;/li&gt;
+&lt;/ol&gt;</div>
+        <div class="element-preview">
+          <ol>
+            <li>First item</li>
+            <li>Second item</li>
+            <li value="10">This will be item 10</li>
+            <li>This will be item 11</li>
+            <li value="20">This will be item 20</li>
+            <li>This will be item 21</li>
+          </ol>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Note:</strong> The <code>value</code> attribute is only valid for <code>&lt;li&gt;</code> elements within <code>&lt;ol&gt;</code> elements, not within <code>&lt;ul&gt;</code> or <code>&lt;dl&gt;</code>.
+      </div>
+    </div>
+    
+    <h2>6. Styling Lists with CSS</h2>
+    
+    <div class="demo-section">
+      <p>Here are some common CSS properties used to style lists:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;style&gt;
+  .custom-list {
+    list-style-type: square;        /* Type of bullet */
+    list-style-position: outside;   /* Position of bullet (outside or inside) */
+    list-style-image: url('bullet.png'); /* Custom bullet image */
+    padding-left: 20px;            /* Adjust the indentation */
+  }
+  
+  .custom-list li {
+    margin-bottom: 10px;           /* Space between items */
+    padding: 5px;                  /* Padding inside each item */
+    background-color: #f0f0f0;     /* Background color for items */
+  }
+  
+  /* Shorthand property */
+  .shorthand-list {
+    list-style: square inside url('bullet.png');
+  }
+&lt;/style&gt;</div>
+      </div>
+      
+      <h3>Advanced List Styling Examples</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Horizontal list (often used for navigation) --&gt;
+&lt;style&gt;
+  .horizontal-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .horizontal-list li {
+    margin-right: 15px;
+  }
+&lt;/style&gt;
+
+&lt;ul class="horizontal-list"&gt;
+  &lt;li&gt;Home&lt;/li&gt;
+  &lt;li&gt;About&lt;/li&gt;
+  &lt;li&gt;Services&lt;/li&gt;
+  &lt;li&gt;Contact&lt;/li&gt;
+&lt;/ul&gt;</div>
+        <div class="element-preview">
+          <ul style="list-style-type: none; padding: 0; margin: 0; display: flex;">
+            <li style="margin-right: 15px;">Home</li>
+            <li style="margin-right: 15px;">About</li>
+            <li style="margin-right: 15px;">Services</li>
+            <li style="margin-right: 15px;">Contact</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Custom counters with CSS --&gt;
+&lt;style&gt;
+  .custom-counters {
+    list-style-type: none;
+    counter-reset: item;
+    padding-left: 0;
+  }
+  
+  .custom-counters li {
+    counter-increment: item;
+    margin-bottom: 10px;
+  }
+  
+  .custom-counters li::before {
+    content: "Section " counter(item) ": ";
+    font-weight: bold;
+    color: #e74c3c;
+  }
+&lt;/style&gt;
+
+&lt;ol class="custom-counters"&gt;
+  &lt;li&gt;Introduction&lt;/li&gt;
+  &lt;li&gt;Main Content&lt;/li&gt;
+  &lt;li&gt;Conclusion&lt;/li&gt;
+&lt;/ol&gt;</div>
+        <div class="element-preview">
+          <ol style="list-style-type: none; padding-left: 0;">
+            <li style="margin-bottom: 10px;"><span style="font-weight: bold; color: #e74c3c;">Section 1: </span>Introduction</li>
+            <li style="margin-bottom: 10px;"><span style="font-weight: bold; color: #e74c3c;">Section 2: </span>Main Content</li>
+            <li style="margin-bottom: 10px;"><span style="font-weight: bold; color: #e74c3c;">Section 3: </span>Conclusion</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <h2>7. Best Practices</h2>
+    
+    <div class="demo-section">
+      <ul>
+        <li>Use unordered lists (<code>&lt;ul&gt;</code>) for items where order doesn't matter</li>
+        <li>Use ordered lists (<code>&lt;ol&gt;</code>) for sequential items or steps</li>
+        <li>Use description lists (<code>&lt;dl&gt;</code>) for term-definition pairs</li>
+        <li>Nest lists appropriately to represent hierarchical relationships</li>
+        <li>Keep list items concise and focused</li>
+        <li>Use CSS for styling rather than HTML attributes when possible</li>
+        <li>Don't skip list items or use list elements for layout purposes</li>
+        <li>Ensure proper indentation in your HTML code for readability</li>
+        <li>Use the appropriate list type for the content to improve semantic meaning</li>
+      </ul>
+    </div>
+    
+    <h2>8. Browser Support</h2>
+    
+    <div class="demo-section">
+      <p>All list elements have excellent browser support across all modern browsers:</p>
+      
+      <div class="browser-support">
+        <div class="browser">
+          <div class="browser-icon">CH</div>
+          <div>Chrome</div>
+          <div class="support-yes">Yes</div>
+        </div>
+        <div class="browser">
+          <div class="browser-icon">FF</div>
+          <div>Firefox</div>
+          <div class="support-yes">Yes</div>
+        </div>
+        <div class="browser">
+          <div class="browser-icon">SF</div>
+          <div>Safari</div>
+          <div class="support-yes">Yes</div>
+        </div>
+        <div class="browser">
+          <div class="browser-icon">ED</div>
+          <div>Edge</div>
+          <div class="support-yes">Yes</div>
+        </div>
+        <div class="browser">
+          <div class="browser-icon">OP</div>
+          <div>Opera</div>
+          <div class="support-yes">Yes</div>
+        </div>
+        <div class="browser">
+          <div class="browser-icon">IE</div>
+          <div>IE 11</div>
+          <div class="support-yes">Yes</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-links-images.html" class="nav-button">← Previous: Links & Images</a>
+      <a href="html-tables.html" class="nav-button">Next: Tables →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

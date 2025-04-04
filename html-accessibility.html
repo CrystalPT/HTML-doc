@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Accessibility Guide</title>
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Two-column layout for examples */
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 20px;
+    }
+    
+    @media (max-width: 920px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Accessibility Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-apis.html" class="nav-button">← Previous: HTML5 APIs</a>
+      <a href="html-interactive.html" class="nav-button">Next: Interactive Components →</a>
+    </div>
+    
+    <p>Creating accessible websites is essential to ensure all users, including those with disabilities, can access and use your content. This guide covers HTML techniques and best practices for building accessible web pages.</p>
+    
+    <h2>1. Why Accessibility Matters</h2>
+    
+    <div class="demo-section">
+      <p>Web accessibility ensures that people with disabilities can perceive, understand, navigate, and interact with websites. It also benefits:</p>
+      
+      <ul>
+        <li>People using mobile devices</li>
+        <li>Older people with changing abilities</li>
+        <li>People with temporary disabilities (e.g., broken arm)</li>
+        <li>People with situational limitations (e.g., bright sunlight)</li>
+        <li>People using slow internet connections</li>
+      </ul>
+      
+      <h3>Legal Considerations</h3>
+      <p>Web accessibility is also a legal requirement in many countries:</p>
+      <ul>
+        <li>Americans with Disabilities Act (ADA) in the USA</li>
+        <li>Accessibility for Ontarians with Disabilities Act (AODA) in Canada</li>
+        <li>European Accessibility Act in the EU</li>
+        <li>Web Content Accessibility Guidelines (WCAG) - international standard</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>WCAG Compliance Levels:</strong>
+        <ul>
+          <li>Level A: The most basic web accessibility features</li>
+          <li>Level AA: Deals with the biggest barriers for users with disabilities (commonly required standard)</li>
+          <li>Level AAA: The highest level of web accessibility</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>2. Semantic HTML</h2>
+    
+    <div class="demo-section">
+      <p>Using semantic HTML is the foundation of accessibility. Semantic elements convey meaning about their content to browsers and assistive technologies.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Non-semantic approach --&gt;
+&lt;div class="header"&gt;
+  &lt;div class="logo"&gt;Site Name&lt;/div&gt;
+  &lt;div class="nav"&gt;
+    &lt;div class="nav-item"&gt;Home&lt;/div&gt;
+    &lt;div class="nav-item"&gt;About&lt;/div&gt;
+    &lt;div class="nav-item"&gt;Contact&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="main"&gt;
+  &lt;div class="title"&gt;Page Title&lt;/div&gt;
+  &lt;div class="content"&gt;Content goes here...&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="footer"&gt;Copyright 2025&lt;/div&gt;
+
+&lt;!-- Semantic approach --&gt;
+&lt;header&gt;
+  &lt;h1&gt;Site Name&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;h2&gt;Page Title&lt;/h2&gt;
+  &lt;p&gt;Content goes here...&lt;/p&gt;
+&lt;/main&gt;
+&lt;footer&gt;Copyright 2025&lt;/footer&gt;</div>
+      </div>
+      
+      <h3>Key Semantic Elements</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Element</th>
+          <th>Purpose</th>
+          <th>Accessibility Benefit</th>
+        </tr>
+        <tr>
+          <td><code>&lt;header&gt;</code></td>
+          <td>Introductory content, navigation</td>
+          <td>Creates a "banner" landmark</td>
+        </tr>
+        <tr>
+          <td><code>&lt;nav&gt;</code></td>
+          <td>Navigation links</td>
+          <td>Creates a "navigation" landmark</td>
+        </tr>
+        <tr>
+          <td><code>&lt;main&gt;</code></td>
+          <td>Main content of the page</td>
+          <td>Creates a "main" landmark</td>
+        </tr>
+        <tr>
+          <td><code>&lt;article&gt;</code></td>
+          <td>Self-contained content</td>
+          <td>Identifies standalone content</td>
+        </tr>
+        <tr>
+          <td><code>&lt;section&gt;</code></td>
+          <td>Thematic grouping of content</td>
+          <td>Creates logical content sections</td>
+        </tr>
+        <tr>
+          <td><code>&lt;aside&gt;</code></td>
+          <td>Related but separate content</td>
+          <td>Creates a "complementary" landmark</td>
+        </tr>
+        <tr>
+          <td><code>&lt;footer&gt;</code></td>
+          <td>Footer information</td>
+          <td>Creates a "contentinfo" landmark</td>
+        </tr>
+        <tr>
+          <td><code>&lt;button&gt;</code></td>
+          <td>Interactive button</td>
+          <td>Built-in keyboard accessibility and role</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Landmark Navigation:</strong> Screen reader users can navigate between landmarks, making it easier to find and understand the structure of the page.
+      </div>
+    </div>
+    
+    <h2>3. Text Accessibility</h2>
+    
+    <div class="demo-section">
+      <h3>Headings Structure</h3>
+      <p>Proper heading structure creates a hierarchical outline of the page content:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Good heading structure --&gt;
+&lt;h1&gt;Main Page Title&lt;/h1&gt;
+&lt;section&gt;
+  &lt;h2&gt;Section Title&lt;/h2&gt;
+  &lt;p&gt;Section content...&lt;/p&gt;
+  
+  &lt;article&gt;
+    &lt;h3&gt;Article Title&lt;/h3&gt;
+    &lt;p&gt;Article content...&lt;/p&gt;
+    
+    &lt;h4&gt;Subsection Title&lt;/h4&gt;
+    &lt;p&gt;Subsection content...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+
+&lt;!-- Bad heading structure --&gt;
+&lt;h1&gt;Main Page Title&lt;/h1&gt;
+&lt;h3&gt;This skips h2&lt;/h3&gt; &lt;!-- Avoid skipping heading levels --&gt;
+&lt;h6&gt;Using h6 for styling&lt;/h6&gt; &lt;!-- Don't use headings for styling purposes --&gt;</div>
+      </div>
+      
+      <h3>Text Alternatives</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Images with alt text --&gt;
+&lt;img src="logo.png" alt="Company Logo"&gt;
+
+&lt;!-- Decorative images should have empty alt text --&gt;
+&lt;img src="decorative-line.png" alt=""&gt;
+
+&lt;!-- Complex images need more detailed descriptions --&gt;
+&lt;figure&gt;
+  &lt;img src="chart.png" alt="Bar chart showing sales growth from 2020 to 2025"&gt;
+  &lt;figcaption&gt;Figure 1: Annual sales growth by quarter, showing 15% increase year-over-year.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- SVG with accessible text --&gt;
+&lt;svg width="100" height="100" role="img" aria-labelledby="svg-title"&gt;
+  &lt;title id="svg-title"&gt;Circle icon with checkmark&lt;/title&gt;
+  &lt;!-- SVG content here --&gt;
+&lt;/svg&gt;</div>
+      </div>
+      
+      <h3>Text Formatting for Accessibility</h3>
+      <ul>
+        <li>Use adequate text size (minimum 16px body text)</li>
+        <li>Maintain proper line height (1.5 times font size)</li>
+        <li>Ensure sufficient letter spacing</li>
+        <li>Use proper text alignment (left-aligned for languages like English)</li>
+        <li>Provide sufficient color contrast (4.5:1 ratio for normal text, 3:1 for large text)</li>
+        <li>Don't rely solely on color to convey information</li>
+      </ul>
+    </div>
+    
+    <h2>4. Forms Accessibility</h2>
+    
+    <div class="demo-section">
+      <h3>Accessible Form Structure</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Using proper labels --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+&lt;/div&gt;
+
+&lt;!-- Fieldsets for grouping related fields --&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt;Contact Information&lt;/legend&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="phone"&gt;Phone:&lt;/label&gt;
+    &lt;input type="tel" id="phone" name="phone"&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;
+
+&lt;!-- Providing clear instructions --&gt;
+&lt;label for="password"&gt;Password:&lt;/label&gt;
+&lt;p id="password-hint" class="hint"&gt;Password must be at least 8 characters with at least one number and one special character.&lt;/p&gt;
+&lt;input 
+  type="password" 
+  id="password" 
+  name="password" 
+  aria-describedby="password-hint"
+  pattern="^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$"
+  required
+&gt;</div>
+      </div>
+      
+      <h3>Error Messages</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Accessible error messages --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="email2"&gt;Email:&lt;/label&gt;
+  &lt;input 
+    type="email" 
+    id="email2" 
+    name="email" 
+    aria-describedby="email-error" 
+    aria-invalid="true"
+  &gt;
+  &lt;div id="email-error" class="error" role="alert"&gt;
+    Please enter a valid email address
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+      </div>
+      
+      <h3>Form Controls</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Accessible checkboxes and radio buttons --&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt;Subscription Options&lt;/legend&gt;
+  
+  &lt;div class="form-check"&gt;
+    &lt;input type="radio" id="basic" name="plan" value="basic"&gt;
+    &lt;label for="basic"&gt;Basic Plan&lt;/label&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-check"&gt;
+    &lt;input type="radio" id="premium" name="plan" value="premium"&gt;
+    &lt;label for="premium"&gt;Premium Plan&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;
+
+&lt;div class="form-check"&gt;
+  &lt;input type="checkbox" id="newsletter" name="newsletter"&gt;
+  &lt;label for="newsletter"&gt;Subscribe to newsletter&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Accessible select element --&gt;
+&lt;div class="form-group"&gt;
+  &lt;label for="country"&gt;Country:&lt;/label&gt;
+  &lt;select id="country" name="country"&gt;
+    &lt;option value=""&gt;Select a country&lt;/option&gt;
+    &lt;option value="us"&gt;United States&lt;/option&gt;
+    &lt;option value="ca"&gt;Canada&lt;/option&gt;
+    &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</div>
+      </div>
+    </div>
+    
+    <h2>5. ARIA Attributes</h2>
+    
+    <div class="demo-section">
+      <p>ARIA (Accessible Rich Internet Applications) attributes provide additional information to assistive technologies to enhance accessibility, especially for dynamic and complex components.</p>
+      
+      <div class="element-info">
+        <strong>Important:</strong> The first rule of ARIA is "Don't use ARIA if you can use native HTML elements." Only use ARIA when native HTML elements can't provide the necessary semantics.
+      </div>
+      
+      <h3>ARIA Roles</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Adding roles --&gt;
+&lt;div role="alert"&gt;Your session will expire in 5 minutes.&lt;/div&gt;
+
+&lt;div role="tablist"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel1"&gt;Tab 1&lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" aria-controls="panel2"&gt;Tab 2&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id="panel1" role="tabpanel"&gt;Content for tab 1&lt;/div&gt;
+&lt;div id="panel2" role="tabpanel" hidden&gt;Content for tab 2&lt;/div&gt;</div>
+      </div>
+      
+      <h3>ARIA States and Properties</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><code>aria-label</code></td>
+          <td>Provides a text label for an element</td>
+          <td><code>&lt;button aria-label="Close"&gt;×&lt;/button&gt;</code></td>
+        </tr>
+        <tr>
+          <td><code>aria-labelledby</code></td>
+          <td>Points to the ID of an element that labels the current element</td>
+          <td><code>&lt;div id="title"&gt;User Profile&lt;/div&gt;<br>&lt;section aria-labelledby="title"&gt;...&lt;/section&gt;</code></td>
+        </tr>
+        <tr>
+          <td><code>aria-describedby</code></td>
+          <td>Points to the ID of an element that describes the current element</td>
+          <td><code>&lt;input aria-describedby="hint"&gt;<br>&lt;p id="hint"&gt;Enter your 16-digit card number&lt;/p&gt;</code></td>
+        </tr>
+        <tr>
+          <td><code>aria-expanded</code></td>
+          <td>Indicates if a control is expanded or collapsed</td>
+          <td><code>&lt;button aria-expanded="false"&gt;Show more&lt;/button&gt;</code></td>
+        </tr>
+        <tr>
+          <td><code>aria-hidden</code></td>
+          <td>Hides elements from assistive technologies</td>
+          <td><code>&lt;div aria-hidden="true"&gt;Decorative content&lt;/div&gt;</code></td>
+        </tr>
+        <tr>
+          <td><code>aria-live</code></td>
+          <td>Indicates an area will update and how to announce changes</td>
+          <td><code>&lt;div aria-live="polite"&gt;Updated content here&lt;/div&gt;</code></td>
+        </tr>
+        <tr>
+          <td><code>aria-required</code></td>
+          <td>Indicates that input is required</td>
+          <td><code>&lt;input aria-required="true"&gt;</code></td>
+        </tr>
+      </table>
+      
+      <h3>ARIA Live Regions</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Polite update (doesn't interrupt user) --&gt;
+&lt;div aria-live="polite" role="status"&gt;
+  You have 3 new messages
+&lt;/div&gt;
+
+&lt;!-- Assertive update (interrupts current task) --&gt;
+&lt;div aria-live="assertive" role="alert"&gt;
+  Your session will expire in 30 seconds
+&lt;/div&gt;
+
+&lt;!-- For complex live regions --&gt;
+&lt;div aria-live="polite" aria-atomic="true" aria-relevant="additions text"&gt;
+  &lt;p&gt;Status: &lt;span id="status-text"&gt;Processing...&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</div>
+      </div>
+    </div>
+    
+    <h2>6. Keyboard Accessibility</h2>
+    
+    <div class="demo-section">
+      <p>Many users navigate websites using only a keyboard, including people with motor disabilities, visual impairments, or those using alternative input devices.</p>
+      
+      <h3>Focus Management</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Ensure all interactive elements can receive focus --&gt;
+&lt;a href="#"&gt;This link is focusable by default&lt;/a&gt;
+
+&lt;button type="button"&gt;This button is focusable by default&lt;/button&gt;
+
+&lt;div tabindex="0" role="button" aria-pressed="false"&gt;
+  Custom button (made focusable with tabindex="0")
+&lt;/div&gt;
+
+&lt;!-- Remove non-interactive elements from tab order --&gt;
+&lt;p tabindex="-1"&gt;This paragraph can be programmatically focused but not in tab order&lt;/p&gt;
+
+&lt;!-- Never use tabindex greater than 0 --&gt;
+&lt;div tabindex="1"&gt;This breaks natural tab order (avoid this)&lt;/div&gt;</div>
+      </div>
+      
+      <h3>Skip Links</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Skip link at the top of the page --&gt;
+&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- CSS to position the skip link --&gt;
+&lt;style&gt;
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px;
+    background-color: white;
+    z-index: 100;
+    transition: top 0.3s;
+  }
+  
+  .skip-link:focus {
+    top: 0;
+  }
+&lt;/style&gt;
+
+&lt;!-- Target ID in content --&gt;
+&lt;main id="main-content"&gt;
+  &lt;!-- Main content here --&gt;
+&lt;/main&gt;</div>
+      </div>
+      
+      <h3>Keyboard Event Handling</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Managing keyboard events for custom components --&gt;
+&lt;div 
+  role="button" 
+  tabindex="0" 
+  aria-pressed="false"
+  onclick="toggleButton(this)"
+  onkeydown="handleKeydown(event, this)"
+&gt;
+  Toggle Button
+&lt;/div&gt;
+
+&lt;script&gt;
+  function toggleButton(button) {
+    const isPressed = button.getAttribute('aria-pressed') === 'true';
+    button.setAttribute('aria-pressed', !isPressed);
+  }
+  
+  function handleKeydown(event, button) {
+    // Handle Space or Enter key press
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      toggleButton(button);
+    }
+  }
+&lt;/script&gt;</div>
+      </div>
+    </div>
+    
+    <h2>7. Media Accessibility</h2>
+    
+    <div class="demo-section">
+      <h3>Accessible Audio</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Accessible audio player --&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Interview with Jane Doe&lt;/figcaption&gt;
+  &lt;audio controls&gt;
+    &lt;source src="interview.mp3" type="audio/mpeg"&gt;
+    &lt;source src="interview.ogg" type="audio/ogg"&gt;
+    &lt;p&gt;Your browser doesn't support HTML5 audio. Here is a &lt;a href="interview.mp3"&gt;link to download the audio&lt;/a&gt; instead.&lt;/p&gt;
+  &lt;/audio&gt;
+  &lt;a href="interview-transcript.html"&gt;Read the transcript&lt;/a&gt;
+&lt;/figure&gt;</div>
+      </div>
+      
+      <h3>Accessible Video</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Accessible video with captions and transcripts --&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Product Demonstration Video&lt;/figcaption&gt;
+  &lt;video controls width="640" height="360"&gt;
+    &lt;source src="demo.mp4" type="video/mp4"&gt;
+    &lt;source src="demo.webm" type="video/webm"&gt;
+    &lt;track kind="captions" src="demo-captions.vtt" srclang="en" label="English" default&gt;
+    &lt;track kind="descriptions" src="demo-descriptions.vtt" srclang="en" label="Audio Descriptions"&gt;
+    &lt;p&gt;Your browser doesn't support HTML5 video. Here is a &lt;a href="demo.mp4"&gt;link to download the video&lt;/a&gt; instead.&lt;/p&gt;
+  &lt;/video&gt;
+  &lt;a href="demo-transcript.html"&gt;Read the full transcript&lt;/a&gt;
+&lt;/figure&gt;</div>
+      </div>
+      
+      <h3>Caption and Transcript Formats</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Example WebVTT caption file (demo-captions.vtt) --&gt;
+WEBVTT
+
+00:00:01.000 --> 00:00:04.000
+Welcome to our product demonstration video.
+
+00:00:05.000 --> 00:00:09.000
+Today we'll be showing you how to use our new software.
+
+00:00:10.000 --> 00:00:15.000
+First, click on the "New Project" button in the top-left corner.</div>
+      </div>
+    </div>
+    
+    <h2>8. Color and Contrast</h2>
+    
+    <div class="demo-section">
+      <h3>Contrast Requirements</h3>
+      <ul>
+        <li><strong>Normal Text (under 18pt or 14pt bold):</strong> Minimum ratio of 4.5:1</li>
+        <li><strong>Large Text (at least 18pt or 14pt bold):</strong> Minimum ratio of 3:1</li>
+        <li><strong>UI Components and Graphical Objects:</strong> Minimum ratio of 3:1</li>
+      </ul>
+      
+      <h3>Don't Rely on Color Alone</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Bad example (color only) --&gt;
+&lt;p&gt;
+  Fields marked in &lt;span style="color: red;"&gt;red&lt;/span&gt; are required.
+&lt;/p&gt;
+
+&lt;!-- Better example (color + symbol) --&gt;
+&lt;p&gt;
+  Fields marked with &lt;span style="color: red;"&gt;* (asterisk)&lt;/span&gt; are required.
+&lt;/p&gt;
+
+&lt;!-- Bad example (status with color only) --&gt;
+&lt;div class="status-indicator" style="background-color: green;"&gt;&lt;/div&gt;
+
+&lt;!-- Better example (color + text) --&gt;
+&lt;div class="status-indicator" style="background-color: green;"&gt;
+  &lt;span&gt;Active&lt;/span&gt;
+&lt;/div&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Tools for Testing Contrast:</strong>
+        <ul>
+          <li>WebAIM Contrast Checker</li>
+          <li>Colour Contrast Analyser</li>
+          <li>Chrome DevTools' Accessibility Audit</li>
+          <li>Firefox Accessibility Inspector</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>9. Accessibility Testing</h2>
+    
+    <div class="demo-section">
+      <h3>Manual Testing</h3>
+      <ol>
+        <li><strong>Keyboard Navigation:</strong> Tab through the entire page to ensure all interactive elements are reachable and operable</li>
+        <li><strong>Screen Reader Testing:</strong> Use screen readers (VoiceOver, NVDA, JAWS) to navigate your site</li>
+        <li><strong>Zoom Testing:</strong> Test with page zoom at 200% and 400%</li>
+        <li><strong>Contrast Testing:</strong> Check all text and interactive elements for sufficient contrast</li>
+        <li><strong>Disable Styles:</strong> Review the page with CSS disabled to check content structure</li>
+      </ol>
+      
+      <h3>Automated Testing Tools</h3>
+      <ul>
+        <li>Lighthouse (built into Chrome DevTools)</li>
+        <li>axe DevTools</li>
+        <li>WAVE (Web Accessibility Evaluation Tool)</li>
+        <li>Pa11y</li>
+        <li>Accessibility Insights</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Remember:</strong> Automated tools can only catch about 30-40% of accessibility issues. Manual testing is essential for a thorough assessment.
+      </div>
+    </div>
+    
+    <h2>10. Best Practices</h2>
+    
+    <div class="demo-section">
+      <ul>
+        <li>Start with semantic HTML to create a strong foundation</li>
+        <li>Ensure keyboard navigability for all interactive elements</li>
+        <li>Provide text alternatives for all non-text content</li>
+        <li>Maintain a clear heading structure (h1-h6)</li>
+        <li>Use adequate color contrast for all text and interactive elements</li>
+        <li>Don't rely solely on color to convey information</li>
+        <li>Label all form controls and provide clear instructions</li>
+        <li>Provide captions and transcripts for media content</li>
+        <li>Use ARIA attributes when necessary, but prefer native HTML elements</li>
+        <li>Test with assistive technologies throughout development</li>
+        <li>Provide skip links for keyboard users</li>
+        <li>Ensure proper focus management for interactive components</li>
+        <li>Use responsive design for better usability across devices</li>
+        <li>Keep animations minimal and provide options to reduce motion</li>
+      </ul>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-apis.html" class="nav-button">← Previous: HTML5 APIs</a>
+      <a href="html-interactive.html" class="nav-button">Next: Interactive Components →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

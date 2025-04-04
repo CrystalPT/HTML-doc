@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Links & Images Guide</title>
+  <!-- Vercel Analytics -->
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Two column layout */
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    /* Image display box */
+    .image-box {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      text-align: center;
+    }
+    
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    .image-caption {
+      margin-top: 10px;
+      font-style: italic;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Links & Images Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-text-elements.html" class="nav-button">← Previous: Text Elements</a>
+      <a href="html-lists.html" class="nav-button">Next: Lists →</a>
+    </div>
+    
+    <p>Links and images are fundamental components of the web. This guide covers how to create hyperlinks and add images to your HTML documents, as well as other basic media elements.</p>
+    
+    <h2>1. Creating Links</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;a&gt;</code> element (anchor) creates a hyperlink to web pages, files, email addresses, locations on the same page, or anything else a URL can address.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;a href="https://www.example.com"&gt;Visit Example.com&lt;/a&gt;</div>
+        <div class="element-preview">
+          <a href="https://www.example.com">Visit Example.com</a>
+        </div>
+      </div>
+      
+      <h3>Link Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>href</code></td>
+          <td>URL or path</td>
+          <td>Specifies the destination of the link (required)</td>
+        </tr>
+        <tr>
+          <td><code>target</code></td>
+          <td>_blank, _self, _parent, _top</td>
+          <td>Specifies where to open the linked document</td>
+        </tr>
+        <tr>
+          <td><code>download</code></td>
+          <td>filename (optional)</td>
+          <td>Specifies that the target will be downloaded when clicking the link</td>
+        </tr>
+        <tr>
+          <td><code>rel</code></td>
+          <td>nofollow, noopener, noreferrer, etc.</td>
+          <td>Specifies the relationship between the current document and the linked document</td>
+        </tr>
+        <tr>
+          <td><code>title</code></td>
+          <td>text</td>
+          <td>Provides additional information about the link (shown as a tooltip)</td>
+        </tr>
+      </table>
+      
+      <h3>Link Types</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- External link --&gt;
+&lt;a href="https://www.example.com" target="_blank" rel="noopener noreferrer"&gt;External Link&lt;/a&gt;
+
+&lt;!-- Internal link (to another page in the same site) --&gt;
+&lt;a href="about.html"&gt;About Page&lt;/a&gt;
+
+&lt;!-- Link to a specific section on the same page --&gt;
+&lt;a href="#section1"&gt;Go to Section 1&lt;/a&gt;
+
+&lt;!-- Email link --&gt;
+&lt;a href="mailto:example@example.com"&gt;Send an email&lt;/a&gt;
+
+&lt;!-- Phone link --&gt;
+&lt;a href="tel:+1234567890"&gt;Call us&lt;/a&gt;
+
+&lt;!-- Download link --&gt;
+&lt;a href="files/document.pdf" download="custom-filename.pdf"&gt;Download PDF&lt;/a&gt;</div>
+        <div class="element-preview">
+          <!-- External link -->
+          <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">External Link</a><br><br>
+          
+          <!-- Internal link (to another page in the same site) -->
+          <a href="about.html">About Page</a><br><br>
+          
+          <!-- Link to a specific section on the same page -->
+          <a href="#section1">Go to Section 1</a><br><br>
+          
+          <!-- Email link -->
+          <a href="mailto:example@example.com">Send an email</a><br><br>
+          
+          <!-- Phone link -->
+          <a href="tel:+1234567890">Call us</a><br><br>
+          
+          <!-- Download link -->
+          <a href="files/document.pdf" download="custom-filename.pdf">Download PDF</a>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Security Tip:</strong> When using <code>target="_blank"</code> to open links in a new tab, always include <code>rel="noopener noreferrer"</code>. This prevents the new page from accessing the window.opener property, which can be a security risk.
+      </div>
+    </div>
+    
+    <h2>2. Creating Anchor Points</h2>
+    
+    <div class="demo-section">
+      <p>You can create anchor points (bookmarks) within a page to link to specific sections:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Creating the target anchor --&gt;
+&lt;h2 id="section1"&gt;Section 1&lt;/h2&gt;
+
+&lt;!-- Linking to the anchor --&gt;
+&lt;a href="#section1"&gt;Jump to Section 1&lt;/a&gt;</div>
+      </div>
+      
+      <p>You can also link to specific sections on other pages:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;a href="another-page.html#section2"&gt;Jump to Section 2 on Another Page&lt;/a&gt;</div>
+      </div>
+    </div>
+    
+    <h2>3. Adding Images</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;img&gt;</code> element is used to embed images in an HTML document.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;img src="image.jpg" alt="Description of the image"&gt;</div>
+      </div>
+      
+      <h3>Image Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>src</code></td>
+          <td>URL or path</td>
+          <td>Specifies the path to the image (required)</td>
+        </tr>
+        <tr>
+          <td><code>alt</code></td>
+          <td>text</td>
+          <td>Provides alternative text for the image (required for accessibility)</td>
+        </tr>
+        <tr>
+          <td><code>width</code></td>
+          <td>pixels or percentage</td>
+          <td>Specifies the width of the image</td>
+        </tr>
+        <tr>
+          <td><code>height</code></td>
+          <td>pixels or percentage</td>
+          <td>Specifies the height of the image</td>
+        </tr>
+        <tr>
+          <td><code>loading</code></td>
+          <td>eager, lazy</td>
+          <td>Specifies if the image should be loaded immediately or deferred</td>
+        </tr>
+        <tr>
+          <td><code>title</code></td>
+          <td>text</td>
+          <td>Shows additional information as a tooltip when hovering</td>
+        </tr>
+      </table>
+      
+      <h3>Image Examples</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic image --&gt;
+&lt;img src="mountain.jpg" alt="Mountain landscape"&gt;
+
+&lt;!-- Image with width and height --&gt;
+&lt;img src="mountain.jpg" alt="Mountain landscape" width="500" height="300"&gt;
+
+&lt;!-- Lazy-loaded image --&gt;
+&lt;img src="large-image.jpg" alt="Large panorama" loading="lazy"&gt;
+
+&lt;!-- Responsive image --&gt;
+&lt;img src="image.jpg" alt="Responsive image" style="max-width: 100%; height: auto;"&gt;</div>
+      </div>
+      
+      <div class="image-box">
+        <img src="https://via.placeholder.com/500x300" alt="Placeholder Image">
+        <p class="image-caption">Example of an image with width 500px and height 300px</p>
+      </div>
+      
+      <div class="element-info">
+        <strong>Best Practice:</strong> Always include the <code>alt</code> attribute with descriptive text. It helps users with screen readers and displays if the image fails to load. If an image is purely decorative, use an empty alt attribute (<code>alt=""</code>) but don't omit it.
+      </div>
+    </div>
+    
+    <h2>4. Images as Links</h2>
+    
+    <div class="demo-section">
+      <p>You can make an image function as a link by wrapping the <code>&lt;img&gt;</code> element with an <code>&lt;a&gt;</code> element:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;a href="https://www.example.com"&gt;
+  &lt;img src="logo.jpg" alt="Company Logo"&gt;
+&lt;/a&gt;</div>
+        <div class="element-preview">
+          <a href="https://www.example.com">
+            <img src="https://via.placeholder.com/150" alt="Placeholder Logo">
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <h2>5. Image Maps</h2>
+    
+    <div class="demo-section">
+      <p>Image maps allow you to define clickable areas within an image:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;img src="workplace.jpg" alt="Workplace" usemap="#workmap" width="400" height="379"&gt;
+
+&lt;map name="workmap"&gt;
+  &lt;area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.html"&gt;
+  &lt;area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.html"&gt;
+  &lt;area shape="circle" coords="337,300,44" alt="Coffee" href="coffee.html"&gt;
+&lt;/map&gt;</div>
+      </div>
+      
+      <p>The <code>&lt;map&gt;</code> element defines an image map with clickable areas. The <code>&lt;area&gt;</code> element specifies the clickable areas and their associated links.</p>
+      
+      <table class="attribute-table">
+        <tr>
+          <th>Shape Value</th>
+          <th>Coords Format</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>rect</code></td>
+          <td>x1,y1,x2,y2</td>
+          <td>Defines a rectangular region (top-left and bottom-right coordinates)</td>
+        </tr>
+        <tr>
+          <td><code>circle</code></td>
+          <td>x,y,r</td>
+          <td>Defines a circular region (center coordinates and radius)</td>
+        </tr>
+        <tr>
+          <td><code>poly</code></td>
+          <td>x1,y1,x2,y2,...,xn,yn</td>
+          <td>Defines a polygon (all coordinates of the polygon)</td>
+        </tr>
+        <tr>
+          <td><code>default</code></td>
+          <td>N/A</td>
+          <td>Defines the entire region</td>
+        </tr>
+      </table>
+    </div>
+    
+    <h2>6. Responsive Images</h2>
+    
+    <div class="demo-section">
+      <h3>Basic Responsive Image</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;img src="image.jpg" alt="Responsive image" style="max-width: 100%; height: auto;"&gt;</div>
+        <p>The simplest way to make an image responsive is to set its maximum width to 100% of its container and let the height adjust automatically to maintain the aspect ratio.</p>
+      </div>
+      
+      <h3>Using the picture Element</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;picture&gt;
+  &lt;source media="(min-width: 1200px)" srcset="large.jpg"&gt;
+  &lt;source media="(min-width: 768px)" srcset="medium.jpg"&gt;
+  &lt;img src="small.jpg" alt="Responsive image using picture element"&gt;
+&lt;/picture&gt;</div>
+        <p>The <code>&lt;picture&gt;</code> element gives more control by allowing you to specify different image sources for different screen sizes or device capabilities.</p>
+      </div>
+      
+      <h3>Using srcset and sizes</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;img 
+  src="small.jpg" 
+  srcset="small.jpg 500w, medium.jpg 1000w, large.jpg 1500w" 
+  sizes="(max-width: 600px) 500px, (max-width: 1200px) 1000px, 1500px" 
+  alt="Responsive image using srcset"&gt;</div>
+        <p>The <code>srcset</code> and <code>sizes</code> attributes allow the browser to choose the most appropriate image based on the viewport size and device resolution.</p>
+      </div>
+      
+      <div class="element-info">
+        <strong>Note:</strong> For <code>srcset</code>, the <code>w</code> unit represents the intrinsic width of the image in pixels. The browser uses this information along with the <code>sizes</code> attribute to determine which image to load.
+      </div>
+    </div>
+    
+    <h2>7. Figure and Figcaption</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> elements provide semantic way to associate captions with images:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;figure&gt;
+  &lt;img src="mountain.jpg" alt="Mountain landscape"&gt;
+  &lt;figcaption&gt;Fig.1 - View from Mount Rainier.&lt;/figcaption&gt;
+&lt;/figure&gt;</div>
+        <div class="element-preview">
+          <figure>
+            <img src="https://via.placeholder.com/500x300" alt="Placeholder mountain landscape">
+            <figcaption>Fig.1 - View from Mount Rainier.</figcaption>
+          </figure>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Usage:</strong> The <code>&lt;figure&gt;</code> element represents self-contained content, referenced as a single unit from the main content. The <code>&lt;figcaption&gt;</code> element provides a caption or legend for the figure.
+      </div>
+    </div>
+    
+    <h2>8. Audio and Video</h2>
+    
+    <div class="demo-section">
+      <h3>Adding Audio</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  &lt;source src="audio.ogg" type="audio/ogg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;</div>
+      </div>
+      
+      <h3>Adding Video</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;video width="320" height="240" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</div>
+      </div>
+      
+      <h3>Common Audio and Video Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>controls</code></td>
+          <td>N/A</td>
+          <td>Displays playback controls</td>
+        </tr>
+        <tr>
+          <td><code>autoplay</code></td>
+          <td>N/A</td>
+          <td>Starts playing automatically (often blocked by browsers)</td>
+        </tr>
+        <tr>
+          <td><code>loop</code></td>
+          <td>N/A</td>
+          <td>Plays the media again when finished</td>
+        </tr>
+        <tr>
+          <td><code>muted</code></td>
+          <td>N/A</td>
+          <td>Mutes the audio output</td>
+        </tr>
+        <tr>
+          <td><code>preload</code></td>
+          <td>auto, metadata, none</td>
+          <td>Specifies if/how the media should be loaded when the page loads</td>
+        </tr>
+        <tr>
+          <td><code>poster</code></td>
+          <td>URL</td>
+          <td>Specifies an image to be shown while the video is downloading (video only)</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Accessibility:</strong> Always provide alternative content inside the <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements for browsers that don't support these elements. Consider adding captions or transcripts for videos to make them accessible to everyone.
+      </div>
+    </div>
+    
+    <h2>9. Favicon</h2>
+    
+    <div class="demo-section">
+      <p>A favicon is a small icon associated with a website, displayed in the browser tab, bookmarks, and other areas.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic favicon --&gt;
+&lt;link rel="icon" href="favicon.ico"&gt;
+
+&lt;!-- Multiple favicon sizes and formats --&gt;
+&lt;link rel="icon" href="favicon.ico" sizes="32x32"&gt;
+&lt;link rel="icon" href="icon.png" type="image/png"&gt;
+&lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Tip:</strong> Modern websites often provide multiple favicon sizes and formats for different devices and contexts. The <code>favicon.ico</code> file should be placed in the root directory of your website for older browsers that look for it there automatically.
+      </div>
+    </div>
+    
+    <h2>10. Best Practices</h2>
+    
+    <div class="demo-section">
+      <h3>Links</h3>
+      <ul>
+        <li>Make link text descriptive and indicate where the link goes</li>
+        <li>Avoid generic phrases like "click here" or "read more"</li>
+        <li>Use <code>rel="noopener noreferrer"</code> with <code>target="_blank"</code></li>
+        <li>Style links to make them visually distinct from regular text</li>
+        <li>Consider how links appear when tabbing through a page</li>
+        <li>Use title attributes sparingly and don't rely on them for critical information</li>
+      </ul>
+      
+      <h3>Images</h3>
+      <ul>
+        <li>Always include descriptive <code>alt</code> text for images</li>
+        <li>Use appropriate image formats (JPEG for photos, PNG for transparency, SVG for icons/logos, WebP for better compression)</li>
+        <li>Optimize images for web (compress them without significant quality loss)</li>
+        <li>Specify width and height attributes to reduce layout shifts during loading</li>
+        <li>Use responsive image techniques for different screen sizes</li>
+        <li>Consider using <code>loading="lazy"</code> for images below the fold</li>
+        <li>Use CSS for decorative images instead of HTML</li>
+      </ul>
+      
+      <h3>Media</h3>
+      <ul>
+        <li>Provide multiple formats for audio and video to ensure compatibility</li>
+        <li>Include captions or transcripts for videos</li>
+        <li>Don't set <code>autoplay</code> for videos with sound (consider user preferences)</li>
+        <li>Optimize media files for web delivery</li>
+        <li>Consider bandwidth usage for mobile users</li>
+      </ul>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-text-elements.html" class="nav-button">← Previous: Text Elements</a>
+      <a href="html-lists.html" class="nav-button">Next: Lists →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

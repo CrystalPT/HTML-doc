@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 APIs Guide</title>
+  <!-- Vercel Analytics -->
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Canvas and demo containers */
+    .canvas-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .canvas-demo {
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+    
+    /* Two-column layout for examples */
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 20px;
+    }
+    
+    @media (max-width: 920px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML5 APIs Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-embedded.html" class="nav-button">← Previous: Embedded Content</a>
+      <a href="html-accessibility.html" class="nav-button">Next: Accessibility →</a>
+    </div>
+    
+    <p>HTML5 introduced numerous JavaScript APIs that enable powerful web applications with features previously available only in native applications. This guide covers the most important HTML5 APIs and how to use them.</p>
+    
+    <h2>1. Canvas API</h2>
+    
+    <div class="demo-section">
+      <p>The Canvas API provides a means for drawing graphics via JavaScript on a <code>&lt;canvas&gt;</code> element. It can be used for animations, game graphics, data visualization, photo manipulation, and real-time video processing.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Canvas element in HTML --&gt;
+&lt;canvas id="myCanvas" width="300" height="150"&gt;
+  Your browser does not support the canvas element.
+&lt;/canvas&gt;
+
+&lt;script&gt;
+  // JavaScript to draw on the canvas
+  const canvas = document.getElementById('myCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  // Set fill and stroke styles
+  ctx.fillStyle = 'red';
+  ctx.strokeStyle = 'black';
+  
+  // Draw a rectangle
+  ctx.fillRect(25, 25, 100, 100);
+  ctx.clearRect(45, 45, 60, 60);
+  ctx.strokeRect(50, 50, 50, 50);
+  
+  // Draw a path
+  ctx.beginPath();
+  ctx.moveTo(150, 25);
+  ctx.lineTo(250, 75);
+  ctx.lineTo(150, 125);
+  ctx.fill();
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <div class="canvas-container">
+            <canvas id="basicCanvas" width="300" height="150" class="canvas-demo">
+              Your browser does not support the canvas element.
+            </canvas>
+            <script>
+              const canvas = document.getElementById('basicCanvas');
+              const ctx = canvas.getContext('2d');
+              
+              // Set fill and stroke styles
+              ctx.fillStyle = 'red';
+              ctx.strokeStyle = 'black';
+              
+              // Draw a rectangle
+              ctx.fillRect(25, 25, 100, 100);
+              ctx.clearRect(45, 45, 60, 60);
+              ctx.strokeRect(50, 50, 50, 50);
+              
+              // Draw a path
+              ctx.beginPath();
+              ctx.moveTo(150, 25);
+              ctx.lineTo(250, 75);
+              ctx.lineTo(150, 125);
+              ctx.fill();
+            </script>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Canvas 2D API Methods</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Category</th>
+          <th>Common Methods</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Rectangles</td>
+          <td><code>fillRect(), strokeRect(), clearRect()</code></td>
+          <td>Draw filled, outlined, or clear rectangles</td>
+        </tr>
+        <tr>
+          <td>Paths</td>
+          <td><code>beginPath(), closePath(), moveTo(), lineTo(), arc(), arcTo(), bezierCurveTo()</code></td>
+          <td>Create and draw paths with lines and curves</td>
+        </tr>
+        <tr>
+          <td>Path Operations</td>
+          <td><code>fill(), stroke(), clip()</code></td>
+          <td>Fill, stroke, or create a clipping region from the current path</td>
+        </tr>
+        <tr>
+          <td>Text</td>
+          <td><code>fillText(), strokeText(), measureText()</code></td>
+          <td>Draw and measure text on the canvas</td>
+        </tr>
+        <tr>
+          <td>Images</td>
+          <td><code>drawImage()</code></td>
+          <td>Draw images, video frames, or other canvases</td>
+        </tr>
+        <tr>
+          <td>Pixel Manipulation</td>
+          <td><code>createImageData(), getImageData(), putImageData()</code></td>
+          <td>Manipulate individual pixels in the canvas</td>
+        </tr>
+        <tr>
+          <td>Transformations</td>
+          <td><code>scale(), rotate(), translate(), transform()</code></td>
+          <td>Apply transformations to the canvas context</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Canvas vs. SVG:</strong>
+        <ul>
+          <li><strong>Canvas:</strong> Pixel-based, better for complex scenes with many objects, animations, or pixel manipulation</li>
+          <li><strong>SVG:</strong> Vector-based, better for scalable graphics, accessibility, and when DOM interaction is needed</li>
+          <li>Canvas requires JavaScript to draw and doesn't maintain a scene graph (what you draw is forgotten after rendering)</li>
+          <li>SVG elements remain in the DOM and can be styled with CSS and manipulated directly</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>2. Web Storage API</h2>
+    
+    <div class="demo-section">
+      <p>The Web Storage API provides mechanisms for websites to store key-value pairs locally in the user's browser, persisting beyond page refresh and between browser sessions:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Local Storage (persists indefinitely) --&gt;
+&lt;script&gt;
+  // Storing data
+  localStorage.setItem('username', 'JohnDoe');
+  localStorage.setItem('preferences', JSON.stringify({
+    theme: 'dark',
+    fontSize: 16,
+    notifications: true
+  }));
+  
+  // Retrieving data
+  const username = localStorage.getItem('username');
+  const preferences = JSON.parse(localStorage.getItem('preferences'));
+  
+  // Removing data
+  localStorage.removeItem('username');
+  
+  // Clearing all data
+  localStorage.clear();
+&lt;/script&gt;
+
+&lt;!-- Session Storage (persists for the session) --&gt;
+&lt;script&gt;
+  // Same API as localStorage, but limited to the current session
+  sessionStorage.setItem('temporaryToken', 'abc123');
+  const token = sessionStorage.getItem('temporaryToken');
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Local Storage vs. Session Storage</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Feature</th>
+          <th>localStorage</th>
+          <th>sessionStorage</th>
+        </tr>
+        <tr>
+          <td>Persistence</td>
+          <td>Until explicitly cleared by code or user</td>
+          <td>Until the browser tab/window is closed</td>
+        </tr>
+        <tr>
+          <td>Scope</td>
+          <td>Shared across all tabs/windows from the same origin</td>
+          <td>Limited to the tab/window that created it</td>
+        </tr>
+        <tr>
+          <td>Storage Limit</td>
+          <td>~5MB per origin (varies by browser)</td>
+          <td>~5MB per origin (varies by browser)</td>
+        </tr>
+        <tr>
+          <td>Data Type</td>
+          <td>Strings only (objects need to be serialized)</td>
+          <td>Strings only (objects need to be serialized)</td>
+        </tr>
+        <tr>
+          <td>Use Case</td>
+          <td>User preferences, non-sensitive persistent data</td>
+          <td>Temporary form data, single-session state</td>
+        </tr>
+      </table>
+      
+      <h3>Storage Events</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  // Listen for changes to localStorage from other tabs/windows
+  window.addEventListener('storage', (event) => {
+    console.log('Storage changed:', {
+      key: event.key,
+      oldValue: event.oldValue,
+      newValue: event.newValue,
+      url: event.url,
+      storageArea: event.storageArea
+    });
+  });
+&lt;/script&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Best Practices:</strong>
+        <ul>
+          <li>Don't store sensitive information in Web Storage (use secure cookies with HttpOnly flag for authentication)</li>
+          <li>Remember to serialize objects with <code>JSON.stringify()</code> and deserialize with <code>JSON.parse()</code></li>
+          <li>Always handle potential storage errors (e.g., when storage is full or disabled)</li>
+          <li>Be mindful of storage limits, especially for applications that store larger amounts of data</li>
+          <li>Consider using a wrapper library or pattern to handle serialization/deserialization and error handling</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>3. Geolocation API</h2>
+    
+    <div class="demo-section">
+      <p>The Geolocation API allows websites to access the user's geographical location information, with the user's permission:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  // Check if geolocation is supported
+  if ('geolocation' in navigator) {
+    // Get current position
+    navigator.geolocation.getCurrentPosition(
+      // Success callback
+      (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        console.log(`Location: ${latitude}, ${longitude}`);
+        
+        // Additional information available
+        const accuracy = position.coords.accuracy; // in meters
+        const altitude = position.coords.altitude; // may be null
+        const speed = position.coords.speed; // may be null
+        const timestamp = position.timestamp; // time when location was retrieved
+      },
+      // Error callback
+      (error) => {
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            console.error("User denied the request for geolocation");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            console.error("Location information is unavailable");
+            break;
+          case error.TIMEOUT:
+            console.error("The request to get location timed out");
+            break;
+          case error.UNKNOWN_ERROR:
+            console.error("An unknown error occurred");
+            break;
+        }
+      },
+      // Options
+      {
+        enableHighAccuracy: true, // use GPS if available
+        timeout: 5000,            // timeout after 5 seconds
+        maximumAge: 0             // don't use cached position
+      }
+    );
+    
+    // Watch position (continuous updates)
+    const watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        console.log(`New location: ${position.coords.latitude}, ${position.coords.longitude}`);
+      },
+      (error) => {
+        console.error("Error watching position:", error.message);
+      }
+    );
+    
+    // Stop watching position
+    navigator.geolocation.clearWatch(watchId);
+  } else {
+    console.error("Geolocation is not supported by this browser");
+  }
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Security and Privacy</h3>
+      <ul>
+        <li>User permission is always required before location data can be accessed</li>
+        <li>The API only works on secure contexts (HTTPS)</li>
+        <li>Users can revoke or deny permission at any time</li>
+        <li>Browsers typically show a permission prompt the first time location is requested</li>
+        <li>Websites should clearly explain why they need location data before requesting it</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Use Cases:</strong>
+        <ul>
+          <li>Location-based search results (e.g., nearby restaurants)</li>
+          <li>Navigation and mapping applications</li>
+          <li>Weather forecasts for the user's current location</li>
+          <li>Delivery tracking and logistics applications</li>
+          <li>Geofencing for location-triggered experiences</li>
+          <li>Location-based games and social applications</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>4. Drag and Drop API</h2>
+    
+    <div class="demo-section">
+      <p>The HTML5 Drag and Drop API allows you to implement drag-and-drop features in web applications by making elements draggable and defining drop zones:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML --&gt;
+&lt;div id="draggable" draggable="true"&gt;Drag me&lt;/div&gt;
+
+&lt;div id="dropzone"&gt;Drop here&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  #draggable {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    cursor: move;
+    user-select: none;
+  }
+  
+  #dropzone {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    margin-top: 20px;
+    text-align: center;
+    line-height: 200px;
+  }
+  
+  #dropzone.dragover {
+    border-color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  const draggable = document.getElementById('draggable');
+  const dropzone = document.getElementById('dropzone');
+  
+  // Set up draggable element
+  draggable.addEventListener('dragstart', (e) => {
+    // Set data to be transferred
+    e.dataTransfer.setData('text/plain', e.target.id);
+    // Optional: set a drag image
+    // e.dataTransfer.setDragImage(image, xOffset, yOffset);
+    // Set allowed effects
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  
+  // Set up drop zone
+  dropzone.addEventListener('dragover', (e) => {
+    // Prevent default to allow drop
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    dropzone.classList.add('dragover');
+  });
+  
+  dropzone.addEventListener('dragleave', () => {
+    dropzone.classList.remove('dragover');
+  });
+  
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dropzone.classList.remove('dragover');
+    
+    // Get the transferred data
+    const id = e.dataTransfer.getData('text/plain');
+    const draggedElement = document.getElementById(id);
+    
+    // Append the dragged element to the drop zone
+    dropzone.appendChild(draggedElement);
+  });
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Drag and Drop Events</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Event</th>
+          <th>Target</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>dragstart</code></td>
+          <td>Draggable element</td>
+          <td>Fires when the user starts dragging an element</td>
+        </tr>
+        <tr>
+          <td><code>drag</code></td>
+          <td>Draggable element</td>
+          <td>Fires continuously while the element is being dragged</td>
+        </tr>
+        <tr>
+          <td><code>dragend</code></td>
+          <td>Draggable element</td>
+          <td>Fires when the drag operation ends (drop or cancel)</td>
+        </tr>
+        <tr>
+          <td><code>dragenter</code></td>
+          <td>Drop target</td>
+          <td>Fires when a dragged element enters a valid drop target</td>
+        </tr>
+        <tr>
+          <td><code>dragover</code></td>
+          <td>Drop target</td>
+          <td>Fires continuously while a dragged element is over a drop target</td>
+        </tr>
+        <tr>
+          <td><code>dragleave</code></td>
+          <td>Drop target</td>
+          <td>Fires when a dragged element leaves a valid drop target</td>
+        </tr>
+        <tr>
+          <td><code>drop</code></td>
+          <td>Drop target</td>
+          <td>Fires when a dragged element is dropped on a valid target</td>
+        </tr>
+      </table>
+      
+      <h3>DataTransfer Object</h3>
+      <p>The <code>dataTransfer</code> object is used to hold data that is being dragged during a drag and drop operation, and to specify the allowed drop effects:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  // Set data during dragstart
+  e.dataTransfer.setData('text/plain', 'This text will be transferred');
+  e.dataTransfer.setData('text/html', '&lt;p&gt;This HTML will be transferred&lt;/p&gt;');
+  e.dataTransfer.setData('application/json', JSON.stringify({ key: 'value' }));
+  
+  // Get data during drop
+  const text = e.dataTransfer.getData('text/plain');
+  const html = e.dataTransfer.getData('text/html');
+  const json = JSON.parse(e.dataTransfer.getData('application/json'));
+  
+  // Effects for visual feedback
+  e.dataTransfer.dropEffect = 'copy'; // cursor shows a copy
+  e.dataTransfer.dropEffect = 'move'; // cursor shows a move
+  e.dataTransfer.dropEffect = 'link'; // cursor shows a link
+  
+  // Set allowed effects (during dragstart)
+  e.dataTransfer.effectAllowed = 'copy';     // Allow copy only
+  e.dataTransfer.effectAllowed = 'move';     // Allow move only
+  e.dataTransfer.effectAllowed = 'copyMove'; // Allow both copy and move
+  e.dataTransfer.effectAllowed = 'all';      // Allow all effects
+&lt;/script&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>File Drag and Drop:</strong> The API also supports dragging files from the user's system into the browser:
+        <div class="element-html">&lt;script&gt;
+  dropzone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    
+    // Access dropped files
+    if (e.dataTransfer.items) {
+      // Using DataTransferItemList interface
+      for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        if (e.dataTransfer.items[i].kind === 'file') {
+          const file = e.dataTransfer.items[i].getAsFile();
+          console.log('Dropped file:', file.name);
+          // Process file (e.g., with FileReader API)
+        }
+      }
+    } else {
+      // Using DataTransfer interface
+      for (let i = 0; i < e.dataTransfer.files.length; i++) {
+        const file = e.dataTransfer.files[i];
+        console.log('Dropped file:', file.name);
+        // Process file
+      }
+    }
+  });
+&lt;/script&gt;</div>
+      </div>
+    </div>
+    
+    <h2>5. Web Workers API</h2>
+    
+    <div class="demo-section">
+      <p>Web Workers allow you to run JavaScript code in background threads, separate from the main execution thread of a web application. This enables computationally intensive tasks without blocking the UI:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Main thread code (main.js) --&gt;
+&lt;script&gt;
+  // Create a new worker
+  const worker = new Worker('worker.js');
+  
+  // Send data to the worker
+  worker.postMessage({
+    command: 'calculate',
+    data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  });
+  
+  // Receive data from the worker
+  worker.onmessage = function(e) {
+    console.log('Result received from worker:', e.data);
+  };
+  
+  // Handle errors
+  worker.onerror = function(error) {
+    console.error('Worker error:', error.message);
+  };
+  
+  // Terminate the worker when no longer needed
+  // worker.terminate();
+&lt;/script&gt;
+
+&lt;!-- Worker code (worker.js in a separate file) --&gt;
+// Listen for messages from the main thread
+self.onmessage = function(e) {
+  console.log('Message received in worker:', e.data);
+  
+  if (e.data.command === 'calculate') {
+    // Perform computationally intensive task
+    const result = calculateSum(e.data.data);
+    
+    // Send the result back to the main thread
+    self.postMessage({
+      status: 'success',
+      result: result
+    });
+  }
+};
+
+function calculateSum(numbers) {
+  // Simulate heavy computation
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
+}</div>
+      </div>
+      
+      <h3>Types of Web Workers</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Dedicated Workers</td>
+          <td>Used by a single script instance (most common)</td>
+        </tr>
+        <tr>
+          <td>Shared Workers</td>
+          <td>Can be shared between multiple scripts or windows from the same origin</td>
+        </tr>
+        <tr>
+          <td>Service Workers</td>
+          <td>Act as proxy servers that sit between web applications, the browser, and the network (used for offline support and push notifications)</td>
+        </tr>
+      </table>
+      
+      <h3>Limitations</h3>
+      <p>Workers do not have access to:</p>
+      <ul>
+        <li>The DOM (cannot directly manipulate the page)</li>
+        <li>The <code>window</code> object</li>
+        <li>The <code>document</code> object</li>
+        <li>The <code>parent</code> object</li>
+      </ul>
+      
+      <p>Workers do have access to:</p>
+      <ul>
+        <li>The <code>navigator</code> object</li>
+        <li>The <code>location</code> object (read-only)</li>
+        <li><code>XMLHttpRequest</code> and <code>fetch</code> for network requests</li>
+        <li><code>setTimeout</code>/<code>setInterval</code> functions</li>
+        <li>Web Workers API (create sub-workers)</li>
+        <li>IndexedDB for client-side storage</li>
+        <li>Custom JavaScript objects transferred via <code>postMessage()</code></li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Use Cases:</strong>
+        <ul>
+          <li>Intensive mathematical calculations</li>
+          <li>Large data set processing</li>
+          <li>Image or video processing</li>
+          <li>Background I/O operations</li>
+          <li>Polling for updates from a server</li>
+          <li>Prefetching and caching data for later use</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>6. Fetch API</h2>
+    
+    <div class="demo-section">
+      <p>The Fetch API provides a modern interface for making HTTP requests, replacing the older XMLHttpRequest. It uses Promises for more manageable asynchronous code:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic GET request --&gt;
+&lt;script&gt;
+  fetch('https://api.example.com/data')
+    .then(response => {
+      // Check if the response is ok (status 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Parse the response as JSON
+    })
+    .then(data => {
+      console.log('Data received:', data);
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+&lt;/script&gt;
+
+&lt;!-- POST request with options --&gt;
+&lt;script&gt;
+  fetch('https://api.example.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your-token'
+    },
+    body: JSON.stringify({
+      name: 'John Doe',
+      email: 'john@example.com'
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log('Success:', data))
+  .catch(error => console.error('Error:', error));
+&lt;/script&gt;
+
+&lt;!-- Using async/await syntax (modern approach) --&gt;
+&lt;script&gt;
+  async function fetchData() {
+    try {
+      const response = await fetch('https://api.example.com/data');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Data received:', data);
+      return data;
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+  
+  fetchData();
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Request Options</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Option</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><code>method</code></td>
+          <td>HTTP method to use</td>
+          <td><code>'GET'</code>, <code>'POST'</code>, <code>'PUT'</code>, <code>'DELETE'</code>, etc.</td>
+        </tr>
+        <tr>
+          <td><code>headers</code></td>
+          <td>HTTP headers to include</td>
+          <td><code>{ 'Content-Type': 'application/json' }</code></td>
+        </tr>
+        <tr>
+          <td><code>body</code></td>
+          <td>Body content for POST/PUT requests</td>
+          <td><code>JSON.stringify(data)</code>, <code>new FormData()</code>, etc.</td>
+        </tr>
+        <tr>
+          <td><code>mode</code></td>
+          <td>CORS mode</td>
+          <td><code>'cors'</code>, <code>'no-cors'</code>, <code>'same-origin'</code></td>
+        </tr>
+        <tr>
+          <td><code>credentials</code></td>
+          <td>Include cookies with request</td>
+          <td><code>'omit'</code>, <code>'same-origin'</code>, <code>'include'</code></td>
+        </tr>
+        <tr>
+          <td><code>cache</code></td>
+          <td>How to handle cache</td>
+          <td><code>'default'</code>, <code>'no-store'</code>, <code>'reload'</code>, <code>'no-cache'</code></td>
+        </tr>
+        <tr>
+          <td><code>redirect</code></td>
+          <td>How to handle redirects</td>
+          <td><code>'follow'</code>, <code>'error'</code>, <code>'manual'</code></td>
+        </tr>
+      </table>
+      
+      <h3>Response Methods</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  fetch('https://api.example.com/data')
+    .then(response => {
+      // Response properties
+      console.log('Status:', response.status);
+      console.log('OK:', response.ok);
+      console.log('Status Text:', response.statusText);
+      console.log('Headers:', response.headers);
+      console.log('URL:', response.url);
+      console.log('Type:', response.type); // basic, cors, error, opaque, opaqueredirect
+      
+      // Parse methods (each can only be used once per response)
+      // Choose the appropriate one based on expected content:
+      return response.json(); // Parse as JSON
+      // return response.text();    // Get as plain text
+      // return response.blob();    // Get as Blob (binary data)
+      // return response.formData(); // Parse as FormData
+      // return response.arrayBuffer(); // Get as ArrayBuffer
+    })
+    .then(data => {
+      console.log('Parsed data:', data);
+    });
+&lt;/script&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Advanced Usage:</strong>
+        <ul>
+          <li><strong>Uploading files:</strong> Use <code>FormData</code> or <code>Blob</code> with the Fetch API</li>
+          <li><strong>Streaming responses:</strong> Process large responses incrementally using <code>response.body</code> and the Streams API</li>
+          <li><strong>Aborting requests:</strong> Use <code>AbortController</code> to cancel requests</li>
+          <li><strong>Request/Response cloning:</strong> Use <code>request.clone()</code> or <code>response.clone()</code> to create copies that can be used multiple times</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>7. IndexedDB API</h2>
+    
+    <div class="demo-section">
+      <p>IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files and blobs. It's more powerful than localStorage, providing indexed database capabilities in the browser:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  // Open a database
+  const request = indexedDB.open('MyDatabase', 1);
+  
+  // Create or upgrade the database schema
+  request.onupgradeneeded = function(event) {
+    const db = event.target.result;
+    
+    // Create an object store with a key path
+    const store = db.createObjectStore('customers', { keyPath: 'id' });
+    
+    // Create indexes for faster searching
+    store.createIndex('name', 'name', { unique: false });
+    store.createIndex('email', 'email', { unique: true });
+  };
+  
+  // Handle success
+  request.onsuccess = function(event) {
+    const db = event.target.result;
+    
+    // Add data
+    function addCustomer(customer) {
+      const transaction = db.transaction(['customers'], 'readwrite');
+      const store = transaction.objectStore('customers');
+      const request = store.add(customer);
+      
+      request.onsuccess = function() {
+        console.log('Customer added to the database');
+      };
+      
+      request.onerror = function(error) {
+        console.error('Error adding customer:', error);
+      };
+    }
+    
+    // Get data
+    function getCustomer(id) {
+      const transaction = db.transaction(['customers']);
+      const store = transaction.objectStore('customers');
+      const request = store.get(id);
+      
+      request.onsuccess = function(event) {
+        if (request.result) {
+          console.log('Customer:', request.result);
+        } else {
+          console.log('Customer not found');
+        }
+      };
+    }
+    
+    // Search by index
+    function getCustomerByEmail(email) {
+      const transaction = db.transaction(['customers']);
+      const store = transaction.objectStore('customers');
+      const index = store.index('email');
+      const request = index.get(email);
+      
+      request.onsuccess = function() {
+        console.log('Customer by email:', request.result);
+      };
+    }
+    
+    // Update data
+    function updateCustomer(customer) {
+      const transaction = db.transaction(['customers'], 'readwrite');
+      const store = transaction.objectStore('customers');
+      const request = store.put(customer); // put = update or add
+      
+      request.onsuccess = function() {
+        console.log('Customer updated');
+      };
+    }
+    
+    // Delete data
+    function deleteCustomer(id) {
+      const transaction = db.transaction(['customers'], 'readwrite');
+      const store = transaction.objectStore('customers');
+      const request = store.delete(id);
+      
+      request.onsuccess = function() {
+        console.log('Customer deleted');
+      };
+    }
+    
+    // Example usage
+    addCustomer({ id: 1, name: 'John Doe', email: 'john@example.com' });
+    getCustomer(1);
+    getCustomerByEmail('john@example.com');
+    updateCustomer({ id: 1, name: 'John Doe', email: 'john.updated@example.com' });
+    deleteCustomer(1);
+  };
+  
+  // Handle errors
+  request.onerror = function(event) {
+    console.error('Database error:', event.target.error);
+  };
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Key Concepts</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Concept</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Database</td>
+          <td>Container for object stores, similar to a SQL database</td>
+        </tr>
+        <tr>
+          <td>Object Store</td>
+          <td>Similar to a table in a SQL database, holds records (JavaScript objects)</td>
+        </tr>
+        <tr>
+          <td>Index</td>
+          <td>Provides a way to quickly locate records by properties other than the key</td>
+        </tr>
+        <tr>
+          <td>Transaction</td>
+          <td>A group of operations that succeed or fail together (atomic)</td>
+        </tr>
+        <tr>
+          <td>Cursor</td>
+          <td>Mechanism for iterating over multiple records in an object store or index</td>
+        </tr>
+        <tr>
+          <td>Key Range</td>
+          <td>Defines a range of keys to select records from an object store or index</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Advantages of IndexedDB:</strong>
+        <ul>
+          <li>Stores virtually unlimited amount of data (unlike localStorage's 5MB limit)</li>
+          <li>Supports complex structured data, including files and blobs</li>
+          <li>Provides indexing for efficient searches</li>
+          <li>Supports transactions for data integrity</li>
+          <li>Is asynchronous, so it doesn't block the main thread</li>
+          <li>Works offline and persists across sessions</li>
+        </ul>
+        <strong>Limitations:</strong>
+        <ul>
+          <li>More complex API with a steeper learning curve</li>
+          <li>Event-based asynchronous nature can be challenging to work with (many developers use wrapper libraries)</li>
+          <li>Can be cleared by the user or the browser when storage space is needed</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>8. History API</h2>
+    
+    <div class="demo-section">
+      <p>The History API allows manipulation of the browser history and the current URL without a full page refresh, enabling single-page applications (SPAs) to manage browser navigation:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  // Navigate forward and backward
+  window.history.back();      // Go back one page
+  window.history.forward();   // Go forward one page
+  window.history.go(-2);      // Go back two pages
+  window.history.go(3);       // Go forward three pages
+  
+  // Add a new state to the history
+  history.pushState(
+    { page: 2 },             // state object to pass to the new state
+    'Page 2',                // title (ignored by most browsers)
+    '/page2'                 // URL to display in the address bar
+  );
+  
+  // Replace the current state
+  history.replaceState(
+    { page: 3 },             // state object
+    'Page 3',                // title
+    '/page3'                 // URL
+  );
+  
+  // Handle navigation events
+  window.addEventListener('popstate', function(event) {
+    // event.state contains the state object passed to pushState or replaceState
+    console.log('Navigation state:', event.state);
+    
+    // Update the page content based on the new state
+    if (event.state && event.state.page) {
+      loadPage(event.state.page);
+    }
+  });
+  
+  // Example of a single-page app navigation
+  function navigateTo(page) {
+    // Update the UI
+    document.getElementById('content').innerHTML = `Content for page ${page}`;
+    
+    // Update the history
+    history.pushState({ page: page }, `Page ${page}`, `/page${page}`);
+  }
+  
+  function loadPage(page) {
+    // Update the UI based on the page from history
+    document.getElementById('content').innerHTML = `Content for page ${page}`;
+  }
+&lt;/script&gt;
+
+&lt;!-- Navigation buttons for a SPA --&gt;
+&lt;nav&gt;
+  &lt;button onclick="navigateTo(1)"&gt;Page 1&lt;/button&gt;
+  &lt;button onclick="navigateTo(2)"&gt;Page 2&lt;/button&gt;
+  &lt;button onclick="navigateTo(3)"&gt;Page 3&lt;/button&gt;
+&lt;/nav&gt;
+
+&lt;div id="content"&gt;
+  Content for page 1
+&lt;/div&gt;</div>
+      </div>
+      
+      <h3>pushState() vs. replaceState()</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Method</th>
+          <th>Description</th>
+          <th>Use Case</th>
+        </tr>
+        <tr>
+          <td><code>pushState()</code></td>
+          <td>Adds a new entry to the history stack</td>
+          <td>Normal navigation in a SPA; allows back button to return to previous states</td>
+        </tr>
+        <tr>
+          <td><code>replaceState()</code></td>
+          <td>Replaces the current history entry without adding a new one</td>
+          <td>Updating the URL to reflect a parameter change without creating a new history entry</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Best Practices:</strong>
+        <ul>
+          <li>Update the page URL to reflect the current state of the application</li>
+          <li>Make sure back and forward navigation work as expected (handle popstate events)</li>
+          <li>Use meaningful state objects that can help restore the application state</li>
+          <li>Consider using a routing library for complex SPAs</li>
+          <li>Remember that changing the URL with pushState/replaceState doesn't trigger a page load or server request</li>
+          <li>Always update the page content to match the URL for better user experience</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>9. WebSockets API</h2>
+    
+    <div class="demo-section">
+      <p>The WebSockets API enables two-way communication between a browser and a server, allowing real-time data transfer with lower overhead than HTTP:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  // Create a new WebSocket connection
+  const socket = new WebSocket('wss://example.com/socketserver');
+  
+  // Connection opened
+  socket.addEventListener('open', (event) => {
+    console.log('WebSocket connection established');
+    
+    // Send a message to the server
+    socket.send('Hello Server!');
+    
+    // You can send various data formats
+    socket.send(JSON.stringify({
+      type: 'message',
+      content: 'Hello from client',
+      date: new Date()
+    }));
+    
+    // Send binary data
+    const binaryData = new Uint8Array([1, 2, 3, 4]);
+    socket.send(binaryData.buffer);
+  });
+  
+  // Listen for messages from the server
+  socket.addEventListener('message', (event) => {
+    console.log('Message from server:', event.data);
+    
+    // Handle different data types
+    if (typeof event.data === 'string') {
+      // Text data
+      try {
+        const jsonData = JSON.parse(event.data);
+        handleJsonData(jsonData);
+      } catch (e) {
+        // Plain text
+        handleTextData(event.data);
+      }
+    } else if (event.data instanceof Blob) {
+      // Binary data (Blob)
+      event.data.arrayBuffer().then(buffer => {
+        handleBinaryData(buffer);
+      });
+    } else if (event.data instanceof ArrayBuffer) {
+      // Binary data (ArrayBuffer)
+      handleBinaryData(event.data);
+    }
+  });
+  
+  // Handle errors
+  socket.addEventListener('error', (event) => {
+    console.error('WebSocket error:', event);
+  });
+  
+  // Connection closed
+  socket.addEventListener('close', (event) => {
+    console.log('WebSocket connection closed with code:', event.code);
+    console.log('Reason:', event.reason);
+    console.log('Clean close:', event.wasClean);
+    
+    // Reconnect if appropriate
+    if (!event.wasClean) {
+      console.log('Attempting to reconnect...');
+      // Implement reconnection logic
+    }
+  });
+  
+  // Close the connection when done
+  function closeConnection() {
+    // Normal closure
+    socket.close(1000, 'Work complete');
+  }
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>WebSocket vs. HTTP</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Feature</th>
+          <th>WebSocket</th>
+          <th>HTTP</th>
+        </tr>
+        <tr>
+          <td>Connection</td>
+          <td>Persistent, full-duplex</td>
+          <td>Request-response, stateless</td>
+        </tr>
+        <tr>
+          <td>Data Transfer</td>
+          <td>Bidirectional, simultaneous</td>
+          <td>Client requests, server responds</td>
+        </tr>
+        <tr>
+          <td>Header Overhead</td>
+          <td>Low after initial handshake</td>
+          <td>Every request includes full headers</td>
+        </tr>
+        <tr>
+          <td>Latency</td>
+          <td>Low (single TCP connection)</td>
+          <td>Higher (new connection per request or keep-alive)</td>
+        </tr>
+        <tr>
+          <td>Use Case</td>
+          <td>Real-time applications, live data updates</td>
+          <td>Traditional web requests, REST APIs</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Use Cases:</strong>
+        <ul>
+          <li>Live chat applications and messaging platforms</li>
+          <li>Real-time dashboards and monitoring interfaces</li>
+          <li>Collaborative editing tools</li>
+          <li>Live sports updates and stock tickers</li>
+          <li>Multiplayer games</li>
+          <li>Push notifications for web applications</li>
+        </ul>
+        <strong>Fallbacks:</strong> For browsers that don't support WebSockets, consider implementing fallbacks like:
+        <ul>
+          <li>Long polling (client makes repeated requests that server holds until data is available)</li>
+          <li>Server-sent events (SSE) for one-way server-to-client communication</li>
+          <li>WebSocket polyfills or libraries that handle fallbacks automatically</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>10. Other Notable APIs</h2>
+    
+    <div class="demo-section">
+      <div class="two-column">
+        <div>
+          <h3>File API</h3>
+          <p>Allows web applications to interact with files on the user's device:</p>
+          <div class="element-html">&lt;!-- File input --&gt;
+&lt;input type="file" id="fileInput" multiple&gt;
+
+&lt;script&gt;
+  document.getElementById('fileInput').addEventListener('change', (event) => {
+    const files = event.target.files;
+    
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      console.log('File:', file.name);
+      console.log('Type:', file.type);
+      console.log('Size:', file.size, 'bytes');
+      console.log('Last Modified:', new Date(file.lastModified));
+      
+      // Read file content
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        const content = e.target.result;
+        console.log('Content:', content);
+      };
+      
+      reader.onerror = (error) => {
+        console.error('Error reading file:', error);
+      };
+      
+      // Read as text (for text files)
+      reader.readAsText(file);
+      
+      // Other read methods:
+      // reader.readAsArrayBuffer(file);
+      // reader.readAsBinaryString(file);
+      // reader.readAsDataURL(file);
+    }
+  });
+&lt;/script&gt;</div>
+        </div>
+        
+        <div>
+          <h3>Web Notifications API</h3>
+          <p>Enables web applications to display system notifications to the user:</p>
+          <div class="element-html">&lt;script&gt;
+  // Request permission
+  async function requestNotificationPermission() {
+    const permission = await Notification.requestPermission();
+    
+    if (permission === 'granted') {
+      console.log('Notification permission granted');
+    } else {
+      console.log('Notification permission denied');
+    }
+  }
+  
+  // Show a notification
+  function showNotification() {
+    if (Notification.permission === 'granted') {
+      const notification = new Notification('New Message', {
+        body: 'You received a new message',
+        icon: '/path/to/icon.png',
+        badge: '/path/to/badge.png',
+        vibrate: [200, 100, 200]
+      });
+      
+      notification.onclick = () => {
+        window.focus();
+        notification.close();
+      };
+      
+      notification.onclose = () => {
+        console.log('Notification was closed');
+      };
+    }
+  }
+  
+  // Usage
+  requestNotificationPermission();
+  showNotification();
+&lt;/script&gt;</div>
+        </div>
+        
+        <div>
+          <h3>Web Audio API</h3>
+          <p>A high-level API for processing and synthesizing audio in web applications:</p>
+          <div class="element-html">&lt;script&gt;
+  // Create an audio context
+  const audioContext = new AudioContext();
+  
+  // Play a simple tone
+  function playTone(frequency = 440, duration = 1) {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.type = 'sine';
+    oscillator.frequency.value = frequency;
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.start();
+    
+    // Fade out
+    gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.001, audioContext.currentTime + duration
+    );
+    
+    // Stop after duration
+    oscillator.stop(audioContext.currentTime + duration);
+  }
+  
+  // Load and play an audio file
+  async function playAudio(url) {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+    
+    const source = audioContext.createBufferSource();
+    source.buffer = audioBuffer;
+    source.connect(audioContext.destination);
+    source.start();
+  }
+&lt;/script&gt;</div>
+        </div>
+        
+        <div>
+          <h3>Payment Request API</h3>
+          <p>Streamlines the checkout process by allowing websites to collect payment information with a native interface:</p>
+          <div class="element-html">&lt;script&gt;
+  const paymentMethods = [
+    {
+      supportedMethods: 'basic-card',
+      data: {
+        supportedNetworks: ['visa', 'mastercard'],
+        supportedTypes: ['credit', 'debit']
+      }
+    }
+  ];
+  
+  const paymentDetails = {
+    total: {
+      label: 'Total',
+      amount: {
+        currency: 'USD',
+        value: '19.99'
+      }
+    },
+    displayItems: [
+      {
+        label: 'Product',
+        amount: {
+          currency: 'USD',
+          value: '15.00'
+        }
+      },
+      {
+        label: 'Tax',
+        amount: {
+          currency: 'USD',
+          value: '4.99'
+        }
+      }
+    ]
+  };
+  
+  const options = {
+    requestShipping: true,
+    requestPayerEmail: true,
+    requestPayerName: true
+  };
+  
+  async function processPayment() {
+    try {
+      const request = new PaymentRequest(
+        paymentMethods,
+        paymentDetails,
+        options
+      );
+      
+      const response = await request.show();
+      console.log('Payment response:', response);
+      
+      // Process payment on your server
+      
+      // Complete the payment
+      await response.complete('success');
+    } catch (error) {
+      console.error('Payment error:', error);
+    }
+  }
+&lt;/script&gt;</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-embedded.html" class="nav-button">← Previous: Embedded Content</a>
+      <a href="html-accessibility.html" class="nav-button">Next: Accessibility →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

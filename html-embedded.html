@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Embedded Content Guide</title>
+  <!-- Vercel Analytics -->
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Media Container */
+    .media-container {
+      max-width: 100%;
+      margin: 20px 0;
+      text-align: center;
+    }
+    
+    .media-container video,
+    .media-container audio,
+    .media-container iframe,
+    .media-container object {
+      max-width: 100%;
+    }
+    
+    /* Two-column layout for examples */
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 20px;
+    }
+    
+    @media (max-width: 920px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Embedded Content Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-semantic.html" class="nav-button">← Previous: Semantic Elements</a>
+      <a href="html-apis.html" class="nav-button">Next: HTML5 APIs →</a>
+    </div>
+    
+    <p>HTML provides several ways to embed external content such as audio, video, images, and other web pages into your documents. This guide covers the various embedding methods and best practices for using them.</p>
+    
+    <h2>1. Audio Element</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;audio&gt;</code> element is used to embed sound content in documents:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic audio with controls --&gt;
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  &lt;source src="audio.ogg" type="audio/ogg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;!-- Audio with additional attributes --&gt;
+&lt;audio controls autoplay muted loop&gt;
+  &lt;source src="background-music.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;</div>
+        <div class="element-preview">
+          <div class="media-container">
+            <audio controls>
+              <source src="" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Audio Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>controls</code></td>
+          <td>controls</td>
+          <td>Displays audio controls (play/pause, volume, etc.)</td>
+        </tr>
+        <tr>
+          <td><code>autoplay</code></td>
+          <td>autoplay</td>
+          <td>Starts playing the audio automatically (often blocked by browsers)</td>
+        </tr>
+        <tr>
+          <td><code>loop</code></td>
+          <td>loop</td>
+          <td>Repeats the audio when it ends</td>
+        </tr>
+        <tr>
+          <td><code>muted</code></td>
+          <td>muted</td>
+          <td>Mutes the audio output</td>
+        </tr>
+        <tr>
+          <td><code>preload</code></td>
+          <td>auto, metadata, none</td>
+          <td>Specifies if/how the audio should be loaded when the page loads</td>
+        </tr>
+        <tr>
+          <td><code>src</code></td>
+          <td>URL</td>
+          <td>Specifies the URL of the audio file (alternative to using &lt;source&gt; elements)</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Best Practices:</strong>
+        <ul>
+          <li>Always include the <code>controls</code> attribute to give users control over the audio playback</li>
+          <li>Provide fallback content inside the <code>&lt;audio&gt;</code> element for browsers that don't support it</li>
+          <li>Include multiple <code>&lt;source&gt;</code> elements with different audio formats for better browser compatibility</li>
+          <li>Use the <code>type</code> attribute with the correct MIME type to help the browser determine if it can play the file</li>
+          <li>Avoid <code>autoplay</code> for audio with sound, as it can be disruptive and is often blocked by browsers</li>
+          <li>Consider adding <code>muted</code> if using <code>autoplay</code></li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>2. Video Element</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;video&gt;</code> element is used to embed video content in documents:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic video with controls --&gt;
+&lt;video width="320" height="240" controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;!-- Video with poster image and additional attributes --&gt;
+&lt;video width="320" height="240" controls poster="video-thumbnail.jpg" preload="metadata"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  &lt;track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</div>
+        <div class="element-preview">
+          <div class="media-container">
+            <video width="320" height="240" controls>
+              <source src="" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Video Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>controls</code></td>
+          <td>controls</td>
+          <td>Displays video controls (play/pause, volume, etc.)</td>
+        </tr>
+        <tr>
+          <td><code>width</code>, <code>height</code></td>
+          <td>pixels</td>
+          <td>Sets the dimensions of the video player</td>
+        </tr>
+        <tr>
+          <td><code>autoplay</code></td>
+          <td>autoplay</td>
+          <td>Starts playing the video automatically (often blocked by browsers)</td>
+        </tr>
+        <tr>
+          <td><code>loop</code></td>
+          <td>loop</td>
+          <td>Repeats the video when it ends</td>
+        </tr>
+        <tr>
+          <td><code>muted</code></td>
+          <td>muted</td>
+          <td>Mutes the video output</td>
+        </tr>
+        <tr>
+          <td><code>poster</code></td>
+          <td>URL</td>
+          <td>Specifies an image to be shown while the video is downloading or until the user plays it</td>
+        </tr>
+        <tr>
+          <td><code>preload</code></td>
+          <td>auto, metadata, none</td>
+          <td>Specifies if/how the video should be loaded when the page loads</td>
+        </tr>
+        <tr>
+          <td><code>playsinline</code></td>
+          <td>playsinline</td>
+          <td>Indicates that the video should play inline on iOS devices, rather than automatically entering fullscreen mode</td>
+        </tr>
+      </table>
+      
+      <h3>Video Tracks</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;video controls&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English"&gt;
+  &lt;track src="subtitles_es.vtt" kind="subtitles" srclang="es" label="Spanish"&gt;
+  &lt;track src="descriptions.vtt" kind="descriptions" srclang="en" label="Descriptions"&gt;
+  &lt;track src="chapters.vtt" kind="chapters" srclang="en" label="Chapters"&gt;
+&lt;/video&gt;</div>
+      </div>
+      
+      <table class="attribute-table">
+        <tr>
+          <th>Track Kind</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>subtitles</code></td>
+          <td>Translations of the dialogue when audio is available but not understood</td>
+        </tr>
+        <tr>
+          <td><code>captions</code></td>
+          <td>Transcription or translation of the dialogue, suitable for users who are deaf or when audio is not available</td>
+        </tr>
+        <tr>
+          <td><code>descriptions</code></td>
+          <td>Text descriptions of the visual content, suitable for users who are blind or when video is not available</td>
+        </tr>
+        <tr>
+          <td><code>chapters</code></td>
+          <td>Chapter titles intended to be used for navigating the media resource</td>
+        </tr>
+        <tr>
+          <td><code>metadata</code></td>
+          <td>Tracks intended for use by scripts and not visible to the user</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Best Practices:</strong>
+        <ul>
+          <li>Always include the <code>controls</code> attribute to give users control over the video playback</li>
+          <li>Use both <code>width</code> and <code>height</code> attributes to help the browser allocate space for the video during page loading</li>
+          <li>Provide a <code>poster</code> image to display before the video loads or plays</li>
+          <li>Include multiple <code>&lt;source&gt;</code> elements with different video formats for better browser compatibility</li>
+          <li>Add <code>&lt;track&gt;</code> elements for subtitles, captions, or descriptions to improve accessibility</li>
+          <li>Be cautious with <code>autoplay</code> as it can be irritating to users and is often blocked in modern browsers</li>
+          <li>Consider using <code>preload="none"</code> or <code>preload="metadata"</code> to reduce bandwidth usage on initial page load</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>3. Iframe Element</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;iframe&gt;</code> (Inline Frame) element allows you to embed another HTML document within the current document:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic iframe --&gt;
+&lt;iframe src="https://www.example.com" width="600" height="400"&gt;
+  Your browser does not support iframes.
+&lt;/iframe&gt;
+
+&lt;!-- YouTube video embed --&gt;
+&lt;iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen&gt;
+&lt;/iframe&gt;
+
+&lt;!-- Google Maps embed --&gt;
+&lt;iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1642589827105!5m2!1sen!2s" 
+  width="600" height="450" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy"&gt;
+&lt;/iframe&gt;</div>
+        <p>Iframes are used to embed external content like videos, maps, and other web pages. Most embedding codes provided by services like YouTube, Google Maps, or Twitter use iframes.</p>
+      </div>
+      
+      <h3>Iframe Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>src</code></td>
+          <td>URL</td>
+          <td>Specifies the URL of the document to embed</td>
+        </tr>
+        <tr>
+          <td><code>width</code>, <code>height</code></td>
+          <td>pixels or %</td>
+          <td>Sets the dimensions of the iframe</td>
+        </tr>
+        <tr>
+          <td><code>loading</code></td>
+          <td>eager, lazy</td>
+          <td>Specifies whether the iframe should be loaded immediately (eager) or deferred (lazy)</td>
+        </tr>
+        <tr>
+          <td><code>sandbox</code></td>
+          <td>allow-forms, allow-scripts, etc.</td>
+          <td>Enables extra restrictions on the content in the iframe for security</td>
+        </tr>
+        <tr>
+          <td><code>allow</code></td>
+          <td>feature policy</td>
+          <td>Specifies a feature policy for the iframe (e.g., camera, microphone access)</td>
+        </tr>
+        <tr>
+          <td><code>allowfullscreen</code></td>
+          <td>true, false</td>
+          <td>Allows the iframe content to be viewed in fullscreen mode</td>
+        </tr>
+        <tr>
+          <td><code>referrerpolicy</code></td>
+          <td>no-referrer, origin, etc.</td>
+          <td>Controls what referrer information is passed when requesting the iframe</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Security Considerations:</strong>
+        <ul>
+          <li>Iframes can present security risks due to cross-site scripting (XSS) vulnerabilities</li>
+          <li>Use the <code>sandbox</code> attribute to restrict the capabilities of the embedded content</li>
+          <li>Always include the <code>title</code> attribute for accessibility</li>
+          <li>Consider using <code>loading="lazy"</code> for iframes that are below the fold to improve page load performance</li>
+          <li>Avoid embedding content from untrusted sources</li>
+          <li>Use <code>frame-ancestors</code> in your Content Security Policy (CSP) to control which sites can embed your content</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>4. Object and Embed Elements</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;object&gt;</code> and <code>&lt;embed&gt;</code> elements are used to embed external resources like PDFs, Flash content (deprecated), Java applets (deprecated), and other media types:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Embedding a PDF with object --&gt;
+&lt;object data="document.pdf" type="application/pdf" width="600" height="800"&gt;
+  &lt;p&gt;Your browser doesn't support embedded PDFs. &lt;a href="document.pdf"&gt;Download the PDF&lt;/a&gt; instead.&lt;/p&gt;
+&lt;/object&gt;
+
+&lt;!-- Embedding an SVG with object --&gt;
+&lt;object data="image.svg" type="image/svg+xml" width="300" height="200"&gt;
+  &lt;img src="fallback-image.png" alt="Fallback for SVG"&gt;
+&lt;/object&gt;
+
+&lt;!-- Using embed (not recommended for most cases) --&gt;
+&lt;embed src="document.pdf" type="application/pdf" width="600" height="800"&gt;</div>
+      </div>
+      
+      <h3>Object vs. Embed</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Feature</th>
+          <th>Object</th>
+          <th>Embed</th>
+        </tr>
+        <tr>
+          <td>Fallback content</td>
+          <td>Supports fallback content inside the element</td>
+          <td>No fallback content support</td>
+        </tr>
+        <tr>
+          <td>Parameters</td>
+          <td>Supports &lt;param&gt; elements for passing parameters</td>
+          <td>Parameters are passed as attributes</td>
+        </tr>
+        <tr>
+          <td>Standards compliance</td>
+          <td>HTML standard</td>
+          <td>Originally non-standard, now in HTML5</td>
+        </tr>
+        <tr>
+          <td>Use case</td>
+          <td>Preferred for most embedded content</td>
+          <td>Legacy support; simple embeds</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Best Practices:</strong>
+        <ul>
+          <li>Use <code>&lt;object&gt;</code> instead of <code>&lt;embed&gt;</code> when possible for better standards compliance and fallback support</li>
+          <li>Always provide fallback content inside <code>&lt;object&gt;</code> for browsers that don't support the embedded content</li>
+          <li>Include appropriate <code>type</code> attributes to help browsers identify the content type</li>
+          <li>Consider using more specific elements (like <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, or <code>&lt;img&gt;</code>) when they are suitable for the content type</li>
+          <li>Be aware that some content types (like Flash) are deprecated and not supported in modern browsers</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>5. Canvas Element</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;canvas&gt;</code> element is used to draw graphics via JavaScript. It provides a drawing surface that you can use to create and manipulate images, graphs, animations, and other visual elements:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;canvas id="myCanvas" width="200" height="100" style="border:1px solid #000;"&gt;
+  Your browser does not support the canvas element.
+&lt;/canvas&gt;
+
+&lt;script&gt;
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+  
+  // Draw a rectangle
+  ctx.fillStyle = "#FF0000";
+  ctx.fillRect(10, 10, 150, 80);
+  
+  // Draw some text
+  ctx.fillStyle = "#FFFFFF";
+  ctx.font = "16px Arial";
+  ctx.fillText("Hello Canvas!", 30, 50);
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <canvas id="demoCanvas" width="200" height="100" style="border:1px solid #000;">
+            Your browser does not support the canvas element.
+          </canvas>
+          <script>
+            const canvas = document.getElementById("demoCanvas");
+            const ctx = canvas.getContext("2d");
+            
+            // Draw a rectangle
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(10, 10, 150, 80);
+            
+            // Draw some text
+            ctx.fillStyle = "#FFFFFF";
+            ctx.font = "16px Arial";
+            ctx.fillText("Hello Canvas!", 30, 50);
+          </script>
+        </div>
+      </div>
+      
+      <p>The Canvas API provides methods for drawing paths, boxes, circles, text, and other shapes. It's commonly used for games, data visualization, photo manipulation, and real-time video processing.</p>
+      
+      <div class="element-info">
+        <strong>Note:</strong> The <code>&lt;canvas&gt;</code> element itself is just a container; you need to use JavaScript to draw on it. For more detailed information on using Canvas, see the HTML5 APIs section.
+      </div>
+    </div>
+    
+    <h2>6. SVG Element</h2>
+    
+    <div class="demo-section">
+      <p>Scalable Vector Graphics (SVG) is an XML-based markup language for describing two-dimensional vector graphics. SVG can be embedded directly in HTML or included via the <code>&lt;img&gt;</code> or <code>&lt;object&gt;</code> elements:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Inline SVG --&gt;
+&lt;svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="red" /&gt;
+  &lt;rect x="100" y="20" width="80" height="60" fill="blue" /&gt;
+&lt;/svg&gt;
+
+&lt;!-- External SVG with img --&gt;
+&lt;img src="image.svg" alt="SVG Image" width="200" height="100"&gt;
+
+&lt;!-- External SVG with object --&gt;
+&lt;object data="image.svg" type="image/svg+xml" width="200" height="100"&gt;
+  &lt;img src="fallback.png" alt="Fallback image"&gt;
+&lt;/object&gt;</div>
+        <div class="element-preview">
+          <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+            <rect x="100" y="20" width="80" height="60" fill="blue" />
+          </svg>
+        </div>
+      </div>
+      
+      <h3>Inline SVG vs. External SVG</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Feature</th>
+          <th>Inline SVG</th>
+          <th>External SVG</th>
+        </tr>
+        <tr>
+          <td>DOM Access</td>
+          <td>Can be manipulated with JavaScript and styled with CSS</td>
+          <td>Limited access when used with &lt;img&gt;; accessible with &lt;object&gt;</td>
+        </tr>
+        <tr>
+          <td>Caching</td>
+          <td>Not cached separately (part of HTML)</td>
+          <td>Can be cached by the browser</td>
+        </tr>
+        <tr>
+          <td>HTTP Requests</td>
+          <td>No additional request</td>
+          <td>Requires an additional HTTP request</td>
+        </tr>
+        <tr>
+          <td>File Size</td>
+          <td>Increases HTML file size</td>
+          <td>Keeps HTML smaller; asset is loaded separately</td>
+        </tr>
+        <tr>
+          <td>Reusability</td>
+          <td>Limited to the current page</td>
+          <td>Can be reused across multiple pages</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>SVG Advantages:</strong>
+        <ul>
+          <li>Scales without losing quality at any resolution</li>
+          <li>Typically smaller file size than raster images for simple graphics</li>
+          <li>Can be styled with CSS and manipulated with JavaScript</li>
+          <li>Accessible and searchable (when using proper text elements)</li>
+          <li>Ideal for logos, icons, illustrations, and animations</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>7. Picture Element</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;picture&gt;</code> element provides a container for multiple image sources, allowing you to specify different images for different screen sizes, device resolutions, or file formats:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;picture&gt;
+  &lt;!-- Large screens --&gt;
+  &lt;source media="(min-width: 1200px)" srcset="large.jpg"&gt;
+  
+  &lt;!-- Medium screens --&gt;
+  &lt;source media="(min-width: 768px)" srcset="medium.jpg"&gt;
+  
+  &lt;!-- Default and small screens --&gt;
+  &lt;img src="small.jpg" alt="Responsive image"&gt;
+&lt;/picture&gt;
+
+&lt;!-- Different image formats --&gt;
+&lt;picture&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  &lt;source srcset="image.jp2" type="image/jp2"&gt;
+  &lt;img src="image.jpg" alt="Image with fallback"&gt;
+&lt;/picture&gt;</div>
+      </div>
+      
+      <p>The <code>&lt;source&gt;</code> elements specify the image sources with the <code>srcset</code> attribute, and the browser will use the first matching source. The <code>&lt;img&gt;</code> element is required as the last child of the <code>&lt;picture&gt;</code> element, providing a fallback for browsers that don't support the <code>&lt;picture&gt;</code> element.</p>
+      
+      <h3>Picture vs. Responsive Images with srcset</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Feature</th>
+          <th>Picture Element</th>
+          <th>Img with srcset/sizes</th>
+        </tr>
+        <tr>
+          <td>Use Case</td>
+          <td>Art direction (different crops for different screens); format selection</td>
+          <td>Resolution switching (same image, different sizes)</td>
+        </tr>
+        <tr>
+          <td>Media Queries</td>
+          <td>Supports full media queries</td>
+          <td>Limited to width descriptors</td>
+        </tr>
+        <tr>
+          <td>Format Support</td>
+          <td>Can specify different formats with type attribute</td>
+          <td>No native format selection</td>
+        </tr>
+        <tr>
+          <td>Complexity</td>
+          <td>More HTML markup required</td>
+          <td>More concise syntax</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>When to Use Picture:</strong>
+        <ul>
+          <li>When you need different image crops for different screen sizes (art direction)</li>
+          <li>When you want to provide different image formats based on browser support</li>
+          <li>When you need more complex media query conditions beyond just width</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>8. External Resources with link Element</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;link&gt;</code> element in the <code>&lt;head&gt;</code> section can be used to reference various external resources:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- CSS Stylesheet --&gt;
+&lt;link rel="stylesheet" href="styles.css"&gt;
+
+&lt;!-- Favicon --&gt;
+&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;
+
+&lt;!-- Apple Touch Icon --&gt;
+&lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;
+
+&lt;!-- Preconnect to external domain --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+
+&lt;!-- Preload critical resource --&gt;
+&lt;link rel="preload" href="critical-font.woff2" as="font" type="font/woff2" crossorigin&gt;
+
+&lt;!-- Prefetch resource for future pages --&gt;
+&lt;link rel="prefetch" href="next-page.html"&gt;
+
+&lt;!-- Web App Manifest --&gt;
+&lt;link rel="manifest" href="manifest.json"&gt;</div>
+      </div>
+      
+      <h3>Common Link Relations</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Relation (rel)</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>stylesheet</code></td>
+          <td>Links to an external CSS stylesheet</td>
+        </tr>
+        <tr>
+          <td><code>icon</code></td>
+          <td>Specifies an icon for the document (favicon)</td>
+        </tr>
+        <tr>
+          <td><code>apple-touch-icon</code></td>
+          <td>Icon for iOS devices</td>
+        </tr>
+        <tr>
+          <td><code>preconnect</code></td>
+          <td>Initiates an early connection to the target resource's origin</td>
+        </tr>
+        <tr>
+          <td><code>preload</code></td>
+          <td>Tells the browser to download and cache a resource for current navigation</td>
+        </tr>
+        <tr>
+          <td><code>prefetch</code></td>
+          <td>Tells the browser to download and cache a resource for future navigations</td>
+        </tr>
+        <tr>
+          <td><code>manifest</code></td>
+          <td>Links to a Web App Manifest file for PWAs</td>
+        </tr>
+        <tr>
+          <td><code>alternate</code></td>
+          <td>Provides alternative versions of the document (e.g., different language, RSS feed)</td>
+        </tr>
+        <tr>
+          <td><code>canonical</code></td>
+          <td>Indicates the preferred URL for the current document (for SEO)</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Performance Tips:</strong>
+        <ul>
+          <li>Use <code>preconnect</code> for domains you know you'll need resources from soon</li>
+          <li>Use <code>preload</code> for critical resources needed for the current page</li>
+          <li>Use <code>prefetch</code> for resources likely needed for the next page</li>
+          <li>Avoid excessive preloading as it can waste bandwidth and compete with critical resources</li>
+          <li>Place critical CSS inline to avoid render-blocking if the page is simple enough</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>9. Media Embeds from Popular Services</h2>
+    
+    <div class="demo-section">
+      <h3>YouTube Videos</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/VIDEO_ID" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen&gt;
+&lt;/iframe&gt;</div>
+      </div>
+      
+      <h3>Vimeo Videos</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;iframe 
+  src="https://player.vimeo.com/video/VIDEO_ID" 
+  width="640" 
+  height="360" 
+  frameborder="0" 
+  allow="autoplay; fullscreen; picture-in-picture" 
+  allowfullscreen&gt;
+&lt;/iframe&gt;</div>
+      </div>
+      
+      <h3>Google Maps</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;iframe 
+  src="https://www.google.com/maps/embed?pb=EMBED_CODE" 
+  width="600" 
+  height="450" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy"&gt;
+&lt;/iframe&gt;</div>
+      </div>
+      
+      <h3>Twitter Posts</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Using Twitter's embed code --&gt;
+&lt;blockquote class="twitter-tweet"&gt;
+  &lt;p lang="en" dir="ltr"&gt;Tweet content&lt;/p&gt;
+  &lt;a href="https://twitter.com/username/status/TWEET_ID"&gt;Link to tweet&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Best Practices for Third-Party Embeds:</strong>
+        <ul>
+          <li>Load third-party scripts asynchronously using the <code>async</code> or <code>defer</code> attributes to avoid blocking page rendering</li>
+          <li>Consider privacy implications and compliance with regulations like GDPR when embedding third-party content</li>
+          <li>Add <code>loading="lazy"</code> to iframes when they're below the fold to improve page load performance</li>
+          <li>Ensure embedded content is responsive by using appropriate CSS (e.g., max-width: 100%) or responsive embed wrappers</li>
+          <li>Include appropriate <code>title</code> and fallback content for accessibility</li>
+          <li>Be aware of the performance impact of multiple third-party embeds on a single page</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>10. Best Practices</h2>
+    
+    <div class="demo-section">
+      <h3>Performance</h3>
+      <ul>
+        <li>Use responsive images and appropriate formats to reduce file sizes</li>
+        <li>Lazy load media that is below the fold using <code>loading="lazy"</code></li>
+        <li>Specify dimensions for media elements to avoid layout shifts during loading</li>
+        <li>Defer non-critical third-party embeds to improve initial page load</li>
+        <li>Consider using content delivery networks (CDNs) for media files</li>
+      </ul>
+      
+      <h3>Accessibility</h3>
+      <ul>
+        <li>Always include alternative text with <code>alt</code> attributes for images</li>
+        <li>Provide captions, subtitles, or transcripts for video and audio content</li>
+        <li>Ensure embedded content can be navigated and interacted with using a keyboard</li>
+        <li>Include descriptive titles for iframes and embedded content</li>
+        <li>Use semantic HTML structures around embedded content</li>
+      </ul>
+      
+      <h3>Security</h3>
+      <ul>
+        <li>Use HTTPS URLs for all embedded content</li>
+        <li>Apply appropriate sandbox restrictions to iframes when embedding third-party content</li>
+        <li>Implement Content Security Policy (CSP) to control which external resources can be loaded</li>
+        <li>Be cautious with embedded content that requests permissions (camera, microphone, location, etc.)</li>
+        <li>Validate and sanitize any user-generated content before embedding it</li>
+      </ul>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-semantic.html" class="nav-button">← Previous: Semantic Elements</a>
+      <a href="html-apis.html" class="nav-button">Next: HTML5 APIs →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

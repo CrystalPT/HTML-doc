@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Semantic Elements Guide</title>
+  <!-- Vercel Analytics -->
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Page layout demo */
+    .page-layout {
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .page-layout-header {
+      padding: 15px;
+      background-color: #e74c3c;
+      color: white;
+      text-align: center;
+    }
+    
+    .page-layout-nav {
+      padding: 10px;
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+    }
+    
+    .page-layout-main {
+      display: flex;
+      min-height: 200px;
+    }
+    
+    .page-layout-article {
+      flex: 3;
+      padding: 15px;
+      background-color: #fff;
+    }
+    
+    .page-layout-aside {
+      flex: 1;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-left: 1px solid #ddd;
+    }
+    
+    .page-layout-footer {
+      padding: 15px;
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+    }
+    
+    /* Two-column layout for examples */
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+      gap: 20px;
+    }
+    
+    @media (max-width: 920px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Semantic Elements Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-forms.html" class="nav-button">← Previous: Forms & Inputs</a>
+      <a href="html-embedded.html" class="nav-button">Next: Embedded Content →</a>
+    </div>
+    
+    <p>Semantic HTML elements clearly describe their meaning to both the browser and the developer. Using semantic markup improves accessibility, SEO, and code maintainability. This guide covers the semantic elements introduced in HTML5 and best practices for using them.</p>
+    
+    <h2>1. What Are Semantic Elements?</h2>
+    
+    <div class="demo-section">
+      <p>Semantic elements clearly describe their meaning in a human- and machine-readable way. Elements such as <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, and <code>&lt;article&gt;</code> are all considered semantic because they accurately describe the purpose of the element and the type of content that is inside them.</p>
+      
+      <h3>Semantic vs. Non-Semantic Elements</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Non-semantic elements --&gt;
+&lt;div&gt;This is a div&lt;/div&gt;
+&lt;span&gt;This is a span&lt;/span&gt;
+
+&lt;!-- Semantic elements --&gt;
+&lt;article&gt;This is an article&lt;/article&gt;
+&lt;section&gt;This is a section&lt;/section&gt;
+&lt;header&gt;This is a header&lt;/header&gt;</div>
+      </div>
+      
+      <p>The <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> elements don't have any inherent meaning; they're just containers. Semantic elements, on the other hand, provide information about the content they contain.</p>
+      
+      <div class="element-info">
+        <strong>Benefits of Semantic HTML:</strong>
+        <ul>
+          <li>Accessibility: Screen readers and other assistive technologies can better understand the content</li>
+          <li>SEO: Search engines give more weight to content inside semantic elements</li>
+          <li>Readability: Code is easier to read and maintain</li>
+          <li>Reusability: Consistent structure makes it easier to apply styles and behaviors</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>2. Page Structure Elements</h2>
+    
+    <div class="demo-section">
+      <p>HTML5 introduced several semantic elements that define the structure of a web page:</p>
+      
+      <div class="page-layout">
+        <div class="page-layout-header">&lt;header&gt;</div>
+        <div class="page-layout-nav">&lt;nav&gt;</div>
+        <div class="page-layout-main">
+          <div class="page-layout-article">
+            <div style="margin-bottom: 15px;">&lt;main&gt;</div>
+            &lt;article&gt;
+            <div style="margin: 10px 0;">&lt;section&gt;</div>
+            <div style="margin: 10px 0;">&lt;section&gt;</div>
+            &lt;/article&gt;
+          </div>
+          <div class="page-layout-aside">&lt;aside&gt;</div>
+        </div>
+        <div class="page-layout-footer">&lt;footer&gt;</div>
+      </div>
+      
+      <h3>Common Page Structure Elements</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Element</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>&lt;header&gt;</code></td>
+          <td>Represents introductory content, typically a group of introductory or navigational aids</td>
+        </tr>
+        <tr>
+          <td><code>&lt;nav&gt;</code></td>
+          <td>Represents a section of a page that contains navigation links</td>
+        </tr>
+        <tr>
+          <td><code>&lt;main&gt;</code></td>
+          <td>Represents the main content of the document (should be unique to the document)</td>
+        </tr>
+        <tr>
+          <td><code>&lt;article&gt;</code></td>
+          <td>Represents self-contained content that could be distributed independently</td>
+        </tr>
+        <tr>
+          <td><code>&lt;section&gt;</code></td>
+          <td>Represents a standalone section of content that is a part of a larger whole</td>
+        </tr>
+        <tr>
+          <td><code>&lt;aside&gt;</code></td>
+          <td>Represents content tangentially related to the content around it (like a sidebar)</td>
+        </tr>
+        <tr>
+          <td><code>&lt;footer&gt;</code></td>
+          <td>Represents a footer for its nearest sectioning content or sectioning root element</td>
+        </tr>
+      </table>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic HTML5 page structure --&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Website Title&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;Article Title&lt;/h2&gt;
+        &lt;p&gt;Published on &lt;time datetime="2025-03-20"&gt;March 20, 2025&lt;/time&gt;&lt;/p&gt;
+      &lt;/header&gt;
+      
+      &lt;section&gt;
+        &lt;h3&gt;Section 1&lt;/h3&gt;
+        &lt;p&gt;This is the first section of the article.&lt;/p&gt;
+      &lt;/section&gt;
+      
+      &lt;section&gt;
+        &lt;h3&gt;Section 2&lt;/h3&gt;
+        &lt;p&gt;This is the second section of the article.&lt;/p&gt;
+      &lt;/section&gt;
+      
+      &lt;footer&gt;
+        &lt;p&gt;Author: John Doe&lt;/p&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+    
+    &lt;aside&gt;
+      &lt;h3&gt;Related Articles&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Related Article 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Related Article 2&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&copy; 2025 My Website. All rights reserved.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</div>
+      </div>
+    </div>
+    
+    <h2>3. Content Sectioning Elements</h2>
+    
+    <div class="demo-section">
+      <div class="two-column">
+        <div>
+          <h3>Article <code>&lt;article&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;article&gt;
+  &lt;h2&gt;Article Title&lt;/h2&gt;
+  &lt;p&gt;Article content...&lt;/p&gt;
+&lt;/article&gt;</div>
+            <p>The <code>&lt;article&gt;</code> element represents a complete, self-contained composition that is independently distributable or reusable.</p>
+            <p><strong>Examples:</strong> Blog post, news story, forum post, comment, product card, interactive widget</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Section <code>&lt;section&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;section&gt;
+  &lt;h2&gt;Section Heading&lt;/h2&gt;
+  &lt;p&gt;Section content...&lt;/p&gt;
+&lt;/section&gt;</div>
+            <p>The <code>&lt;section&gt;</code> element represents a standalone section of content that forms part of a larger whole.</p>
+            <p><strong>Examples:</strong> Chapters, tabbed content areas, grouped content with a heading</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Aside <code>&lt;aside&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;aside&gt;
+  &lt;h3&gt;Related Information&lt;/h3&gt;
+  &lt;p&gt;Tangentially related content...&lt;/p&gt;
+&lt;/aside&gt;</div>
+            <p>The <code>&lt;aside&gt;</code> element represents content that is tangentially related to the content around it, which could be considered separate from that content.</p>
+            <p><strong>Examples:</strong> Sidebars, pull quotes, advertising, footnotes, related article links</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Figure and Figcaption <code>&lt;figure&gt; &lt;figcaption&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;figure&gt;
+  &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;figcaption&gt;Caption for the image&lt;/figcaption&gt;
+&lt;/figure&gt;</div>
+            <p>The <code>&lt;figure&gt;</code> element represents self-contained content, with an optional caption (<code>&lt;figcaption&gt;</code>). It is typically referenced as a single unit from the main content.</p>
+            <p><strong>Examples:</strong> Images with captions, charts, diagrams, code snippets, quotes</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Article vs. Section:</strong> The distinction can sometimes be confusing:
+        <ul>
+          <li><code>&lt;article&gt;</code> is for content that would make sense on its own in a feed reader</li>
+          <li><code>&lt;section&gt;</code> is for grouping together thematically-related content</li>
+          <li>If the content could be syndicated or appears in an RSS feed, use <code>&lt;article&gt;</code></li>
+          <li>If you're just grouping content for styling or other purposes, use <code>&lt;section&gt;</code></li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>4. Header and Footer Elements</h2>
+    
+    <div class="demo-section">
+      <div class="two-column">
+        <div>
+          <h3>Header <code>&lt;header&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;!-- Page header --&gt;
+&lt;header&gt;
+  &lt;h1&gt;Website Title&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;!-- Navigation links --&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Article header --&gt;
+&lt;article&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Article Title&lt;/h2&gt;
+    &lt;p&gt;Posted by John Doe on &lt;time datetime="2025-04-24"&gt;April 24, 2025&lt;/time&gt;&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;!-- Article content --&gt;
+&lt;/article&gt;</div>
+            <p>The <code>&lt;header&gt;</code> element represents introductory content, typically a group of introductory or navigational aids. It can be used for the page header or for a section/article header.</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Footer <code>&lt;footer&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;!-- Page footer --&gt;
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2025 My Website. All rights reserved.&lt;/p&gt;
+  &lt;nav&gt;
+    &lt;a href="/privacy"&gt;Privacy Policy&lt;/a&gt;
+    &lt;a href="/terms"&gt;Terms of Service&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;
+
+&lt;!-- Article footer --&gt;
+&lt;article&gt;
+  &lt;!-- Article content --&gt;
+  &lt;footer&gt;
+    &lt;p&gt;Author: John Doe&lt;/p&gt;
+    &lt;p&gt;Tags: &lt;a href="#"&gt;HTML&lt;/a&gt;, &lt;a href="#"&gt;Semantic&lt;/a&gt;&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</div>
+            <p>The <code>&lt;footer&gt;</code> element represents a footer for its nearest sectioning content or sectioning root element. It typically contains information about the author, copyright data, or related links.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Multiple Usage:</strong> You can have multiple <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements in a single document. They are not only for the top and bottom of the page but can be used within articles, sections, and other content blocks.
+      </div>
+    </div>
+    
+    <h2>5. Navigation Elements</h2>
+    
+    <div class="demo-section">
+      <h3>Nav <code>&lt;nav&gt;</code></h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Primary navigation --&gt;
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Footer navigation --&gt;
+&lt;footer&gt;
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Privacy Policy&lt;/a&gt;
+    &lt;a href="#"&gt;Terms of Service&lt;/a&gt;
+    &lt;a href="#"&gt;Sitemap&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;
+
+&lt;!-- Table of contents --&gt;
+&lt;nav&gt;
+  &lt;h2&gt;Table of Contents&lt;/h2&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="#section1"&gt;Section 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#section2"&gt;Section 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#section3"&gt;Section 3&lt;/a&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</div>
+        <p>The <code>&lt;nav&gt;</code> element represents a section of a page that contains navigation links. Not all links should be inside a <code>&lt;nav&gt;</code> element—only blocks of links that represent major navigation.</p>
+      </div>
+      
+      <div class="element-info">
+        <strong>When to Use:</strong> Use the <code>&lt;nav&gt;</code> element for:
+        <ul>
+          <li>Main site navigation</li>
+          <li>Secondary navigation (like footer links)</li>
+          <li>Table of contents</li>
+          <li>Pagination controls</li>
+          <li>Breadcrumb navigation</li>
+        </ul>
+        Don't use it for:
+        <ul>
+          <li>Single links within content</li>
+          <li>Links in a paragraph</li>
+          <li>Social media links (unless they're a major navigation block)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>6. Text Semantic Elements</h2>
+    
+    <div class="demo-section">
+      <div class="two-column">
+        <div>
+          <h3>Time <code>&lt;time&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;p&gt;The event starts at &lt;time&gt;20:00&lt;/time&gt;.&lt;/p&gt;
+
+&lt;p&gt;The concert takes place on &lt;time datetime="2025-07-15"&gt;July 15, 2025&lt;/time&gt;.&lt;/p&gt;
+
+&lt;p&gt;Posted: &lt;time datetime="2025-03-15T14:30:00"&gt;March 15, 2025&lt;/time&gt;&lt;/p&gt;</div>
+            <p>The <code>&lt;time&gt;</code> element represents a specific period in time. It may include the <code>datetime</code> attribute to represent time in a machine-readable format.</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Mark <code>&lt;mark&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;p&gt;Here is some text with a &lt;mark&gt;highlighted section&lt;/mark&gt; that needs attention.&lt;/p&gt;
+
+&lt;p&gt;Search results for "semantic HTML":
+&lt;mark&gt;Semantic HTML&lt;/mark&gt; elements clearly describe their meaning...&lt;/p&gt;</div>
+            <div class="element-preview">
+              <p>Here is some text with a <mark>highlighted section</mark> that needs attention.</p>
+              <p>Search results for "semantic HTML": <mark>Semantic HTML</mark> elements clearly describe their meaning...</p>
+            </div>
+            <p>The <code>&lt;mark&gt;</code> element represents text which is marked or highlighted for reference or notation purposes.</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Details and Summary <code>&lt;details&gt; &lt;summary&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;details&gt;
+  &lt;summary&gt;Click to see more information&lt;/summary&gt;
+  &lt;p&gt;This is the detailed content that is initially hidden but can be expanded by clicking the summary.&lt;/p&gt;
+&lt;/details&gt;</div>
+            <div class="element-preview">
+              <details>
+                <summary>Click to see more information</summary>
+                <p>This is the detailed content that is initially hidden but can be expanded by clicking the summary.</p>
+              </details>
+            </div>
+            <p>The <code>&lt;details&gt;</code> element creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state. The <code>&lt;summary&gt;</code> element provides a summary or label for the details.</p>
+          </div>
+        </div>
+        
+        <div>
+          <h3>Address <code>&lt;address&gt;</code></h3>
+          <div class="element-demo">
+            <div class="element-html">&lt;address&gt;
+  Written by &lt;a href="mailto:john@example.com"&gt;John Doe&lt;/a&gt;.&lt;br&gt;
+  Visit us at:&lt;br&gt;
+  Example.com&lt;br&gt;
+  Box 564, Disneyland&lt;br&gt;
+  USA
+&lt;/address&gt;</div>
+            <div class="element-preview">
+              <address>
+                Written by <a href="mailto:john@example.com">John Doe</a>.<br>
+                Visit us at:<br>
+                Example.com<br>
+                Box 564, Disneyland<br>
+                USA
+              </address>
+            </div>
+            <p>The <code>&lt;address&gt;</code> element represents contact information for its nearest <code>&lt;article&gt;</code> or <code>&lt;body&gt;</code> ancestor.</p>
+          </div>
+        </div>
+      </div>
+      
+      <h3>More Semantic Text Elements</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Element</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><code>&lt;cite&gt;</code></td>
+          <td>Represents the title of a creative work</td>
+          <td><cite>The Great Gatsby</cite> by F. Scott Fitzgerald</td>
+        </tr>
+        <tr>
+          <td><code>&lt;code&gt;</code></td>
+          <td>Represents computer code</td>
+          <td>Use <code>getElementById()</code> to get an element by ID</td>
+        </tr>
+        <tr>
+          <td><code>&lt;dfn&gt;</code></td>
+          <td>Represents a defining instance of a term</td>
+          <td>A <dfn>semantic element</dfn> clearly describes its meaning to both the browser and the developer.</td>
+        </tr>
+        <tr>
+          <td><code>&lt;kbd&gt;</code></td>
+          <td>Represents user input from keyboard</td>
+          <td>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save</td>
+        </tr>
+        <tr>
+          <td><code>&lt;abbr&gt;</code></td>
+          <td>Represents an abbreviation or acronym</td>
+          <td><abbr title="HyperText Markup Language">HTML</abbr></td>
+        </tr>
+      </table>
+    </div>
+    
+    <h2>7. Non-visible Semantic Elements</h2>
+    
+    <div class="demo-section">
+      <h3>Main <code>&lt;main&gt;</code></h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  
+  &lt;main&gt;
+    &lt;!-- Main content of the document --&gt;
+    &lt;article&gt;...&lt;/article&gt;
+    &lt;section&gt;...&lt;/section&gt;
+  &lt;/main&gt;
+  
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;</div>
+        <p>The <code>&lt;main&gt;</code> element represents the main content of the document. The content inside the <code>&lt;main&gt;</code> element should be unique to the document and should not include content that is repeated across documents such as navigation links, copyright information, site logos, and search forms (unless the document's main function is as a search form).</p>
+        <p><strong>Note:</strong> There should be only one <code>&lt;main&gt;</code> element in a document, and it should not be a descendant of an <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code>, or <code>&lt;nav&gt;</code> element.</p>
+      </div>
+      
+      <h3>Dialog <code>&lt;dialog&gt;</code></h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;dialog id="myDialog"&gt;
+  &lt;h2&gt;Dialog Title&lt;/h2&gt;
+  &lt;p&gt;This is a dialog window.&lt;/p&gt;
+  &lt;button onclick="document.getElementById('myDialog').close()"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;
+
+&lt;button onclick="document.getElementById('myDialog').showModal()"&gt;Open Dialog&lt;/button&gt;</div>
+        <p>The <code>&lt;dialog&gt;</code> element represents a dialog box or other interactive component, such as a modal or popup. The <code>open</code> attribute determines whether the dialog is active and the user can interact with it.</p>
+      </div>
+    </div>
+    
+    <h2>8. Replacing Divs with Semantic Elements</h2>
+    
+    <div class="demo-section">
+      <h3>Before (Non-Semantic)</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;div class="header"&gt;
+  &lt;h1&gt;Website Title&lt;/h1&gt;
+  &lt;div class="nav"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content"&gt;
+  &lt;div class="article"&gt;
+    &lt;div class="article-header"&gt;
+      &lt;h2&gt;Article Title&lt;/h2&gt;
+      &lt;p&gt;Posted on January 1, 2025&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="article-content"&gt;
+      &lt;p&gt;Article content goes here...&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="article-footer"&gt;
+      &lt;p&gt;Author: John Doe&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="sidebar"&gt;
+    &lt;h3&gt;Related Links&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="footer"&gt;
+  &lt;p&gt;&copy; 2025 My Website&lt;/p&gt;
+&lt;/div&gt;</div>
+      </div>
+      
+      <h3>After (Semantic)</h3>
+      <div class="element-demo">
+        <div class="element-html">&lt;header&gt;
+  &lt;h1&gt;Website Title&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h2&gt;Article Title&lt;/h2&gt;
+      &lt;p&gt;Posted on &lt;time datetime="2025-01-01"&gt;January 1, 2025&lt;/time&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;section&gt;
+      &lt;p&gt;Article content goes here...&lt;/p&gt;
+    &lt;/section&gt;
+    
+    &lt;footer&gt;
+      &lt;p&gt;Author: John Doe&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+  
+  &lt;aside&gt;
+    &lt;h3&gt;Related Links&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;&copy; 2025 My Website&lt;/p&gt;
+&lt;/footer&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Key Replacements:</strong>
+        <ul>
+          <li><code>div.header</code> → <code>&lt;header&gt;</code></li>
+          <li><code>div.nav</code> → <code>&lt;nav&gt;</code></li>
+          <li><code>div.content</code> → <code>&lt;main&gt;</code></li>
+          <li><code>div.article</code> → <code>&lt;article&gt;</code></li>
+          <li><code>div.article-header</code> → <code>&lt;header&gt;</code> (inside article)</li>
+          <li><code>div.article-content</code> → <code>&lt;section&gt;</code></li>
+          <li><code>div.article-footer</code> → <code>&lt;footer&gt;</code> (inside article)</li>
+          <li><code>div.sidebar</code> → <code>&lt;aside&gt;</code></li>
+          <li><code>div.footer</code> → <code>&lt;footer&gt;</code></li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>9. Accessibility Benefits</h2>
+    
+    <div class="demo-section">
+      <p>Using semantic HTML significantly improves accessibility:</p>
+      
+      <table class="attribute-table">
+        <tr>
+          <th>Benefit</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>Screen Reader Navigation</td>
+          <td>Screen readers announce semantic elements, allowing users to navigate by headings, landmarks, etc.</td>
+        </tr>
+        <tr>
+          <td>Keyboard Navigation</td>
+          <td>Semantic elements like <code>&lt;button&gt;</code> have built-in keyboard accessibility</td>
+        </tr>
+        <tr>
+          <td>Landmarks</td>
+          <td>Elements like <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;aside&gt;</code> create ARIA landmarks</td>
+        </tr>
+        <tr>
+          <td>Context</td>
+          <td>Semantic context helps assistive technologies understand content relationships</td>
+        </tr>
+        <tr>
+          <td>Default Styling</td>
+          <td>Semantic elements have default styles that help with accessibility</td>
+        </tr>
+      </table>
+      
+      <h3>Example: ARIA Landmark Mappings</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>HTML Element</th>
+          <th>Implicit ARIA Role</th>
+        </tr>
+        <tr>
+          <td><code>&lt;header&gt;</code></td>
+          <td>banner (when in the <code>&lt;body&gt;</code> context)</td>
+        </tr>
+        <tr>
+          <td><code>&lt;nav&gt;</code></td>
+          <td>navigation</td>
+        </tr>
+        <tr>
+          <td><code>&lt;main&gt;</code></td>
+          <td>main</td>
+        </tr>
+        <tr>
+          <td><code>&lt;aside&gt;</code></td>
+          <td>complementary</td>
+        </tr>
+        <tr>
+          <td><code>&lt;footer&gt;</code></td>
+          <td>contentinfo (when in the <code>&lt;body&gt;</code> context)</td>
+        </tr>
+        <tr>
+          <td><code>&lt;section&gt;</code></td>
+          <td>region (when it has an accessible name)</td>
+        </tr>
+        <tr>
+          <td><code>&lt;article&gt;</code></td>
+          <td>article</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Tip:</strong> Combine semantic HTML with appropriate ARIA attributes when needed for complex components, but remember: "No ARIA is better than bad ARIA." Use native HTML elements with built-in semantics whenever possible.
+      </div>
+    </div>
+    
+    <h2>10. Best Practices</h2>
+    
+    <div class="demo-section">
+      <ul>
+        <li>Use the most specific semantic element for the job; avoid generic <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> when a semantic alternative exists</li>
+        <li>Use headings (<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>) to create a logical document outline</li>
+        <li>Include only one <code>&lt;main&gt;</code> element per page</li>
+        <li>Reserve <code>&lt;article&gt;</code> for self-contained, independently distributable content</li>
+        <li>Use <code>&lt;nav&gt;</code> for major navigation blocks, not for all links</li>
+        <li>Nest elements logically: for example, an <code>&lt;article&gt;</code> can contain <code>&lt;section&gt;</code> elements, or vice versa depending on the content structure</li>
+        <li>Ensure each section of content has an appropriate heading</li>
+        <li>Use <code>&lt;time&gt;</code> with the <code>datetime</code> attribute for dates and times</li>
+        <li>Reserve <code>&lt;address&gt;</code> for contact information, not for postal addresses in general</li>
+        <li>Test the document structure with a screen reader to ensure it makes sense</li>
+        <li>Use proper document validation to catch semantic errors</li>
+      </ul>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-forms.html" class="nav-button">← Previous: Forms & Inputs</a>
+      <a href="html-embedded.html" class="nav-button">Next: Embedded Content →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>

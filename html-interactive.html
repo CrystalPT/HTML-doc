@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Interactive Components Guide</title>
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Interactive Components Demo Styles */
+    .tab-container {
+      margin: 20px 0;
+    }
+    
+    .tab-list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab-button {
+      padding: 10px 15px;
+      background: #f0f0f0;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px 4px 0 0;
+      margin-right: 5px;
+    }
+    
+    .tab-button.active {
+      background: #e74c3c;
+      color: white;
+    }
+    
+    .tab-panel {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-top: none;
+    }
+    
+    .accordion-container {
+      margin: 20px 0;
+    }
+    
+    .accordion-header {
+      background: #f0f0f0;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      position: relative;
+    }
+    
+    .accordion-header:after {
+      content: "+";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .accordion-header.active:after {
+      content: "-";
+    }
+    
+    .accordion-content {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-top: none;
+      display: none;
+    }
+    
+    .accordion-content.active {
+      display: block;
+    }
+    
+    .modal-trigger {
+      padding: 10px 15px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .modal-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 4px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    
+    /* For demo purposes */
+    .active-demo {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Interactive Components Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-accessibility.html" class="nav-button">← Previous: Accessibility</a>
+      <a href="html-metadata-seo.html" class="nav-button">Next: Metadata & SEO →</a>
+    </div>
+    
+    <p>Interactive components enhance user experience by providing dynamic functionality without requiring page reloads. This guide covers how to build common interactive UI components using HTML, CSS, and JavaScript.</p>
+    
+    <h2>1. Accordion Components</h2>
+    
+    <div class="demo-section">
+      <p>Accordions allow you to display a large amount of content in a limited space by showing/hiding sections as needed.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;div class="accordion-container"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h3 class="accordion-header" id="accordion-1"&gt;Section 1&lt;/h3&gt;
+    &lt;div class="accordion-content" id="accordion-content-1" aria-labelledby="accordion-1"&gt;
+      &lt;p&gt;Content for section 1...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="accordion-item"&gt;
+    &lt;h3 class="accordion-header" id="accordion-2"&gt;Section 2&lt;/h3&gt;
+    &lt;div class="accordion-content" id="accordion-content-2" aria-labelledby="accordion-2"&gt;
+      &lt;p&gt;Content for section 2...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .accordion-header {
+    background: #f0f0f0;
+    padding: 15px;
+    cursor: pointer;
+    margin: 0;
+    border: 1px solid #ddd;
+  }
+  
+  .accordion-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+  }
+  
+  .accordion-content.active {
+    display: block;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      // Get the target content ID from header ID
+      const contentId = header.id.replace('accordion-', 'accordion-content-');
+      const content = document.getElementById(contentId);
+      
+      // Toggle the active class
+      content.classList.toggle('active');
+      
+      // Set ARIA attributes
+      const isExpanded = content.classList.contains('active');
+      header.setAttribute('aria-expanded', isExpanded);
+    });
+  });
+  
+  // Initialize ARIA attributes
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    const contentId = header.id.replace('accordion-', 'accordion-content-');
+    const content = document.getElementById(contentId);
+    
+    header.setAttribute('aria-expanded', 'false');
+    header.setAttribute('role', 'button');
+    content.setAttribute('role', 'region');
+  });
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <div class="accordion-container">
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="demo-accordion-1">Section 1</h3>
+              <div class="accordion-content" id="demo-accordion-content-1">
+                <p>This is the content for section 1. It can contain any HTML elements like paragraphs, lists, images, etc.</p>
+                <p>The content is hidden by default and revealed when the header is clicked.</p>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="demo-accordion-2">Section 2</h3>
+              <div class="accordion-content" id="demo-accordion-content-2">
+                <p>This is the content for section 2. Accordions are commonly used in FAQs, product details, and other sections where you want to save space.</p>
+              </div>
+            </div>
+          </div>
+          
+          <script>
+            document.querySelectorAll('.accordion-header').forEach(header => {
+              header.addEventListener('click', () => {
+                header.classList.toggle('active');
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+              });
+            });
+          </script>
+        </div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use proper ARIA attributes (aria-expanded, aria-controls)</li>
+        <li>Ensure keyboard navigation (headers should be focusable)</li>
+        <li>Include proper roles (button for header, region for content)</li>
+        <li>Provide visual indicators of state (expanded/collapsed)</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Best Practice:</strong> For simple accordions, the "disclosure" pattern (using the HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements) provides built-in functionality without requiring JavaScript:
+        <div class="element-html">&lt;details&gt;
+  &lt;summary&gt;Section Title&lt;/summary&gt;
+  &lt;p&gt;Content for this section...&lt;/p&gt;
+&lt;/details&gt;</div>
+      </div>
+    </div>
+    
+    <h2>2. Tab Components</h2>
+    
+    <div class="demo-section">
+      <p>Tabs allow users to navigate between sections of content within the same page, showing only one section at a time.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;div class="tab-container"&gt;
+  &lt;div role="tablist" aria-label="Content tabs"&gt;
+    &lt;button 
+      id="tab-1" 
+      class="tab-button active" 
+      role="tab" 
+      aria-selected="true" 
+      aria-controls="panel-1"
+    &gt;
+      Tab 1
+    &lt;/button&gt;
+    &lt;button 
+      id="tab-2" 
+      class="tab-button" 
+      role="tab" 
+      aria-selected="false" 
+      aria-controls="panel-2"
+    &gt;
+      Tab 2
+    &lt;/button&gt;
+    &lt;button 
+      id="tab-3" 
+      class="tab-button" 
+      role="tab" 
+      aria-selected="false" 
+      aria-controls="panel-3"
+    &gt;
+      Tab 3
+    &lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div 
+    id="panel-1" 
+    class="tab-panel active" 
+    role="tabpanel" 
+    aria-labelledby="tab-1"
+  &gt;
+    &lt;h3&gt;Content for Tab 1&lt;/h3&gt;
+    &lt;p&gt;This is the content for the first tab.&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div 
+    id="panel-2" 
+    class="tab-panel" 
+    role="tabpanel" 
+    aria-labelledby="tab-2" 
+    hidden
+  &gt;
+    &lt;h3&gt;Content for Tab 2&lt;/h3&gt;
+    &lt;p&gt;This is the content for the second tab.&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div 
+    id="panel-3" 
+    class="tab-panel" 
+    role="tabpanel" 
+    aria-labelledby="tab-3" 
+    hidden
+  &gt;
+    &lt;h3&gt;Content for Tab 3&lt;/h3&gt;
+    &lt;p&gt;This is the content for the third tab.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .tab-container {
+    margin: 20px 0;
+  }
+  
+  [role="tablist"] {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .tab-button {
+    padding: 10px 15px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .tab-button.active {
+    background: white;
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+  }
+  
+  .tab-panel {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+  }
+  
+  .tab-panel[hidden] {
+    display: none;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  // Get all tab buttons and panels
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const panels = document.querySelectorAll('[role="tabpanel"]');
+  
+  // Add click event to each tab
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      
+      // Hide all panels
+      panels.forEach(panel => {
+        panel.hidden = true;
+      });
+      
+      // Activate clicked tab
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      
+      // Show the associated panel
+      const panelId = tab.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      panel.hidden = false;
+    });
+    
+    // Add keyboard navigation
+    tab.addEventListener('keydown', e => {
+      // Current tab index
+      const index = Array.from(tabs).indexOf(tab);
+      let nextTab;
+      
+      switch(e.key) {
+        case 'ArrowRight':
+          nextTab = tabs[(index + 1) % tabs.length];
+          break;
+        case 'ArrowLeft':
+          nextTab = tabs[(index - 1 + tabs.length) % tabs.length];
+          break;
+        default:
+          return;
+      }
+      
+      e.preventDefault();
+      nextTab.focus();
+      nextTab.click();
+    });
+  });
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <div class="tab-container">
+            <div class="tab-list" role="tablist">
+              <button id="demo-tab-1" class="tab-button active" role="tab">Tab 1</button>
+              <button id="demo-tab-2" class="tab-button" role="tab">Tab 2</button>
+              <button id="demo-tab-3" class="tab-button" role="tab">Tab 3</button>
+            </div>
+            
+            <div id="demo-panel-1" class="tab-panel" role="tabpanel">
+              <h3>Content for Tab 1</h3>
+              <p>This is the content for the first tab panel. It can contain any HTML elements.</p>
+            </div>
+            
+            <div id="demo-panel-2" class="tab-panel" role="tabpanel" style="display: none;">
+              <h3>Content for Tab 2</h3>
+              <p>This is the content for the second tab panel. Only one tab panel is visible at a time.</p>
+            </div>
+            
+            <div id="demo-panel-3" class="tab-panel" role="tabpanel" style="display: none;">
+              <h3>Content for Tab 3</h3>
+              <p>This is the content for the third tab panel. Tabs are commonly used in settings panels, product pages, and dashboards.</p>
+            </div>
+          </div>
+          
+          <script>
+            const demoTabs = document.querySelectorAll('#demo-tab-1, #demo-tab-2, #demo-tab-3');
+            const demoPanels = document.querySelectorAll('#demo-panel-1, #demo-panel-2, #demo-panel-3');
+            
+            demoTabs.forEach((tab, index) => {
+              tab.addEventListener('click', () => {
+                // Deactivate all tabs
+                demoTabs.forEach(t => t.classList.remove('active'));
+                // Hide all panels
+                demoPanels.forEach(p => p.style.display = 'none');
+                
+                // Activate clicked tab and show panel
+                tab.classList.add('active');
+                demoPanels[index].style.display = 'block';
+              });
+            });
+          </script>
+        </div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use proper ARIA roles (tablist, tab, tabpanel)</li>
+        <li>Set appropriate ARIA attributes (aria-selected, aria-controls, aria-labelledby)</li>
+        <li>Implement keyboard navigation (left/right arrows to move between tabs)</li>
+        <li>Use a visible focus indicator</li>
+        <li>Ensure tab order follows a logical sequence</li>
+      </ul>
+    </div>
+    
+    <h2>3. Modal Dialogs</h2>
+    
+    <div class="demo-section">
+      <p>Modal dialogs display content in a layer above the page, temporarily disabling interaction with the page beneath.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;!-- Trigger button --&gt;
+&lt;button class="modal-trigger" aria-haspopup="dialog"&gt;Open Modal&lt;/button&gt;
+
+&lt;!-- Modal dialog --&gt;
+&lt;div 
+  id="modal" 
+  class="modal-container" 
+  role="dialog" 
+  aria-labelledby="modal-title" 
+  aria-modal="true" 
+  hidden
+&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;button class="modal-close" aria-label="Close dialog"&gt;&times;&lt;/button&gt;
+    &lt;h2 id="modal-title"&gt;Modal Title&lt;/h2&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;This is the modal content.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="modal-confirm"&gt;Confirm&lt;/button&gt;
+      &lt;button class="modal-cancel"&gt;Cancel&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .modal-container[hidden] {
+    display: none;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  // Get elements
+  const modal = document.getElementById('modal');
+  const openButton = document.querySelector('.modal-trigger');
+  const closeButton = modal.querySelector('.modal-close');
+  const cancelButton = modal.querySelector('.modal-cancel');
+  const confirmButton = modal.querySelector('.modal-confirm');
+  
+  // Store element that had focus before modal opened
+  let previouslyFocused;
+  
+  // First and last focusable elements in the modal
+  let firstFocusable;
+  let lastFocusable;
+  
+  // Open modal function
+  function openModal() {
+    // Store the element that had focus
+    previouslyFocused = document.activeElement;
+    
+    // Show the modal
+    modal.hidden = false;
+    
+    // Find all focusable elements
+    const focusableElements = modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    // Save first and last focusable elements
+    firstFocusable = focusableElements[0];
+    lastFocusable = focusableElements[focusableElements.length - 1];
+    
+    // Focus first element
+    firstFocusable.focus();
+    
+    // Trap focus inside modal
+    document.addEventListener('keydown', handleKeyDown);
+  }
+  
+  // Close modal function
+  function closeModal() {
+    // Hide modal
+    modal.hidden = true;
+    
+    // Restore focus
+    previouslyFocused.focus();
+    
+    // Remove event listener
+    document.removeEventListener('keydown', handleKeyDown);
+  }
+  
+  // Handle keyboard events
+  function handleKeyDown(e) {
+    // Close on Escape
+    if (e.key === 'Escape') {
+      closeModal();
+      return;
+    }
+    
+    // Trap focus
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
+  }
+  
+  // Event listeners
+  openButton.addEventListener('click', openModal);
+  closeButton.addEventListener('click', closeModal);
+  cancelButton.addEventListener('click', closeModal);
+  confirmButton.addEventListener('click', () => {
+    // Handle confirmation
+    console.log('Confirmed');
+    closeModal();
+  });
+  
+  // Close when clicking outside the modal content
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <button class="modal-trigger" id="demo-modal-trigger">Open Modal</button>
+          
+          <div class="modal-container" id="demo-modal">
+            <div class="modal-content">
+              <button class="modal-close" id="demo-modal-close">&times;</button>
+              <h3>Modal Dialog</h3>
+              <p>This is a modal dialog. It appears above the page content and blocks interaction with the page until it's closed.</p>
+              <p>Modals are commonly used for alerts, confirmations, forms, and other content that requires immediate attention.</p>
+              <div style="text-align: right; margin-top: 20px;">
+                <button class="modal-trigger" id="demo-modal-confirm" style="background-color: #2ecc71; margin-right: 10px;">Confirm</button>
+                <button class="modal-trigger" id="demo-modal-cancel">Cancel</button>
+              </div>
+            </div>
+          </div>
+          
+          <script>
+            const demoModalTrigger = document.getElementById('demo-modal-trigger');
+            const demoModal = document.getElementById('demo-modal');
+            const demoModalClose = document.getElementById('demo-modal-close');
+            const demoModalConfirm = document.getElementById('demo-modal-confirm');
+            const demoModalCancel = document.getElementById('demo-modal-cancel');
+            
+            demoModalTrigger.addEventListener('click', () => {
+              demoModal.style.display = 'flex';
+            });
+            
+            demoModalClose.addEventListener('click', () => {
+              demoModal.style.display = 'none';
+            });
+            
+            demoModalConfirm.addEventListener('click', () => {
+              demoModal.style.display = 'none';
+            });
+            
+            demoModalCancel.addEventListener('click', () => {
+              demoModal.style.display = 'none';
+            });
+            
+            demoModal.addEventListener('click', (e) => {
+              if (e.target === demoModal) {
+                demoModal.style.display = 'none';
+              }
+            });
+          </script>
+        </div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use proper ARIA attributes (role="dialog", aria-modal="true", aria-labelledby)</li>
+        <li>Trap keyboard focus within the modal while it's open</li>
+        <li>Return focus to the triggering element when the modal closes</li>
+        <li>Allow closing via the Escape key</li>
+        <li>Ensure a logical tab order within the modal</li>
+        <li>Provide a visible close button</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Native Dialog Element:</strong> Modern browsers support the <code>&lt;dialog&gt;</code> element, which provides many of these features natively:
+        <div class="element-html">&lt;dialog id="my-dialog"&gt;
+  &lt;h2&gt;Dialog Title&lt;/h2&gt;
+  &lt;p&gt;Dialog content...&lt;/p&gt;
+  &lt;button id="close-dialog"&gt;Close&lt;/button&gt;
+&lt;/dialog&gt;
+
+&lt;button id="open-dialog"&gt;Open Dialog&lt;/button&gt;
+
+&lt;script&gt;
+  const dialog = document.getElementById('my-dialog');
+  const openBtn = document.getElementById('open-dialog');
+  const closeBtn = document.getElementById('close-dialog');
+  
+  openBtn.addEventListener('click', () => {
+    dialog.showModal();
+  });
+  
+  closeBtn.addEventListener('click', () => {
+    dialog.close();
+  });
+&lt;/script&gt;</div>
+      </div>
+    </div>
+    
+    <h2>4. Dropdown Menus</h2>
+    
+    <div class="demo-section">
+      <p>Dropdown menus display a list of options when a trigger element is activated. They're commonly used for navigation, settings, or actions.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;div class="dropdown-container"&gt;
+  &lt;button 
+    id="dropdown-trigger" 
+    class="dropdown-trigger" 
+    aria-haspopup="true" 
+    aria-expanded="false" 
+    aria-controls="dropdown-menu"
+  &gt;
+    Menu ▼
+  &lt;/button&gt;
+  
+  &lt;ul 
+    id="dropdown-menu" 
+    class="dropdown-menu" 
+    role="menu" 
+    aria-labelledby="dropdown-trigger" 
+    hidden
+  &gt;
+    &lt;li role="menuitem"&gt;&lt;a href="#"&gt;Option 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li role="menuitem"&gt;&lt;a href="#"&gt;Option 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li role="menuitem"&gt;&lt;a href="#"&gt;Option 3&lt;/a&gt;&lt;/li&gt;
+    &lt;li role="separator"&gt;&lt;hr&gt;&lt;/li&gt;
+    &lt;li role="menuitem"&gt;&lt;a href="#"&gt;Option 4&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-trigger {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 160px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 0;
+    margin: 5px 0 0;
+    list-style: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  
+  .dropdown-menu[hidden] {
+    display: none;
+  }
+  
+  .dropdown-menu li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-menu li a:hover,
+  .dropdown-menu li a:focus {
+    background-color: #f5f5f5;
+  }
+  
+  [role="separator"] {
+    margin: 5px 0;
+  }
+  
+  [role="separator"] hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 0;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  const trigger = document.getElementById('dropdown-trigger');
+  const menu = document.getElementById('dropdown-menu');
+  const menuItems = menu.querySelectorAll('[role="menuitem"] a');
+  
+  // Toggle menu
+  function toggleMenu() {
+    const expanded = trigger.getAttribute('aria-expanded') === 'true';
+    
+    if (expanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+  
+  // Open menu
+  function openMenu() {
+    menu.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    
+    // Focus first menu item
+    menuItems[0].focus();
+    
+    // Add event listeners
+    document.addEventListener('click', handleOutsideClick);
+    menu.addEventListener('keydown', handleMenuKeyDown);
+  }
+  
+  // Close menu
+  function closeMenu() {
+    menu.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    
+    // Remove event listeners
+    document.removeEventListener('click', handleOutsideClick);
+    menu.removeEventListener('keydown', handleMenuKeyDown);
+  }
+  
+  // Handle clicks outside the menu
+  function handleOutsideClick(e) {
+    if (!menu.contains(e.target) && !trigger.contains(e.target)) {
+      closeMenu();
+    }
+  }
+  
+  // Handle keyboard navigation
+  function handleMenuKeyDown(e) {
+    const currentIndex = Array.from(menuItems).indexOf(document.activeElement);
+    
+    switch(e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        if (currentIndex < menuItems.length - 1) {
+          menuItems[currentIndex + 1].focus();
+        }
+        break;
+        
+      case 'ArrowUp':
+        e.preventDefault();
+        if (currentIndex > 0) {
+          menuItems[currentIndex - 1].focus();
+        }
+        break;
+        
+      case 'Escape':
+        e.preventDefault();
+        closeMenu();
+        trigger.focus();
+        break;
+        
+      case 'Tab':
+        closeMenu();
+        break;
+    }
+  }
+  
+  // Event listeners
+  trigger.addEventListener('click', toggleMenu);
+  
+  // Handle key events on trigger
+  trigger.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openMenu();
+    }
+  });
+  
+  // Handle selection
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Do something with the selected item
+      console.log('Selected:', item.textContent);
+      closeMenu();
+    });
+  });
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <div style="position: relative; display: inline-block;">
+            <button id="demo-dropdown-trigger" style="padding: 8px 12px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
+              Dropdown Menu ▼
+            </button>
+            
+            <ul id="demo-dropdown-menu" style="position: absolute; display: none; top: 100%; left: 0; min-width: 160px; background-color: white; border: 1px solid #ddd; border-radius: 4px; padding: 5px 0; margin: 5px 0 0; list-style: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 10;">
+              <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #333;">Profile</a></li>
+              <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #333;">Settings</a></li>
+              <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #333;">Messages</a></li>
+              <li style="margin: 5px 0;"><hr style="border: none; border-top: 1px solid #ddd; margin: 0;"></li>
+              <li><a href="#" style="display: block; padding: 8px 12px; text-decoration: none; color: #333;">Logout</a></li>
+            </ul>
+          </div>
+          
+          <script>
+            const demoDropdownTrigger = document.getElementById('demo-dropdown-trigger');
+            const demoDropdownMenu = document.getElementById('demo-dropdown-menu');
+            let isOpen = false;
+            
+            demoDropdownTrigger.addEventListener('click', () => {
+              isOpen = !isOpen;
+              demoDropdownMenu.style.display = isOpen ? 'block' : 'none';
+            });
+            
+            document.addEventListener('click', (e) => {
+              if (isOpen && e.target !== demoDropdownTrigger && !demoDropdownMenu.contains(e.target)) {
+                isOpen = false;
+                demoDropdownMenu.style.display = 'none';
+              }
+            });
+          </script>
+        </div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use appropriate ARIA attributes (aria-haspopup, aria-expanded)</li>
+        <li>Implement keyboard navigation (arrow keys, Escape to close)</li>
+        <li>Set proper roles (menu, menuitem)</li>
+        <li>Ensure visible focus states</li>
+        <li>Allow closing by clicking outside or pressing Escape</li>
+        <li>Handle touch events for mobile devices</li>
+      </ul>
+    </div>
+    
+    <h2>5. Carousels / Sliders</h2>
+    
+    <div class="demo-section">
+      <p>Carousels (also called sliders) display a series of content items within a contained area, showing one or more items at a time with navigation controls.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;div class="carousel-container"&gt;
+  &lt;h2 id="carousel-heading"&gt;Featured Products&lt;/h2&gt;
+  
+  &lt;div 
+    class="carousel" 
+    role="region" 
+    aria-roledescription="carousel" 
+    aria-labelledby="carousel-heading"
+  &gt;
+    &lt;ul 
+      class="carousel-items" 
+      role="list"
+    &gt;
+      &lt;li 
+        class="carousel-item active" 
+        role="group" 
+        aria-roledescription="slide" 
+        aria-label="1 of 4"
+      &gt;
+        &lt;img src="slide1.jpg" alt="Description of slide 1"&gt;
+      &lt;/li&gt;
+      &lt;li 
+        class="carousel-item" 
+        role="group" 
+        aria-roledescription="slide" 
+        aria-label="2 of 4" 
+        hidden
+      &gt;
+        &lt;img src="slide2.jpg" alt="Description of slide 2"&gt;
+      &lt;/li&gt;
+      &lt;li 
+        class="carousel-item" 
+        role="group" 
+        aria-roledescription="slide" 
+        aria-label="3 of 4" 
+        hidden
+      &gt;
+        &lt;img src="slide3.jpg" alt="Description of slide 3"&gt;
+      &lt;/li&gt;
+      &lt;li 
+        class="carousel-item" 
+        role="group" 
+        aria-roledescription="slide" 
+        aria-label="4 of 4" 
+        hidden
+      &gt;
+        &lt;img src="slide4.jpg" alt="Description of slide 4"&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;div class="carousel-controls"&gt;
+      &lt;button 
+        class="carousel-prev" 
+        aria-label="Previous slide"
+      &gt;
+        &lt;span aria-hidden="true"&gt;&amp;laquo;&lt;/span&gt;
+      &lt;/button&gt;
+      
+      &lt;div class="carousel-indicators" role="tablist"&gt;
+        &lt;button 
+          role="tab" 
+          aria-selected="true" 
+          aria-label="Slide 1" 
+          aria-controls="slide-1"
+        &gt;&lt;/button&gt;
+        &lt;button 
+          role="tab" 
+          aria-selected="false" 
+          aria-label="Slide 2" 
+          aria-controls="slide-2"
+        &gt;&lt;/button&gt;
+        &lt;button 
+          role="tab" 
+          aria-selected="false" 
+          aria-label="Slide 3" 
+          aria-controls="slide-3"
+        &gt;&lt;/button&gt;
+        &lt;button 
+          role="tab" 
+          aria-selected="false" 
+          aria-label="Slide 4" 
+          aria-controls="slide-4"
+        &gt;&lt;/button&gt;
+      &lt;/div&gt;
+      
+      &lt;button 
+        class="carousel-next" 
+        aria-label="Next slide"
+      &gt;
+        &lt;span aria-hidden="true"&gt;&amp;raquo;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS (simplified) --&gt;
+&lt;style&gt;
+  .carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .carousel {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carousel-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 400px;
+  }
+  
+  .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .carousel-item.active {
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .carousel-prev, 
+  .carousel-next {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .carousel-indicators {
+    display: flex;
+    margin: 0 10px;
+  }
+  
+  .carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.5);
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .carousel-indicators button[aria-selected="true"] {
+    background: white;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript (simplified) --&gt;
+&lt;script&gt;
+  // Get elements
+  const slides = document.querySelectorAll('.carousel-item');
+  const prevButton = document.querySelector('.carousel-prev');
+  const nextButton = document.querySelector('.carousel-next');
+  const indicators = document.querySelectorAll('.carousel-indicators button');
+  
+  // Track current slide
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  
+  // Function to update aria labels when slide changes
+  function updateSlideLabels() {
+    slides.forEach((slide, index) => {
+      slide.setAttribute('aria-label', `${index + 1} of ${totalSlides}`);
+    });
+  }
+  
+  // Initialize slide labels
+  updateSlideLabels();
+  
+  // Function to show a specific slide
+  function showSlide(index) {
+    // Handle index bounds
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    
+    // Update current slide index
+    currentSlide = index;
+    
+    // Hide all slides
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      slide.hidden = true;
+      indicators[i].setAttribute('aria-selected', 'false');
+    });
+    
+    // Show current slide
+    slides[currentSlide].classList.add('active');
+    slides[currentSlide].hidden = false;
+    indicators[currentSlide].setAttribute('aria-selected', 'true');
+    
+    // Announce slide change to screen readers
+    announceSlide(currentSlide);
+  }
+  
+  // Function to announce slide change to screen readers
+  function announceSlide(index) {
+    // Create live region if not exists
+    let liveRegion = document.getElementById('carousel-live');
+    if (!liveRegion) {
+      liveRegion = document.createElement('div');
+      liveRegion.id = 'carousel-live';
+      liveRegion.setAttribute('aria-live', 'polite');
+      liveRegion.setAttribute('aria-atomic', 'true');
+      liveRegion.className = 'sr-only'; // Visually hidden
+      document.body.appendChild(liveRegion);
+    }
+    
+    // Announce current slide
+    liveRegion.textContent = `Showing slide ${index + 1} of ${totalSlides}`;
+  }
+  
+  // Event listeners for buttons
+  prevButton.addEventListener('click', () => showSlide(currentSlide - 1));
+  nextButton.addEventListener('click', () => showSlide(currentSlide + 1));
+  
+  // Event listeners for indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => showSlide(index));
+  });
+  
+  // Auto-advance (optional)
+  let autoplayId;
+  
+  function startAutoplay() {
+    autoplayId = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000); // Change slide every 5 seconds
+  }
+  
+  function stopAutoplay() {
+    clearInterval(autoplayId);
+  }
+  
+  // Pause autoplay on hover/focus
+  const carousel = document.querySelector('.carousel');
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+  carousel.addEventListener('focusin', stopAutoplay);
+  carousel.addEventListener('focusout', startAutoplay);
+  
+  // Start autoplay
+  startAutoplay();
+  
+  // Show first slide initially
+  showSlide(0);
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use appropriate ARIA roles and attributes (role="region", aria-roledescription="carousel")</li>
+        <li>Include meaningful alt text for all images</li>
+        <li>Ensure all controls are keyboard accessible</li>
+        <li>Provide a way to stop automatic rotation</li>
+        <li>Allow users to navigate between slides with keyboard</li>
+        <li>Ensure proper focus management when slides change</li>
+        <li>Announce slide changes to screen readers</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Caution:</strong> Carousels can present accessibility challenges. Consider these alternatives:
+        <ul>
+          <li>Static images with text descriptions</li>
+          <li>Tabbed interface where users can choose what content to view</li>
+          <li>Grid layout showing all items at once</li>
+          <li>Single featured item with a link to view more</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>6. Tooltips</h2>
+    
+    <div class="demo-section">
+      <p>Tooltips provide additional information when a user hovers over or focuses on an element.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;!-- Basic tooltip with aria-describedby --&gt;
+&lt;div class="tooltip-container"&gt;
+  &lt;button 
+    id="info-button" 
+    aria-describedby="tooltip-1"
+  &gt;
+    More Info
+  &lt;/button&gt;
+  
+  &lt;div 
+    id="tooltip-1" 
+    role="tooltip" 
+    class="tooltip"
+  &gt;
+    This is additional information
+    &lt;div class="tooltip-arrow"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 10;
+  }
+  
+  .tooltip-arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+  }
+  
+  /* Show tooltip on hover/focus */
+  .tooltip-container:hover .tooltip,
+  .tooltip-container:focus-within .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript for more complex tooltips --&gt;
+&lt;script&gt;
+  // For more complex behavior, like click-to-show tooltips
+  // or dynamic positioning based on available space
+  
+  class Tooltip {
+    constructor(element) {
+      this.element = element;
+      this.tooltip = document.getElementById(
+        element.getAttribute('aria-describedby')
+      );
+      this.position = this.tooltip.getAttribute('data-position') || 'top';
+      
+      this.init();
+    }
+    
+    init() {
+      // Toggle on click for mobile accessibility
+      this.element.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.toggle();
+      });
+      
+      // Show on hover for desktop
+      this.element.addEventListener('mouseenter', () => {
+        this.show();
+      });
+      
+      this.element.addEventListener('mouseleave', () => {
+        this.hide();
+      });
+      
+      // Show on focus for keyboard users
+      this.element.addEventListener('focus', () => {
+        this.show();
+      });
+      
+      this.element.addEventListener('blur', () => {
+        this.hide();
+      });
+      
+      // Close when Escape is pressed
+      this.element.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isVisible) {
+          this.hide();
+        }
+      });
+      
+      // Position the tooltip
+      this.position();
+    }
+    
+    position() {
+      // Position logic based on this.position and available space
+      // ...
+    }
+    
+    show() {
+      this.tooltip.style.opacity = '1';
+      this.tooltip.style.visibility = 'visible';
+      this.isVisible = true;
+    }
+    
+    hide() {
+      this.tooltip.style.opacity = '0';
+      this.tooltip.style.visibility = 'hidden';
+      this.isVisible = false;
+    }
+    
+    toggle() {
+      if (this.isVisible) {
+        this.hide();
+      } else {
+        this.show();
+      }
+    }
+  }
+  
+  // Initialize all tooltips
+  document.querySelectorAll('[aria-describedby]').forEach(element => {
+    new Tooltip(element);
+  });
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <div style="position: relative; display: inline-block; margin: 20px;">
+            <button id="demo-tooltip-button" style="padding: 8px 12px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;">
+              Hover Me
+            </button>
+            
+            <div id="demo-tooltip" style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 10px; padding: 8px 10px; background-color: #333; color: white; border-radius: 4px; font-size: 14px; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; z-index: 10;">
+              This is a tooltip
+              <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: #333 transparent transparent transparent;"></div>
+            </div>
+          </div>
+          
+          <script>
+            const demoTooltipButton = document.getElementById('demo-tooltip-button');
+            const demoTooltip = document.getElementById('demo-tooltip');
+            
+            demoTooltipButton.addEventListener('mouseenter', () => {
+              demoTooltip.style.opacity = '1';
+              demoTooltip.style.visibility = 'visible';
+            });
+            
+            demoTooltipButton.addEventListener('mouseleave', () => {
+              demoTooltip.style.opacity = '0';
+              demoTooltip.style.visibility = 'hidden';
+            });
+            
+            demoTooltipButton.addEventListener('focus', () => {
+              demoTooltip.style.opacity = '1';
+              demoTooltip.style.visibility = 'visible';
+            });
+            
+            demoTooltipButton.addEventListener('blur', () => {
+              demoTooltip.style.opacity = '0';
+              demoTooltip.style.visibility = 'hidden';
+            });
+          </script>
+        </div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use aria-describedby to associate tooltip with its trigger</li>
+        <li>Ensure tooltips are accessible via keyboard (focus)</li>
+        <li>Use role="tooltip" on the tooltip element</li>
+        <li>Consider making tooltips activatable by click for touch devices</li>
+        <li>Ensure sufficient color contrast</li>
+        <li>Don't hide essential information in tooltips</li>
+      </ul>
+    </div>
+    
+    <h2>7. Form Validation and Feedback</h2>
+    
+    <div class="demo-section">
+      <p>Interactive validation provides immediate feedback about form input errors, helping users correct issues before submission.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;form id="signup-form" novalidate&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="username"&gt;Username:&lt;/label&gt;
+    &lt;input 
+      type="text" 
+      id="username" 
+      name="username" 
+      required 
+      minlength="4" 
+      maxlength="20" 
+      pattern="[a-zA-Z0-9_]+" 
+      aria-describedby="username-hint"
+    &gt;
+    &lt;div id="username-hint" class="form-hint"&gt;
+      4-20 characters, letters, numbers, and underscores only
+    &lt;/div&gt;
+    &lt;div id="username-error" class="form-error" aria-live="polite"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input 
+      type="email" 
+      id="email" 
+      name="email" 
+      required 
+      aria-describedby="email-error"
+    &gt;
+    &lt;div id="email-error" class="form-error" aria-live="polite"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input 
+      type="password" 
+      id="password" 
+      name="password" 
+      required 
+      minlength="8" 
+      aria-describedby="password-hint password-error"
+    &gt;
+    &lt;div id="password-hint" class="form-hint"&gt;
+      At least 8 characters with a number and a special character
+    &lt;/div&gt;
+    &lt;div id="password-error" class="form-error" aria-live="polite"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit"&gt;Sign Up&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
+  
+  /* Validation states */
+  input.valid {
+    border-color: #2ecc71;
+  }
+  
+  input.invalid {
+    border-color: #e74c3c;
+  }
+  
+  .form-hint {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 5px;
+  }
+  
+  .form-error {
+    font-size: 14px;
+    color: #e74c3c;
+    margin-top: 5px;
+    min-height: 20px; /* Prevent layout shift */
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  const form = document.getElementById('signup-form');
+  const inputs = form.querySelectorAll('input');
+  
+  // Custom validation messages
+  const validationMessages = {
+    username: {
+      valueMissing: 'Username is required',
+      tooShort: 'Username must be at least 4 characters',
+      tooLong: 'Username cannot be longer than 20 characters',
+      patternMismatch: 'Username can only contain letters, numbers, and underscores'
+    },
+    email: {
+      valueMissing: 'Email is required',
+      typeMismatch: 'Please enter a valid email address'
+    },
+    password: {
+      valueMissing: 'Password is required',
+      tooShort: 'Password must be at least 8 characters',
+      patternMismatch: 'Password must include at least one number and one special character'
+    }
+  };
+  
+  // Validate single input
+  function validateInput(input) {
+    const field = input.name;
+    const errorElement = document.getElementById(`${field}-error`);
+    
+    // Clear previous error
+    errorElement.textContent = '';
+    input.classList.remove('valid', 'invalid');
+    input.setAttribute('aria-invalid', 'false');
+    
+    // Check validity
+    if (!input.validity.valid) {
+      input.classList.add('invalid');
+      input.setAttribute('aria-invalid', 'true');
+      
+      // Get appropriate error message
+      let message = '';
+      if (input.validity.valueMissing) {
+        message = validationMessages[field].valueMissing;
+      } else if (input.validity.tooShort) {
+        message = validationMessages[field].tooShort;
+      } else if (input.validity.tooLong) {
+        message = validationMessages[field].tooLong;
+      } else if (input.validity.typeMismatch) {
+        message = validationMessages[field].typeMismatch;
+      } else if (input.validity.patternMismatch) {
+        message = validationMessages[field].patternMismatch;
+      }
+      
+      errorElement.textContent = message;
+      return false;
+    } else {
+      input.classList.add('valid');
+      return true;
+    }
+  }
+  
+  // Add validation listeners to all inputs
+  inputs.forEach(input => {
+    // Validate on blur
+    input.addEventListener('blur', () => {
+      validateInput(input);
+    });
+    
+    // Real-time validation for better feedback
+    input.addEventListener('input', () => {
+      if (input.classList.contains('invalid')) {
+        validateInput(input);
+      }
+    });
+  });
+  
+  // Form submission
+  form.addEventListener('submit', (e) => {
+    let isValid = true;
+    
+    // Validate all inputs
+    inputs.forEach(input => {
+      if (!validateInput(input)) {
+        isValid = false;
+      }
+    });
+    
+    // Prevent submission if invalid
+    if (!isValid) {
+      e.preventDefault();
+      
+      // Focus the first invalid input
+      const firstInvalid = form.querySelector('input.invalid');
+      if (firstInvalid) {
+        firstInvalid.focus();
+      }
+      
+      // Announce validation errors
+      const formError = document.createElement('div');
+      formError.setAttribute('role', 'alert');
+      formError.textContent = 'There are errors in the form. Please correct them and try again.';
+      form.prepend(formError);
+      
+      // Remove the alert after a delay
+      setTimeout(() => {
+        formError.remove();
+      }, 5000);
+    }
+  });
+&lt;/script&gt;</div>
+        <div class="element-preview">
+          <form id="demo-validation-form" style="max-width: 400px; margin: 0 auto;">
+            <div style="margin-bottom: 15px;">
+              <label for="demo-username" style="display: block; margin-bottom: 5px;">Username:</label>
+              <input type="text" id="demo-username" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+              <div id="demo-username-error" style="color: #e74c3c; font-size: 14px; margin-top: 5px; min-height: 20px;"></div>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+              <label for="demo-email" style="display: block; margin-bottom: 5px;">Email:</label>
+              <input type="email" id="demo-email" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+              <div id="demo-email-error" style="color: #e74c3c; font-size: 14px; margin-top: 5px; min-height: 20px;"></div>
+            </div>
+            
+            <button type="button" id="demo-validate-button" style="padding: 10px 15px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Validate</button>
+          </form>
+          
+          <script>
+            const demoUsernameInput = document.getElementById('demo-username');
+            const demoEmailInput = document.getElementById('demo-email');
+            const demoUsernameError = document.getElementById('demo-username-error');
+            const demoEmailError = document.getElementById('demo-email-error');
+            const demoValidateButton = document.getElementById('demo-validate-button');
+            
+            function validateDemoForm() {
+              let isValid = true;
+              
+              // Username validation
+              if (demoUsernameInput.value.trim() === '') {
+                demoUsernameError.textContent = 'Username is required';
+                demoUsernameInput.style.borderColor = '#e74c3c';
+                isValid = false;
+              } else if (demoUsernameInput.value.length < 3) {
+                demoUsernameError.textContent = 'Username must be at least 3 characters';
+                demoUsernameInput.style.borderColor = '#e74c3c';
+                isValid = false;
+              } else {
+                demoUsernameError.textContent = '';
+                demoUsernameInput.style.borderColor = '#2ecc71';
+              }
+              
+              // Email validation
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (demoEmailInput.value.trim() === '') {
+                demoEmailError.textContent = 'Email is required';
+                demoEmailInput.style.borderColor = '#e74c3c';
+                isValid = false;
+              } else if (!emailRegex.test(demoEmailInput.value)) {
+                demoEmailError.textContent = 'Please enter a valid email address';
+                demoEmailInput.style.borderColor = '#e74c3c';
+                isValid = false;
+              } else {
+                demoEmailError.textContent = '';
+                demoEmailInput.style.borderColor = '#2ecc71';
+              }
+              
+              return isValid;
+            }
+            
+            demoValidateButton.addEventListener('click', validateDemoForm);
+            
+            demoUsernameInput.addEventListener('input', () => {
+              if (demoUsernameError.textContent) {
+                validateDemoForm();
+              }
+            });
+            
+            demoEmailInput.addEventListener('input', () => {
+              if (demoEmailError.textContent) {
+                validateDemoForm();
+              }
+            });
+          </script>
+        </div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Use aria-describedby to associate error messages with inputs</li>
+        <li>Use aria-invalid to indicate validation state</li>
+        <li>Use aria-live regions for dynamic error messages</li>
+        <li>Provide clear error messages that explain how to fix the issue</li>
+        <li>Use appropriate visual indicators (colors, icons) with sufficient contrast</li>
+        <li>Don't rely solely on color to indicate errors</li>
+        <li>Focus the first invalid field after submission</li>
+      </ul>
+    </div>
+    
+    <h2>8. Drag and Drop Interfaces</h2>
+    
+    <div class="demo-section">
+      <p>Drag and drop interfaces allow users to directly manipulate elements on the page, often for reordering or organization.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;div class="drag-container"&gt;
+  &lt;h2 id="drag-heading"&gt;Task List&lt;/h2&gt;
+  &lt;p id="drag-instructions" class="sr-only"&gt;
+    Use the grab handle to drag items and reorder the list. Press Space to pick up, use arrow keys to reorder, and Space to drop.
+  &lt;/p&gt;
+  
+  &lt;ul 
+    id="sortable-list" 
+    class="sortable-list" 
+    aria-labelledby="drag-heading" 
+    aria-describedby="drag-instructions"
+  &gt;
+    &lt;li 
+      class="sortable-item" 
+      draggable="true" 
+      aria-roledescription="sortable item" 
+      aria-grabbed="false"
+    &gt;
+      &lt;div class="drag-handle" tabindex="0" aria-label="Drag handle"&gt;☰&lt;/div&gt;
+      &lt;div class="item-content"&gt;Task 1: Complete project proposal&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li 
+      class="sortable-item" 
+      draggable="true" 
+      aria-roledescription="sortable item" 
+      aria-grabbed="false"
+    &gt;
+      &lt;div class="drag-handle" tabindex="0" aria-label="Drag handle"&gt;☰&lt;/div&gt;
+      &lt;div class="item-content"&gt;Task 2: Review client feedback&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li 
+      class="sortable-item" 
+      draggable="true" 
+      aria-roledescription="sortable item" 
+      aria-grabbed="false"
+    &gt;
+      &lt;div class="drag-handle" tabindex="0" aria-label="Drag handle"&gt;☰&lt;/div&gt;
+      &lt;div class="item-content"&gt;Task 3: Update documentation&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li 
+      class="sortable-item" 
+      draggable="true" 
+      aria-roledescription="sortable item" 
+      aria-grabbed="false"
+    &gt;
+      &lt;div class="drag-handle" tabindex="0" aria-label="Drag handle"&gt;☰&lt;/div&gt;
+      &lt;div class="item-content"&gt;Task 4: Schedule team meeting&lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+  .sortable-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sortable-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .sortable-item.dragging {
+    opacity: 0.5;
+    background-color: #f5f5f5;
+  }
+  
+  .sortable-item.drag-over {
+    border-top: 2px solid #3498db;
+  }
+  
+  .drag-handle {
+    cursor: grab;
+    padding: 5px 10px;
+    margin-right: 10px;
+    color: #999;
+  }
+  
+  .drag-handle:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+  }
+  
+  .drag-handle:active {
+    cursor: grabbing;
+  }
+  
+  .item-content {
+    flex: 1;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  const sortableList = document.getElementById('sortable-list');
+  const items = sortableList.querySelectorAll('.sortable-item');
+  const dragHandles = sortableList.querySelectorAll('.drag-handle');
+  
+  let draggedItem = null;
+  
+  // Announce changes to screen readers
+  function announceChange(message) {
+    let liveRegion = document.getElementById('drag-live');
+    if (!liveRegion) {
+      liveRegion = document.createElement('div');
+      liveRegion.id = 'drag-live';
+      liveRegion.setAttribute('aria-live', 'assertive');
+      liveRegion.className = 'sr-only';
+      document.body.appendChild(liveRegion);
+    }
+    
+    liveRegion.textContent = message;
+  }
+  
+  // Initialize
+  items.forEach(item => {
+    // Mouse drag events
+    item.addEventListener('dragstart', function() {
+      draggedItem = this;
+      setTimeout(() => {
+        this.classList.add('dragging');
+        this.setAttribute('aria-grabbed', 'true');
+      }, 0);
+      
+      // Announce to screen readers
+      const itemText = this.querySelector('.item-content').textContent;
+      announceChange(`Grabbed ${itemText}`);
+    });
+    
+    item.addEventListener('dragend', function() {
+      this.classList.remove('dragging');
+      this.setAttribute('aria-grabbed', 'false');
+      
+      // Announce to screen readers
+      const itemText = this.querySelector('.item-content').textContent;
+      const newPosition = Array.from(sortableList.children).indexOf(this) + 1;
+      announceChange(`${itemText} moved to position ${newPosition} of ${items.length}`);
+    });
+    
+    // Handle draghandles for keyboard accessibility
+    const dragHandle = item.querySelector('.drag-handle');
+    
+    // Space to grab/drop
+    dragHandle.addEventListener('keydown', function(e) {
+      if (e.code === 'Space' || e.key === ' ') {
+        e.preventDefault();
+        
+        if (draggedItem === item) {
+          // Drop
+          draggedItem.classList.remove('dragging');
+          draggedItem.setAttribute('aria-grabbed', 'false');
+          draggedItem = null;
+        } else {
+          // Pick up
+          if (draggedItem) {
+            // Drop previous item if any
+            draggedItem.classList.remove('dragging');
+            draggedItem.setAttribute('aria-grabbed', 'false');
+          }
+          
+          // Pick up new item
+          draggedItem = item;
+          draggedItem.classList.add('dragging');
+          draggedItem.setAttribute('aria-grabbed', 'true');
+          
+          // Announce to screen readers
+          const itemText = draggedItem.querySelector('.item-content').textContent;
+          announceChange(`Grabbed ${itemText}. Use arrow keys to reorder.`);
+        }
+      }
+      
+      // Arrow keys to move
+      if (draggedItem === item) {
+        const currentIndex = Array.from(sortableList.children).indexOf(draggedItem);
+        
+        if (e.key === 'ArrowUp' && currentIndex > 0) {
+          e.preventDefault();
+          const previousItem = sortableList.children[currentIndex - 1];
+          sortableList.insertBefore(draggedItem, previousItem);
+          
+          // Focus moved item's drag handle
+          draggedItem.querySelector('.drag-handle').focus();
+          
+          announceChange(`Moved up to position ${currentIndex}`);
+        }
+        
+        if (e.key === 'ArrowDown' && currentIndex < sortableList.children.length - 1) {
+          e.preventDefault();
+          const nextItem = sortableList.children[currentIndex + 2]; // +2 because the current item is still in the list
+          if (nextItem) {
+            sortableList.insertBefore(draggedItem, nextItem);
+          } else {
+            sortableList.appendChild(draggedItem);
+          }
+          
+          // Focus moved item's drag handle
+          draggedItem.querySelector('.drag-handle').focus();
+          
+          announceChange(`Moved down to position ${currentIndex + 2}`);
+        }
+      }
+    });
+  });
+  
+  // Handle drop targets
+  sortableList.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    
+    const afterElement = getDragAfterElement(sortableList, e.clientY);
+    const draggable = document.querySelector('.dragging');
+    
+    if (afterElement == null) {
+      sortableList.appendChild(draggable);
+    } else {
+      sortableList.insertBefore(draggable, afterElement);
+    }
+  });
+  
+  // Helper function to determine drag position
+  function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.sortable-item:not(.dragging)')];
+    
+    return draggableElements.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+  }
+&lt;/script&gt;</div>
+      </div>
+      
+      <h3>Accessibility Considerations</h3>
+      <ul>
+        <li>Implement keyboard controls for dragging and dropping</li>
+        <li>Use appropriate ARIA attributes (aria-grabbed, aria-dropeffect)</li>
+        <li>Provide instructions for both mouse and keyboard users</li>
+        <li>Announce changes to screen readers using aria-live regions</li>
+        <li>Provide visible focus indicators</li>
+        <li>Ensure sufficient color contrast for all states</li>
+        <li>Always provide alternative methods for reordering (e.g., up/down buttons)</li>
+      </ul>
+    </div>
+    
+    <h2>9. Infinite Scroll</h2>
+    
+    <div class="demo-section">
+      <p>Infinite scroll automatically loads more content as the user scrolls down, providing a seamless browsing experience without pagination.</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- HTML Structure --&gt;
+&lt;div class="infinite-scroll-container"&gt;
+  &lt;h2 id="content-heading"&gt;Article List&lt;/h2&gt;
+  
+  &lt;div 
+    role="feed" 
+    aria-busy="false" 
+    aria-labelledby="content-heading"
+  &gt;
+    &lt;ul id="content-list" class="content-list"&gt;
+      &lt;!-- Initial items --&gt;
+      &lt;li class="content-item"&gt;
+        &lt;article&gt;
+          &lt;h3&gt;Article Title 1&lt;

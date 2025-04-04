@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms & Inputs Guide</title>
+  <!-- Vercel Analytics -->
+  <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f7fa;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    h2 {
+      color: #e74c3c;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 8px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+    
+    .demo-section {
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    pre {
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-left: 4px solid #e74c3c;
+      border-radius: 0 4px 4px 0;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #e74c3c;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      color: #7f8c8d;
+      font-size: 0.9rem;
+    }
+    
+    /* Element Demo Styles */
+    .element-demo {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    
+    .element-html {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+    }
+    
+    .element-preview {
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    
+    .attribute-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .attribute-table th,
+    .attribute-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .attribute-table th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+    
+    .attribute-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .element-info {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .browser-support {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .browser {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 80px;
+    }
+    
+    .browser-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .support-yes {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+    
+    .support-partial {
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .support-no {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    /* Navigation */
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    
+    .nav-button {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-button:hover {
+      background-color: #c0392b;
+    }
+    
+    /* Form styles for this specific page */
+    .demo-form {
+      max-width: 100%;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 4px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    
+    .form-button {
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .form-button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Forms & Inputs Guide</h1>
+    
+    <div class="navigation">
+      <a href="html-tables.html" class="nav-button">← Previous: Tables</a>
+      <a href="html-semantic.html" class="nav-button">Next: Semantic Elements →</a>
+    </div>
+    
+    <p>Forms are the primary way to collect user input on websites. This guide covers everything you need to know about creating and styling HTML forms and input controls.</p>
+    
+    <h2>1. Basic Form Structure</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;form&gt;</code> element is the container for form controls such as input fields, checkboxes, and buttons. Here's a basic structure:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;form action="/submit-form" method="post"&gt;
+  &lt;label for="name"&gt;Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+  
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+  
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</div>
+        <div class="element-preview">
+          <form class="demo-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Name:</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            
+            <button type="submit" class="form-button">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+      <h3>Form Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>action</code></td>
+          <td>Specifies where to send the form data when submitted (URL)</td>
+        </tr>
+        <tr>
+          <td><code>method</code></td>
+          <td>Specifies the HTTP method to use when submitting the form (get or post)</td>
+        </tr>
+        <tr>
+          <td><code>enctype</code></td>
+          <td>Specifies how form data should be encoded when submitting to the server (used with method="post")</td>
+        </tr>
+        <tr>
+          <td><code>autocomplete</code></td>
+          <td>Specifies whether the browser should autocomplete form fields (on or off)</td>
+        </tr>
+        <tr>
+          <td><code>novalidate</code></td>
+          <td>Specifies that the form should not be validated when submitted</td>
+        </tr>
+        <tr>
+          <td><code>target</code></td>
+          <td>Specifies where to display the response after submitting the form (_self, _blank, _parent, _top)</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Important:</strong> The <code>action</code> attribute defines where the form data is sent when submitted. If omitted, it submits to the current page. The <code>method</code> attribute specifies the HTTP method (get or post). GET appends form data to the URL, while POST sends it in the HTTP request body.
+      </div>
+    </div>
+    
+    <h2>2. Text Input Fields</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;input&gt;</code> element is used to create various form controls. Here are different types of text input fields:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic text input --&gt;
+&lt;label for="username"&gt;Username:&lt;/label&gt;
+&lt;input type="text" id="username" name="username" placeholder="Enter username"&gt;
+
+&lt;!-- Password input --&gt;
+&lt;label for="password"&gt;Password:&lt;/label&gt;
+&lt;input type="password" id="password" name="password" placeholder="Enter password"&gt;
+
+&lt;!-- Email input --&gt;
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" placeholder="Enter email"&gt;
+
+&lt;!-- Textarea for multi-line text --&gt;
+&lt;label for="message"&gt;Message:&lt;/label&gt;
+&lt;textarea id="message" name="message" rows="4" cols="50" placeholder="Enter your message"&gt;&lt;/textarea&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <div class="form-group">
+              <label for="username" class="form-label">Username:</label>
+              <input type="text" id="username" name="username" placeholder="Enter username" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="password" class="form-label">Password:</label>
+              <input type="password" id="password" name="password" placeholder="Enter password" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="email2" class="form-label">Email:</label>
+              <input type="email" id="email2" name="email" placeholder="Enter email" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message:</label>
+              <textarea id="message" name="message" rows="4" placeholder="Enter your message" class="form-control"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Common Input Attributes</h3>
+      <table class="attribute-table">
+        <tr>
+          <th>Attribute</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>type</code></td>
+          <td>Specifies the type of input (text, password, email, etc.)</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td>Specifies the name of the input (used when submitting the form)</td>
+        </tr>
+        <tr>
+          <td><code>value</code></td>
+          <td>Specifies the initial value of the input</td>
+        </tr>
+        <tr>
+          <td><code>placeholder</code></td>
+          <td>Provides a hint about what to enter in the input</td>
+        </tr>
+        <tr>
+          <td><code>required</code></td>
+          <td>Specifies that the input field must be filled out</td>
+        </tr>
+        <tr>
+          <td><code>disabled</code></td>
+          <td>Disables the input field (not clickable and not submitted)</td>
+        </tr>
+        <tr>
+          <td><code>readonly</code></td>
+          <td>Makes the input field read-only (cannot be modified but is submitted)</td>
+        </tr>
+        <tr>
+          <td><code>maxlength</code></td>
+          <td>Specifies the maximum number of characters allowed</td>
+        </tr>
+        <tr>
+          <td><code>minlength</code></td>
+          <td>Specifies the minimum number of characters required</td>
+        </tr>
+        <tr>
+          <td><code>pattern</code></td>
+          <td>Specifies a regular expression to validate the input value</td>
+        </tr>
+        <tr>
+          <td><code>autocomplete</code></td>
+          <td>Specifies whether the browser should autocomplete this input</td>
+        </tr>
+        <tr>
+          <td><code>autofocus</code></td>
+          <td>Specifies that the input field should automatically get focus when the page loads</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Tip:</strong> Always use the <code>&lt;label&gt;</code> element properly associated with each input field (using the <code>for</code> attribute matching the input's <code>id</code>). This improves accessibility and user experience by allowing users to click on the label to focus the input.
+      </div>
+    </div>
+    
+    <h2>3. Selection Controls</h2>
+    
+    <div class="demo-section">
+      <h3>Checkboxes</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Single checkbox --&gt;
+&lt;input type="checkbox" id="agree" name="agree" value="yes"&gt;
+&lt;label for="agree"&gt;I agree to the terms and conditions&lt;/label&gt;
+
+&lt;!-- Multiple checkboxes --&gt;
+&lt;p&gt;Select your interests:&lt;/p&gt;
+&lt;input type="checkbox" id="sports" name="interests" value="sports"&gt;
+&lt;label for="sports"&gt;Sports&lt;/label&gt;&lt;br&gt;
+
+&lt;input type="checkbox" id="music" name="interests" value="music"&gt;
+&lt;label for="music"&gt;Music&lt;/label&gt;&lt;br&gt;
+
+&lt;input type="checkbox" id="reading" name="interests" value="reading"&gt;
+&lt;label for="reading"&gt;Reading&lt;/label&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <div class="form-group">
+              <input type="checkbox" id="agree" name="agree" value="yes">
+              <label for="agree">I agree to the terms and conditions</label>
+            </div>
+            
+            <p>Select your interests:</p>
+            <div class="form-group">
+              <input type="checkbox" id="sports" name="interests" value="sports">
+              <label for="sports">Sports</label><br>
+              
+              <input type="checkbox" id="music" name="interests" value="music">
+              <label for="music">Music</label><br>
+              
+              <input type="checkbox" id="reading" name="interests" value="reading">
+              <label for="reading">Reading</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Radio Buttons</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;p&gt;Select your gender:&lt;/p&gt;
+&lt;input type="radio" id="male" name="gender" value="male"&gt;
+&lt;label for="male"&gt;Male&lt;/label&gt;&lt;br&gt;
+
+&lt;input type="radio" id="female" name="gender" value="female"&gt;
+&lt;label for="female"&gt;Female&lt;/label&gt;&lt;br&gt;
+
+&lt;input type="radio" id="other" name="gender" value="other"&gt;
+&lt;label for="other"&gt;Other&lt;/label&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <p>Select your gender:</p>
+            <div class="form-group">
+              <input type="radio" id="male" name="gender" value="male">
+              <label for="male">Male</label><br>
+              
+              <input type="radio" id="female" name="gender" value="female">
+              <label for="female">Female</label><br>
+              
+              <input type="radio" id="other" name="gender" value="other">
+              <label for="other">Other</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Select Dropdown</h3>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic select dropdown --&gt;
+&lt;label for="country"&gt;Country:&lt;/label&gt;
+&lt;select id="country" name="country"&gt;
+  &lt;option value=""&gt;-- Select a country --&lt;/option&gt;
+  &lt;option value="us"&gt;United States&lt;/option&gt;
+  &lt;option value="ca"&gt;Canada&lt;/option&gt;
+  &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+  &lt;option value="au"&gt;Australia&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;!-- Select with option groups --&gt;
+&lt;label for="car"&gt;Choose a car:&lt;/label&gt;
+&lt;select id="car" name="car"&gt;
+  &lt;optgroup label="European Cars"&gt;
+    &lt;option value="volvo"&gt;Volvo&lt;/option&gt;
+    &lt;option value="audi"&gt;Audi&lt;/option&gt;
+    &lt;option value="bmw"&gt;BMW&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="American Cars"&gt;
+    &lt;option value="ford"&gt;Ford&lt;/option&gt;
+    &lt;option value="chevrolet"&gt;Chevrolet&lt;/option&gt;
+    &lt;option value="cadillac"&gt;Cadillac&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;
+
+&lt;!-- Multi-select --&gt;
+&lt;label for="skills"&gt;Skills (hold Ctrl or Cmd to select multiple):&lt;/label&gt;
+&lt;select id="skills" name="skills" multiple size="4"&gt;
+  &lt;option value="html"&gt;HTML&lt;/option&gt;
+  &lt;option value="css"&gt;CSS&lt;/option&gt;
+  &lt;option value="js"&gt;JavaScript&lt;/option&gt;
+  &lt;option value="php"&gt;PHP&lt;/option&gt;
+  &lt;option value="python"&gt;Python&lt;/option&gt;
+&lt;/select&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <div class="form-group">
+              <label for="country" class="form-label">Country:</label>
+              <select id="country" name="country" class="form-control">
+                <option value="">-- Select a country --</option>
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="au">Australia</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="car" class="form-label">Choose a car:</label>
+              <select id="car" name="car" class="form-control">
+                <optgroup label="European Cars">
+                  <option value="volvo">Volvo</option>
+                  <option value="audi">Audi</option>
+                  <option value="bmw">BMW</option>
+                </optgroup>
+                <optgroup label="American Cars">
+                  <option value="ford">Ford</option>
+                  <option value="chevrolet">Chevrolet</option>
+                  <option value="cadillac">Cadillac</option>
+                </optgroup>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="skills" class="form-label">Skills (hold Ctrl or Cmd to select multiple):</label>
+              <select id="skills" name="skills" multiple size="4" class="form-control">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JavaScript</option>
+                <option value="php">PHP</option>
+                <option value="python">Python</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Note:</strong> 
+        <ul>
+          <li>For checkbox groups, use the same <code>name</code> attribute with different <code>value</code> attributes.</li>
+          <li>For radio button groups, all related radio buttons must share the same <code>name</code> attribute to ensure only one can be selected.</li>
+          <li>For multi-select dropdowns, add the <code>multiple</code> attribute and optionally the <code>size</code> attribute to control how many options are visible.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>4. HTML5 Input Types</h2>
+    
+    <div class="demo-section">
+      <p>HTML5 introduced several new input types that provide better user experience and built-in validation:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Date inputs --&gt;
+&lt;label for="date"&gt;Date:&lt;/label&gt;
+&lt;input type="date" id="date" name="date"&gt;
+
+&lt;label for="time"&gt;Time:&lt;/label&gt;
+&lt;input type="time" id="time" name="time"&gt;
+
+&lt;label for="datetime-local"&gt;Date and time:&lt;/label&gt;
+&lt;input type="datetime-local" id="datetime-local" name="datetime-local"&gt;
+
+&lt;label for="month"&gt;Month:&lt;/label&gt;
+&lt;input type="month" id="month" name="month"&gt;
+
+&lt;label for="week"&gt;Week:&lt;/label&gt;
+&lt;input type="week" id="week" name="week"&gt;
+
+&lt;!-- Number inputs --&gt;
+&lt;label for="number"&gt;Number:&lt;/label&gt;
+&lt;input type="number" id="number" name="number" min="1" max="100" step="1"&gt;
+
+&lt;label for="range"&gt;Range:&lt;/label&gt;
+&lt;input type="range" id="range" name="range" min="0" max="100"&gt;
+
+&lt;!-- Other types --&gt;
+&lt;label for="color"&gt;Color:&lt;/label&gt;
+&lt;input type="color" id="color" name="color"&gt;
+
+&lt;label for="tel"&gt;Telephone:&lt;/label&gt;
+&lt;input type="tel" id="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"&gt;
+
+&lt;label for="url"&gt;URL:&lt;/label&gt;
+&lt;input type="url" id="url" name="url"&gt;
+
+&lt;label for="search"&gt;Search:&lt;/label&gt;
+&lt;input type="search" id="search" name="search"&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <!-- Date inputs -->
+            <div class="form-group">
+              <label for="date" class="form-label">Date:</label>
+              <input type="date" id="date" name="date" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="time" class="form-label">Time:</label>
+              <input type="time" id="time" name="time" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="datetime-local" class="form-label">Date and time:</label>
+              <input type="datetime-local" id="datetime-local" name="datetime-local" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="month" class="form-label">Month:</label>
+              <input type="month" id="month" name="month" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="week" class="form-label">Week:</label>
+              <input type="week" id="week" name="week" class="form-control">
+            </div>
+            
+            <!-- Number inputs -->
+            <div class="form-group">
+              <label for="number" class="form-label">Number:</label>
+              <input type="number" id="number" name="number" min="1" max="100" step="1" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="range" class="form-label">Range:</label>
+              <input type="range" id="range" name="range" min="0" max="100" class="form-control">
+            </div>
+            
+            <!-- Other types -->
+            <div class="form-group">
+              <label for="color" class="form-label">Color:</label>
+              <input type="color" id="color" name="color" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="tel" class="form-label">Telephone:</label>
+              <input type="tel" id="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="url" class="form-label">URL:</label>
+              <input type="url" id="url" name="url" placeholder="https://example.com" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="search" class="form-label">Search:</label>
+              <input type="search" id="search" name="search" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <table class="attribute-table">
+        <tr>
+          <th>Input Type</th>
+          <th>Description</th>
+          <th>Browser Support</th>
+        </tr>
+        <tr>
+          <td><code>date</code></td>
+          <td>Date picker (yyyy-mm-dd)</td>
+          <td>Good, except IE</td>
+        </tr>
+        <tr>
+          <td><code>time</code></td>
+          <td>Time picker (hh:mm)</td>
+          <td>Good, except IE</td>
+        </tr>
+        <tr>
+          <td><code>datetime-local</code></td>
+          <td>Date and time picker</td>
+          <td>Good, except IE</td>
+        </tr>
+        <tr>
+          <td><code>month</code></td>
+          <td>Month and year picker</td>
+          <td>Partial</td>
+        </tr>
+        <tr>
+          <td><code>week</code></td>
+          <td>Week and year picker</td>
+          <td>Partial</td>
+        </tr>
+        <tr>
+          <td><code>number</code></td>
+          <td>Numeric input with controls</td>
+          <td>Excellent</td>
+        </tr>
+        <tr>
+          <td><code>range</code></td>
+          <td>Slider control</td>
+          <td>Excellent</td>
+        </tr>
+        <tr>
+          <td><code>color</code></td>
+          <td>Color picker</td>
+          <td>Good, except IE</td>
+        </tr>
+        <tr>
+          <td><code>tel</code></td>
+          <td>Telephone number</td>
+          <td>Excellent (no special UI)</td>
+        </tr>
+        <tr>
+          <td><code>url</code></td>
+          <td>URL input with validation</td>
+          <td>Excellent</td>
+        </tr>
+        <tr>
+          <td><code>email</code></td>
+          <td>Email input with validation</td>
+          <td>Excellent</td>
+        </tr>
+        <tr>
+          <td><code>search</code></td>
+          <td>Search input (often with clear button)</td>
+          <td>Excellent</td>
+        </tr>
+      </table>
+      
+      <div class="element-info">
+        <strong>Browser Compatibility:</strong> While newer browsers support all these input types, older browsers will fall back to a regular text input if they don't support a particular type. Always provide proper validation on both client and server sides regardless of input type.
+      </div>
+    </div>
+    
+    <h2>5. Buttons</h2>
+    
+    <div class="demo-section">
+      <p>There are several ways to create buttons in HTML forms:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Submit button (submits the form) --&gt;
+&lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;!-- Reset button (resets all form fields to default values) --&gt;
+&lt;button type="reset"&gt;Reset&lt;/button&gt;
+
+&lt;!-- Regular button (does nothing by default, typically used with JavaScript) --&gt;
+&lt;button type="button"&gt;Click Me&lt;/button&gt;
+
+&lt;!-- Input buttons (alternative syntax) --&gt;
+&lt;input type="submit" value="Submit"&gt;
+&lt;input type="reset" value="Reset"&gt;
+&lt;input type="button" value="Click Me"&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <!-- Submit button (submits the form) -->
+            <button type="submit" class="form-button" style="margin-right: 10px;">Submit</button>
+            
+            <!-- Reset button (resets all form fields to default values) -->
+            <button type="reset" class="form-button" style="background-color: #e74c3c; margin-right: 10px;">Reset</button>
+            
+            <!-- Regular button (does nothing by default, typically used with JavaScript) -->
+            <button type="button" class="form-button" style="background-color: #2ecc71;">Click Me</button>
+            
+            <div style="margin-top: 15px;">
+              <!-- Input buttons (alternative syntax) -->
+              <input type="submit" value="Submit" style="margin-right: 10px;">
+              <input type="reset" value="Reset" style="margin-right: 10px;">
+              <input type="button" value="Click Me">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3>Button vs. Input Button</h3>
+      <p>The main differences between <code>&lt;button&gt;</code> and <code>&lt;input type="button"&gt;</code> are:</p>
+      <ul>
+        <li><code>&lt;button&gt;</code> can contain HTML content (text, images, etc.), while <code>&lt;input&gt;</code> can only have a text value</li>
+        <li><code>&lt;button&gt;</code> has a default type of "submit" if not specified, which can cause unexpected form submissions</li>
+        <li><code>&lt;input&gt;</code> elements have better cross-browser consistency in older browsers</li>
+      </ul>
+      
+      <div class="element-info">
+        <strong>Best Practice:</strong> Always specify the <code>type</code> attribute on <code>&lt;button&gt;</code> elements to avoid unexpected form submissions. Use <code>&lt;button&gt;</code> when you need rich content inside the button, and <code>&lt;input&gt;</code> for simple text buttons.
+      </div>
+    </div>
+    
+    <h2>6. Form Validation</h2>
+    
+    <div class="demo-section">
+      <p>HTML5 provides built-in form validation features that can be used before JavaScript validation:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Required field --&gt;
+&lt;input type="text" id="username" name="username" required&gt;
+
+&lt;!-- Minimum and maximum length --&gt;
+&lt;input type="password" id="password" name="password" minlength="8" maxlength="20" required&gt;
+
+&lt;!-- Number range --&gt;
+&lt;input type="number" id="age" name="age" min="18" max="100" required&gt;
+
+&lt;!-- Pattern validation with regular expression --&gt;
+&lt;input type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}" title="Five digit zip code" required&gt;
+
+&lt;!-- Email validation --&gt;
+&lt;input type="email" id="email" name="email" required&gt;
+
+&lt;!-- URL validation --&gt;
+&lt;input type="url" id="website" name="website" required&gt;</div>
+      </div>
+      
+      <h3>Customizing Validation Messages</h3>
+      <p>You can customize validation messages using JavaScript:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;script&gt;
+  const username = document.getElementById('username');
+  
+  username.addEventListener('invalid', function(event) {
+    if (username.validity.valueMissing) {
+      username.setCustomValidity('Please enter your username');
+    } else {
+      username.setCustomValidity('');
+    }
+  });
+  
+  username.addEventListener('input', function(event) {
+    username.setCustomValidity('');
+  });
+&lt;/script&gt;</div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Validation Approach:</strong> For robust form validation:
+        <ol>
+          <li>Use HTML5 built-in validation attributes for basic validation</li>
+          <li>Add JavaScript validation for more complex rules and better user experience</li>
+          <li>Always include server-side validation as the final security layer</li>
+        </ol>
+      </div>
+    </div>
+    
+    <h2>7. Fieldset and Legend</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;fieldset&gt;</code> element groups related form controls, and the <code>&lt;legend&gt;</code> element provides a caption for the fieldset:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Personal Information&lt;/legend&gt;
+    &lt;label for="fullname"&gt;Full Name:&lt;/label&gt;
+    &lt;input type="text" id="fullname" name="fullname"&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+  &lt;/fieldset&gt;
+  
+  &lt;fieldset&gt;
+    &lt;legend&gt;Shipping Address&lt;/legend&gt;
+    &lt;label for="street"&gt;Street:&lt;/label&gt;
+    &lt;input type="text" id="street" name="street"&gt;
+    
+    &lt;label for="city"&gt;City:&lt;/label&gt;
+    &lt;input type="text" id="city" name="city"&gt;
+    
+    &lt;label for="zip"&gt;Zip Code:&lt;/label&gt;
+    &lt;input type="text" id="zip" name="zip"&gt;
+  &lt;/fieldset&gt;
+  
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</div>
+        <div class="element-preview">
+          <form class="demo-form">
+            <fieldset>
+              <legend>Personal Information</legend>
+              <div class="form-group">
+                <label for="fullname" class="form-label">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" class="form-control">
+              </div>
+              
+              <div class="form-group">
+                <label for="email3" class="form-label">Email:</label>
+                <input type="email" id="email3" name="email" class="form-control">
+              </div>
+            </fieldset>
+            
+            <fieldset>
+              <legend>Shipping Address</legend>
+              <div class="form-group">
+                <label for="street" class="form-label">Street:</label>
+                <input type="text" id="street" name="street" class="form-control">
+              </div>
+              
+              <div class="form-group">
+                <label for="city" class="form-label">City:</label>
+                <input type="text" id="city" name="city" class="form-control">
+              </div>
+              
+              <div class="form-group">
+                <label for="zip" class="form-label">Zip Code:</label>
+                <input type="text" id="zip" name="zip" class="form-control">
+              </div>
+            </fieldset>
+            
+            <button type="submit" class="form-button">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Benefits:</strong> Using <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> provides several advantages:
+        <ul>
+          <li>Improves form organization and readability</li>
+          <li>Enhances accessibility by creating logical groupings for screen readers</li>
+          <li>Provides visual grouping that helps users understand related fields</li>
+          <li>Allows for easier styling of form sections</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>8. File Uploads</h2>
+    
+    <div class="demo-section">
+      <p>The <code>&lt;input type="file"&gt;</code> element allows users to upload files:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Basic file upload --&gt;
+&lt;label for="file"&gt;Select a file:&lt;/label&gt;
+&lt;input type="file" id="file" name="file"&gt;
+
+&lt;!-- Multiple file upload --&gt;
+&lt;label for="files"&gt;Select multiple files:&lt;/label&gt;
+&lt;input type="file" id="files" name="files" multiple&gt;
+
+&lt;!-- Accept specific file types --&gt;
+&lt;label for="image"&gt;Select an image:&lt;/label&gt;
+&lt;input type="file" id="image" name="image" accept="image/*"&gt;
+
+&lt;!-- For file uploads, the form needs specific enctype --&gt;
+&lt;form action="/upload" method="post" enctype="multipart/form-data"&gt;
+  &lt;label for="document"&gt;Upload document:&lt;/label&gt;
+  &lt;input type="file" id="document" name="document"&gt;
+  &lt;button type="submit"&gt;Upload&lt;/button&gt;
+&lt;/form&gt;</div>
+        <div class="element-preview">
+          <div class="demo-form">
+            <div class="form-group">
+              <label for="file" class="form-label">Select a file:</label>
+              <input type="file" id="file" name="file">
+            </div>
+            
+            <div class="form-group">
+              <label for="files" class="form-label">Select multiple files:</label>
+              <input type="file" id="files" name="files" multiple>
+            </div>
+            
+            <div class="form-group">
+              <label for="image" class="form-label">Select an image:</label>
+              <input type="file" id="image" name="image" accept="image/*">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="element-info">
+        <strong>Important:</strong> When working with file uploads:
+        <ul>
+          <li>The form's <code>enctype</code> attribute must be set to <code>"multipart/form-data"</code></li>
+          <li>The form's <code>method</code> should be <code>"post"</code></li>
+          <li>Server-side validation of file types, sizes, and content is crucial for security</li>
+          <li>The <code>accept</code> attribute provides a hint to browsers but doesn't validate the file type</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2>9. Form Layouts and Styling</h2>
+    
+    <div class="demo-section">
+      <p>Modern form layouts are typically created using CSS. Here are common approaches:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;!-- Vertical layout (labels above inputs) --&gt;
+&lt;style&gt;
+  .form-vertical .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-vertical .form-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-vertical .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+&lt;/style&gt;
+
+&lt;!-- Horizontal layout (labels beside inputs) --&gt;
+&lt;style&gt;
+  .form-horizontal .form-group {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+  .form-horizontal .form-label {
+    flex: 0 0 120px;
+    margin-right: 10px;
+  }
+  
+  .form-horizontal .form-control {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+&lt;/style&gt;
+
+&lt;!-- Grid-based layout --&gt;
+&lt;style&gt;
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .form-grid .form-group {
+    margin-bottom: 0;
+  }
+  
+  .form-grid .form-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-grid .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-grid .full-width {
+    grid-column: 1 / -1;
+  }
+&lt;/style&gt;</div>
+      </div>
+      
+      <h3>Custom Form Control Styling</h3>
+      <p>Styling custom checkboxes, radio buttons, and select elements often requires additional CSS or JavaScript. Here's a simple example of custom checkboxes:</p>
+      
+      <div class="element-demo">
+        <div class="element-html">&lt;style&gt;
+  .custom-checkbox {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 4px;
+  }
+  
+  .custom-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .custom-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .custom-checkbox .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+&lt;/style&gt;
+
+&lt;label class="custom-checkbox"&gt;
+  I agree to the terms
+  &lt;input type="checkbox" name="agree"&gt;
+  &lt;span class="checkmark"&gt;&lt;/span&gt;
+&lt;/label&gt;</div>
+      </div>
+    </div>
+    
+    <h2>10. Best Practices</h2>
+    
+    <div class="demo-section">
+      <ul>
+        <li>Always use <code>&lt;label&gt;</code> elements properly associated with form controls</li>
+        <li>Group related form controls using <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></li>
+        <li>Include proper form validation both on the client and server side</li>
+        <li>Use appropriate input types to provide better user experience on mobile devices</li>
+        <li>Include clear error messages and validation feedback</li>
+        <li>Mark required fields clearly (via the <code>required</code> attribute and visual indicators)</li>
+        <li>Keep forms as short as possible, requesting only essential information</li>
+        <li>Provide clear instructions and helpful placeholder text</li>
+        <li>Ensure forms are accessible to keyboard users and screen readers</li>
+        <li>Design mobile-friendly forms with touch-friendly controls</li>
+        <li>Use appropriate autocomplete attributes to help users fill forms faster</li>
+        <li>Include a clear submission button with descriptive text</li>
+        <li>Consider progressive enhancement for older browsers</li>
+      </ul>
+    </div>
+    
+    <div class="navigation">
+      <a href="html-tables.html" class="nav-button">← Previous: Tables</a>
+      <a href="html-semantic.html" class="nav-button">Next: Semantic Elements →</a>
+    </div>
+    
+    <div class="footer">
+      <p>Made by Ori Surut</p>
+      <p>&copy; 2025 HTML & CSS Documentary. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
